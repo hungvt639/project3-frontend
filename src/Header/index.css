@@ -1,0 +1,32 @@
+.margin_right{
+    margin-left: auto;
+}
+.text-avata{
+    color: white;
+    font-size: 150%;
+}
+.avatar{
+    margin-left: auto;
+    /* height: 300; */
+    padding: 4px 15px;
+    float: right;
+    position: absolute;
+    /* top:12px; */
+    /* bottom:100px; */
+    /* left:70px; */
+    right:10px;
+}
+.button-login{
+    background-color: brown;
+    color: white;
+    font-size: 150%;
+    padding: 4px 15px;
+    line-height: 1;
+    border-style: none;
+    border-radius: 15px;
+    position: absolute;
+    top:12px;
+    /* bottom:100px; */
+    /* left:70px; */
+    right:10px;
+}
