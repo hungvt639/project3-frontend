@@ -17,7 +17,7 @@ const Homepage = () => {
         items.push(<IndexProduct key={i} product={product}/>);
     }
     return(
-        <div className="items">{items}</div>
+        <span className="items">{items}</span>
     )
 }
 export default Homepage;

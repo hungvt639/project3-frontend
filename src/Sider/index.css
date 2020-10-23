@@ -7,9 +7,10 @@
 }
 .menu{
     background-color: #ff6000;
-    /* padding: 10px 5px; */
+    padding: 10px 5px;
     margin: 20px 1px;
     font-size: 20px;
+    border-right: 0;
 }
 
 

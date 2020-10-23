@@ -29,11 +29,11 @@ const AvatarHeader = ({myuser, setUser}) => {
     const menu = () => {
         return(
             <Menu>
-                <Menu.Item>
+                <Menu.Item className='menu_avatar'>
                     <a href="/home/profile"><UserOutlined /> Thông tin cá nhân</a>
                 </Menu.Item>
-                <Menu.Item>
-                    <p onClick={logout}><LogoutOutlined /> Đăng xuất</p>
+                <Menu.Item className='menu_avatar'>
+                    <span onClick={logout}><LogoutOutlined style={{fontSize:'18px'}} /> Đăng xuất</span>
                 </Menu.Item>
             </Menu>
         )
@@ -41,14 +41,14 @@ const AvatarHeader = ({myuser, setUser}) => {
 
     if(myuser) {
         return(
-            <Dropdown className='margin_right' overlay={menu} placement="bottomRight">
-                <span className='avatar text-avata'><Avatar src={`${urls}${myuser.avatar}`} />  {`${myuser.first_name} ${myuser.last_name}`}</span> 
+            <Dropdown className='avatar_user' overlay={menu} placement="bottomRight">
+                <span><Avatar src={`${urls}${myuser.avatar}`} />  {`${myuser.first_name} ${myuser.last_name}`}</span> 
             </Dropdown>
         )
     }
     else{
     return(
-        <Button size='large' onClick={login} className='button-login' >Đăng nhập</Button>
+        <Button onClick={login} className='button-login' >Đăng nhập</Button>
     )}
 }
 export default AvatarHeader;

@@ -1,32 +1,31 @@
-.margin_right{
-    margin-left: auto;
-}
-.text-avata{
+.avatar_user{
+    margin-right: 15px;
     color: white;
     font-size: 150%;
 }
-.avatar{
-    margin-left: auto;
-    /* height: 300; */
-    padding: 4px 15px;
-    float: right;
-    position: absolute;
-    /* top:12px; */
-    /* bottom:100px; */
-    /* left:70px; */
-    right:10px;
+.head_user{
+    flex: 1;
+    flex-direction: row-reverse;
+    display: flex;
 }
+.header{
+    padding: 0px;
+    background-color: #FF6000;
+    display: flex;
+}
+
 .button-login{
     background-color: brown;
     color: white;
-    font-size: 150%;
-    padding: 4px 15px;
+    font-size: 20px;
     line-height: 1;
     border-style: none;
     border-radius: 15px;
-    position: absolute;
-    top:12px;
-    /* bottom:100px; */
-    /* left:70px; */
-    right:10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    height: 40px;
+}
+.menu_avatar{
+    font-size: 18px;
 }
