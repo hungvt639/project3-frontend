@@ -17,8 +17,12 @@ const Layouts = () => {
         <Layout>
             <Siders collapsed={collapsed} />
             <Layout className="site-layout">
-            <Headers toggle={toggle} collapsed={collapsed} myuser={myuser} setUser={setUser} />
-            <Contents />
+                <Headers toggle={toggle} collapsed={collapsed} myuser={myuser} setUser={setUser} />
+                <Contents />
+                {/* <Switch>
+                    <Route exact path="/a" component={HomePage} />
+                    <Route exact path="/profile" component={profile} />
+                </Switch> */}
             </Layout>
         </Layout>
     )

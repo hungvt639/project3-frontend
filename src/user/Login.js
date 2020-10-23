@@ -17,7 +17,7 @@ const Login = () => {
       const res = await API.getProfile();
       localStorage.setItem('user', JSON.stringify(res));
       Notification("Bạn đã đăng nhập thành công!");
-      history.push("/");
+      history.push("/home");
     }
     catch(e){
         if(e.request.status === 0){

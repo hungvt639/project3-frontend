@@ -30,7 +30,7 @@ const AvatarHeader = ({myuser, setUser}) => {
         return(
             <Menu>
                 <Menu.Item>
-                    <a href="/profile"><UserOutlined /> Thông tin cá nhân</a>
+                    <a href="/home/profile"><UserOutlined /> Thông tin cá nhân</a>
                 </Menu.Item>
                 <Menu.Item>
                     <p onClick={logout}><LogoutOutlined /> Đăng xuất</p>
