@@ -1,5 +1,5 @@
 import React from 'react';
-import './index_product.css';
+import './index.css';
 import 'antd/dist/antd.css';
 import urls from '../const';
 import { useHistory } from 'react-router-dom'

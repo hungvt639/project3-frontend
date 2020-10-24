@@ -1,8 +1,8 @@
 import React from 'react';
 import urls from '../const';
-import { Avatar,  Menu, Dropdown, Button } from 'antd';
+import { Avatar,  Menu, Dropdown, Button, Badge } from 'antd';
 import './index.css';
-import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, BellOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import getFactory from '../request/index'
 import {useHistory} from 'react-router-dom'
 
@@ -41,9 +41,26 @@ const AvatarHeader = ({myuser, setUser}) => {
 
     if(myuser) {
         return(
-            <Dropdown className='avatar_user' overlay={menu} placement="bottomRight">
-                <span><Avatar src={`${urls}${myuser.avatar}`} />  {`${myuser.first_name} ${myuser.last_name}`}</span> 
-            </Dropdown>
+            <div>
+                <a href="/home/cart" className="avatar_cart">
+                    <Badge count={1}>
+                        <Avatar icon={<ShoppingCartOutlined />} />
+                    </Badge>
+                </a>
+                <a href="/home/notify" className="avatar_notify">
+                    <Badge count={1}>
+                        <Avatar icon={<BellOutlined />} />
+                    </Badge>
+                </a>
+
+                <Dropdown className='avatar_user' overlay={menu} placement="bottomRight">
+                    <span><Avatar src={`${urls}${myuser.avatar}`} />  {`${myuser.first_name} ${myuser.last_name}`}</span> 
+                </Dropdown>
+            </div>
+            
+            
+            
+        
         )
     }
     else{

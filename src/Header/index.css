@@ -2,6 +2,14 @@
     margin-right: 15px;
     color: white;
     font-size: 150%;
+    /* margin-bottom: 30px; */
+    padding-bottom: 25px;
+}
+.avatar_notify{
+    padding-right: 30px;
+}
+.avatar_cart{
+    padding-right: 30px;
 }
 .head_user{
     flex: 1;

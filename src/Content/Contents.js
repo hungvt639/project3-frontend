@@ -14,7 +14,7 @@ const Contents = () => {
                 style={{
                     margin: '24px 16px',
                     padding: 24,
-                    maxHeight: '87vh',
+                    maxHeight: '100vh',
                     overflow: 'auto',
                 }}
             >
