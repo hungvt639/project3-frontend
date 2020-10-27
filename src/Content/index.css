@@ -55,5 +55,66 @@
 .profile_user{
     height: 100%;
     flex-grow: 3;
-    background-color: #00CC33;
+    /* background-color: #00CC33; */
 }
+.avatar_user{
+    width: 200px;
+    height: 200px;
+}
+.user{
+    margin: 100px 50px;
+    background-color: #FF6600;
+    /* width: 50px;
+    height: 50px; */
+}
+.user_input{
+    
+}
+#rcDialogTitle0{
+    text-align: center;
+}
+.form_profile{
+    margin-top: 100px;
+    font-size: 16px;
+
+}
+.form_profile div div label{
+    font-size: 16px;
+}
+.input_profile{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+input[type=text] {
+    background-color: #fff !important;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #FF6600;
+    border-radius: 5px 5px 5px 5px;
+  }
