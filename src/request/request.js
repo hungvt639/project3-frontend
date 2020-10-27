@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import urls from '../const';
 const http = require("http");
 const https = require("https");
 
@@ -12,10 +13,11 @@ export default function getInstanceAxios(baseAPI,isToken) {
     instance.interceptors.request.use(
         function (config) {
             config.headers = {
-                Accept: "application/json",
+                Accept: "*/*",
                 "Content-Type": "application/json",
                 Authorization:  "Token " + localStorage.getItem("token"),
-                // Host: 'http://localhost:8000',
+                
+                // Host: urls,
                 // eslint-disable-next-line no-useless-computed-key
                 // ["secret-key"]: localStorage.getItem("secretKey"),
             };

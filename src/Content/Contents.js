@@ -3,7 +3,7 @@ import './index.css';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import HomePage from './home';
-import profile from './profile';
+import Profile from './profile';
 import { Route, Switch } from 'react-router-dom';
 const { Content } = Layout;
 
@@ -20,7 +20,7 @@ const Contents = () => {
             >
                 <Switch>
                     <Route exact path="/home" component={HomePage} />
-                    <Route exact path="/home/profile" component={profile} />
+                    <Route exact path="/home/profile" component={Profile} />
                 </Switch>
                 <div style={{height: 50}}></div>
             </Content>

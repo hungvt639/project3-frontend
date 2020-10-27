@@ -18,10 +18,14 @@ const getProfile = () => {
 const Logout = () => {
     return Client(true).get(`${resource}/logout/`);
 }
+const EditProfile = (data) => {
+    return Client(true).put(`${resource}/profile`, data);
+}
 export default {
     signIn,
     signUp,
     changePassword,
     getProfile,
     Logout,
+    EditProfile,
 };
