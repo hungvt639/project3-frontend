@@ -69,7 +69,7 @@ const Register = () => {
                         }
                     ]}
                 >
-                    <Input className="fadeIn second"  placeholder="Username" maxLength="50" />
+                    <Input className="fadeIn second input_login input_login1"  placeholder="Username" maxLength="50" />
                 </Form.Item>
 
                 <Form.Item
@@ -85,7 +85,7 @@ const Register = () => {
                     },
                     ]}
                 >
-                    <Input className="fadeIn second"  placeholder="Email" maxLength="100" />
+                    <Input className="fadeIn second input_login input_login1"  placeholder="Email" maxLength="100" />
                 </Form.Item>
                 <Form.Item 
                     name="first_name"
@@ -96,7 +96,7 @@ const Register = () => {
                         },
                         ]}
                     >
-                        <Input className="fadeIn second"  placeholder="First name" maxLength="100" />
+                        <Input className="fadeIn second input_login input_login1"  placeholder="First name" maxLength="100" />
                     </Form.Item>
                     <Form.Item 
                     name="last_name"
@@ -107,7 +107,7 @@ const Register = () => {
                         },
                         ]}
                 >
-                    <Input className="fadeIn second"  placeholder="Last Name" maxLength="100" />
+                    <Input className="fadeIn second input_login input_login1"  placeholder="Last Name" maxLength="100" />
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -119,7 +119,7 @@ const Register = () => {
                     ]}
                     
                 >
-                    <Input type='password' className="fadeIn second"  placeholder="Password" maxLength="100" />
+                    <Input type='password' className="fadeIn second input_login input_login1"  placeholder="Password" maxLength="100" />
                 </Form.Item>
 
                 <Form.Item
@@ -141,7 +141,7 @@ const Register = () => {
                     }),
                     ]}
                 >
-                    <Input type='password' className="fadeIn second"  placeholder="Confirm Password" maxLength="100" />
+                    <Input type='password' className="fadeIn second input_login input_login1"  placeholder="Confirm Password" maxLength="100" />
                 </Form.Item>
 
                 <Form.Item>
@@ -158,7 +158,7 @@ const Register = () => {
                         </Checkbox>
                     </Form.Item>
                 </Form.Item>
-                <input type="submit" className="fadeIn fourth" value="Đăng ký" />
+                <input type="submit" className="fadeIn fourth input_login" value="Đăng ký" />
             </Form>
             <div id="formFooter">
                 <a className="underlineHover" href="/forgot-password">Quên mật khẩu?</a>

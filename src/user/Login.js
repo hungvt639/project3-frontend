@@ -67,20 +67,20 @@ const Login = () => {
                         name="username"
                         rules={[{ required: true, message: 'Nhập tên đăng nhập của bạn!' }]}
                     >
-                        <Input className="fadeIn second"  placeholder="Username" maxLength="50" />
+                        <Input className="fadeIn second input_login input_login1"  placeholder="Username" maxLength="50" />
                     </Form.Item>
                     <Form.Item
                         name="password"
                         rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
                     >
-                        <Input type='password' className="fadeIn second"  placeholder="Password" maxLength="100" />
+                        <Input type='password' className="fadeIn second input_login input_login1"  placeholder="Password" maxLength="100" />
                     </Form.Item>
                     <Form.Item>
                         <Form.Item name="remember" valuePropName="checked" noStyle>
                             <Checkbox>Lưu đăng nhập</Checkbox>
                         </Form.Item>
                     </Form.Item>
-                    <input type="submit" className="fadeIn fourth" value="Đăng nhập" />
+                    <input type="submit" className="fadeIn fourth input_login" value="Đăng nhập" />
                 </Form>
                 <div id="formFooter">
                     <a className="underlineHover" href="/forgot-password">Quên mật khẩu?</a>

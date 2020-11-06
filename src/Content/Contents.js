@@ -22,7 +22,7 @@ const Contents = () => {
                     <Route exact path="/home" component={HomePage} />
                     <Route exact path="/home/profile" component={Profile} />
                 </Switch>
-                <div style={{height: 50}}></div>
+                {/* <div style={{height: 50}}></div> */}
             </Content>
 
             

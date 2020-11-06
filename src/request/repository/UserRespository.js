@@ -9,7 +9,7 @@ const signIn = (data) => {
 };
 
 const changePassword = (data) => {
-    return Client().post(`${resource}/change-password/`, data);
+    return Client(true).post(`${resource}/change-password/`, data);
 };
 
 const getProfile = () => {
@@ -19,7 +19,7 @@ const Logout = () => {
     return Client(true).get(`${resource}/logout/`);
 }
 const EditProfile = (data) => {
-    return Client(true).put(`${resource}/profile`, data);
+    return Client(true).put(`${resource}/profile/`, data);
 }
 export default {
     signIn,

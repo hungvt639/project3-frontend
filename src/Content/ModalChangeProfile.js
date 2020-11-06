@@ -1,18 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './index.css';
 import getFactory from '../request/index';
-// import Notification from '../general/Notification';
+import Notification from '../general/Notification';
 import errorNotification from '../general/errorNotification';
-import {useHistory} from 'react-router-dom';
-import { Avatar, Form, Upload, Button, Input, Radio, Modal } from 'antd';
-import {SyncOutlined} from '@ant-design/icons';
-import urls from '../const';
-const ModalChangeProfile = ({myuser, visible, setVisible}) => {
+import { Form, Button, Input, Radio, Modal, DatePicker, Space } from 'antd';
+import moment from 'moment';
+const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {
+    var birthday = null;
+    const dateFormat = 'DD-MM-YYYY';
     const API = getFactory('user');
     const chaneProfile = async (data) => {
         try{
             const res = await API.EditProfile(data);
-            console.log(res);
+            setUser(res);
+            localStorage.setItem('user', JSON.stringify(res));
+            // window.location.reload();
+            Notification("Cập nhật thông tin thành công");
+            
         }catch(e){
             if(e.request.status === 0){
                 errorNotification("Lỗi mạng!");
@@ -21,15 +25,21 @@ const ModalChangeProfile = ({myuser, visible, setVisible}) => {
             }else errorNotification(e.message);
         }
     }
- 
+    const value_date = () =>{
+        if (myuser.birthday) return moment(myuser.birthday, dateFormat);
+        else return "";
+    }
     const handleCancel = () => {
         setVisible(false);
     }
     const onFinish = (values) => {
-        values = {...values, avatar:myuser.avatar}
+        values.birthday=birthday;
+        console.log(values)
         chaneProfile(values);
         setVisible(false);
-        console.log(values)
+    }
+    const onChangeDate = (date, dateString) => {
+        birthday = dateString
     }
     const layout = {
         labelCol: { span: 8 },
@@ -44,34 +54,69 @@ const ModalChangeProfile = ({myuser, visible, setVisible}) => {
             
         >
                 <Form {...layout} name="nest-messages" onFinish={onFinish} initialValues={myuser}>
-                    <Form.Item name="email" label="Email:" >
+                    <Form.Item name="email" label="Email:" 
+                        rules={[
+                            {
+                                type: 'email',
+                                message: 'Định dạng Email không đúng',
+                            },
+                            {
+                                required: true,
+                                message: 'Vui lòng nhập Email của bạn',
+                            },
+                            ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item name="last_name" label="Họ:" >
+                    <Form.Item name="last_name" label="Họ:" 
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Vui lòng nhập Họ của bạn',
+                            },
+                            ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item name="first_name" label="Tên:" >
+                    <Form.Item name="first_name" label="Tên:" 
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Vui lòng nhập Tên của bạn',
+                            },
+                            ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item name="phone" label="Số điện thoại">
+                    <Form.Item name="phone" label="Số điện thoại"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Vui lòng nhập Số điện thoại của bạn',
+                            },
+                            ]}
+                    >
                         <Input />
                     </Form.Item>
                     <Form.Item name="address" label="Địa chỉ:">
                         <Input />
                     </Form.Item>
                     <Form.Item name="birthday" label="Ngày sinh:">
-                        <Input />
+                        <Space>
+                            <DatePicker onChange={onChangeDate} name='birthday' defaultValue={value_date} format={dateFormat} />
+                        </Space>
+                        
                     </Form.Item>
                     <Form.Item name="sex" label="Giới Tính:">
                     <Radio.Group name="sex" defaultValue={myuser.sex}>
-                        <Radio value={1}>nam</Radio>
+                        <Radio value={1}>Nam</Radio>
                         <Radio checked value={2}>Nữ</Radio>
                         <Radio value={0}>Khác</Radio>
-                        </Radio.Group>
+                    </Radio.Group>
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                         <Button type="primary" htmlType="submit">
-                        Chỉnh sửa sửa thông tin
+                        Chỉnh sửa thông tin
                         </Button>
                     </Form.Item>
                 </Form>

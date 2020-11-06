@@ -102,7 +102,7 @@
   
 
   
-  input[type=button], input[type=submit], input[type=reset]  {
+.input_login  {
     background-color: #FF6600;
     border: none;
     color: white;
@@ -124,11 +124,11 @@
     transition: all 0.3s ease-in-out;
   }
   
-  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+ /* .input_login:hover  {
     background-color: #39ace7;
-  }
+  } */
   
-  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  .input_login:active  {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
@@ -136,7 +136,7 @@
     transform: scale(0.95);
   }
   
-  input[type=text], input[type=password] {
+ .input_login1 {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -161,11 +161,11 @@
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
-  input[type=password]:focus {
+  /* input[type=password]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
-  
+   */
   input[type=text]:placeholder {
     color: #cccccc;
   }
