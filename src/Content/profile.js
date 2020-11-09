@@ -43,7 +43,7 @@ const Profile = () => {
         return(
             <div className="profile">
                 <div className="avatar">
-                    <Avatar myuser={myuser} />
+                    <Avatar myuser={myuser} setUser={setUser} />
                 </div>
                 <div className="profile_user">
                     <form className="form_input">

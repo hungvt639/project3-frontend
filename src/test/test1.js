@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import getFactory from '../request/index'
 import './test1.css'
-import {Upload} from 'antd';
 const Test1 = () =>{
-
-
     const API = getFactory('user');
     const [selectedFile, setSelectedFile] = useState(null);
        
@@ -36,17 +33,18 @@ const Test1 = () =>{
        
         return ( 
           <div> 
-                <h1> 
-                    GeeksforGeeks 
-                </h1> 
-                <h3> 
-                    File Upload using React! 
-                </h3> 
-                <div>
-                    <Upload>
-                        Click to upload
-                    </Upload>
-                </div> 
+              <h1> 
+                GeeksforGeeks 
+              </h1> 
+              <h3> 
+                File Upload using React! 
+              </h3> 
+              <div> 
+                  <input name='avatar' type="file" onChange={onFileChange} /> 
+                  <button onClick={onFileUpload}> 
+                    Upload! 
+                  </button> 
+              </div> 
             {/* {fileData()}  */}
           </div> 
         ); 

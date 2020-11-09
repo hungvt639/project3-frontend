@@ -21,6 +21,10 @@ const Logout = () => {
 const EditProfile = (data) => {
     return Client(true).put(`${resource}/profile/`, data);
 }
+
+const ChangeAvatar = (data) => {
+    return Client(true).put(`${resource}/change-avatar/`, data)
+}
 export default {
     signIn,
     signUp,
@@ -28,4 +32,5 @@ export default {
     getProfile,
     Logout,
     EditProfile,
+    ChangeAvatar,
 };
