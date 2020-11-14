@@ -9,12 +9,16 @@ import { useHistory } from 'react-router-dom'
      const onclick = () => {
         history.push(`/home/detail/${product.id}`)
      }
+     const sold = (product.sold<1000)?`${product.sold}`:`${(product.sold/1000).toFixed(1)}k`
      return(
          <div onClick={onclick} className='index_product'>
-            <img className="img_product" src={`${urls}${product.img}`} alt="Lỗi hiển thị"></img>
+            <img className="img_product" src={`${urls}${product.avatar}`} alt="Lỗi hiển thị"></img>
             <p className="name_product">{product.name}</p>
-            <span className="price_product">{product.price}<i style={{'textDecorationLine':'underline', 'verticalAlign':'5px'}}>đ</i></span>
-            <span className="sold_product">Đã bán {product.sold}</span>
+            <p className="price_product">
+                {product.from_saleprice}<i style={{'textDecorationLine':'underline', 'verticalAlign':'5px'}}>đ</i> - 
+                {product.to_saleprice}<i style={{'textDecorationLine':'underline', 'verticalAlign':'5px'}}>đ</i>
+            </p>
+            <span className="sold_product">Đã bán {sold}</span>
          </div>
      )
  }

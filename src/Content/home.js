@@ -1,20 +1,33 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import errorNotification from '../general/errorNotification';
 import './index.css';
 import 'antd/dist/antd.css';
+import getFactory from '../request/index';
 import IndexProduct from './IndexProduct';
 
 
-const Homepage = () => {
-    const product = {
-        name:"CHẮC VÌ MÌNH CHƯA TỐT (Ai Đợi Mình Được Mãi P2) | THANH HƯNG | OFFICIAL MV",
-        img:"/media/avatar.jpg",
-        price:"100000",
-        sold:21,
-        id:"ABCDEF"
+const Homepage = ({myuser, setUser}) => {
+    const [products, setProduct] = useState([]);
+    const API = getFactory('product');
+    const getproduct = async () =>{
+        try{
+            const res = await API.getProducts();
+            setProduct(res.data)
+        }
+        catch(e){
+            errorNotification("Lỗi mạng")
+        }
     }
+
+    useEffect(()=>{
+        getproduct()
+    },[])
+    console.log(products);
+
+    
     const items=[]
-    for(var i = 0; i<30; i++){
-        items.push(<IndexProduct key={i} product={product}/>);
+    for(const i of products){
+        items.push(<IndexProduct key={i.id} product={i}/>);
     }
     return(
         <span className="items">{items}</span>

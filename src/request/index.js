@@ -1,7 +1,8 @@
 import UserRepository from './repository/UserRespository';
+import ProductRespository from './repository/ProductRespository' 
 const repositories = {
     user: UserRepository,
-    // schools: SchoolRespository,
+    product: ProductRespository
 }
 
 export default function getFactory(name) {

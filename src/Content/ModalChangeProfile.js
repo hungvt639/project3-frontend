@@ -6,7 +6,7 @@ import errorNotification from '../general/errorNotification';
 import { Form, Button, Input, Radio, Modal, DatePicker, Space } from 'antd';
 import moment from 'moment';
 const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {
-    var birthday = null;
+    var birthday = myuser.birthday;
     const dateFormat = 'DD-MM-YYYY';
     const API = getFactory('user');
     const chaneProfile = async (data) => {
@@ -108,7 +108,7 @@ const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {
                         
                     </Form.Item>
                     <Form.Item name="sex" label="Giới Tính:">
-                    <Radio.Group name="sex" defaultValue={myuser.sex}>
+                    <Radio.Group name="sex" initialValues={myuser.sex}>
                         <Radio value={1}>Nam</Radio>
                         <Radio checked value={2}>Nữ</Radio>
                         <Radio value={0}>Khác</Radio>

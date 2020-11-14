@@ -31,13 +31,13 @@ const Siders = ({collapsed}) => {
         >
             <div className="logo" />
             <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey()]}>
-                <Menu.Item onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '1')}} key="1" icon={<HomeOutlined style={{fontSize:'20px'}} />}>
+                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '1')}} key="1" icon={<HomeOutlined style={{fontSize:'20px'}} />}>
                     Trang chủ
                 </Menu.Item>
-                <Menu.Item onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '2')}} key="2" icon={<VideoCameraOutlined style={{fontSize:'20px'}}  />}>
+                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '2')}} key="2" icon={<VideoCameraOutlined style={{fontSize:'20px'}}  />}>
                     nav 2
                 </Menu.Item>
-                <Menu.Item onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '3')}} key="3" icon={<UploadOutlined style={{fontSize:'20px'}}  />}>
+                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '3')}} key="3" icon={<UploadOutlined style={{fontSize:'20px'}}  />}>
                     nav 3
                 </Menu.Item>
             </Menu>

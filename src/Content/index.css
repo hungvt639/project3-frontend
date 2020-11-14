@@ -24,6 +24,7 @@
 .name_product{
     margin: 10px;
     margin-top: 0px;
+    margin-bottom: 2px;
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -32,10 +33,13 @@
     -webkit-box-orient: vertical;
 }
 .price_product{
-    margin-left: 10px;
+    margin: 0px 10px;
     font-size: 18px;
     color: #FF6600;
-    display: flex;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .sold_product{
     font-size: 12px;

@@ -12,6 +12,11 @@
     font-size: 20px;
     border-right: 0;
 }
+.menu_item:hover{
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+}
 
 
 .ant-menu-item-selected{
@@ -19,4 +24,7 @@
     color: rgb(255, 255, 255);
     border-radius: 5px;
     font-size: 20px;
+}
+.menu_item::after{
+    border-right: #ff6000 !important;
 }

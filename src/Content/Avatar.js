@@ -2,13 +2,9 @@ import React, {useState} from 'react';
 import {Upload, Modal, Menu, Dropdown} from 'antd'
 import urls from '../const';
 import ImgCrop from 'antd-img-crop';
-import getFactory from '../request/index';
 import errorNotification from '../general/errorNotification';
 import Notification from '../general/Notification';
-import {useHistory} from 'react-router-dom'
 const Avatar = ({myuser, setUser}) => {
-    // const [files, setFile] = useState({});
-    var files = new FormData()
     const [visibleAvatar, setVisibleAvatar] = useState(false);
     const showAvatar = () => {
         setVisibleAvatar(true);
@@ -16,12 +12,6 @@ const Avatar = ({myuser, setUser}) => {
     const hideAvatar = () => {
         setVisibleAvatar(false);
     }
-
-    
-    //   const onChange = ({ fileList: newFileList }) => {
-    //         setFileList(newFileList);
-    //         console.log(newFileList)
-    //   };
 
     const onChange = (infor) => {
         console.log(infor)
@@ -53,13 +43,10 @@ const Avatar = ({myuser, setUser}) => {
         imgWindow.document.write(image.outerHTML);
     };
 
-
-    
-
     const menu = (
         <Menu>
             <Menu.Item>
-                <a onClick={showAvatar} >Xem ảnh</a>
+                <span onClick={showAvatar} >Xem ảnh</span>
             </Menu.Item>
             <Menu.Item>
                 <ImgCrop rotate>
@@ -83,7 +70,7 @@ const Avatar = ({myuser, setUser}) => {
     return(
         <div>
             <Dropdown overlay={menu} trigger={['click']}>
-                <img className="img_avatar" src={`${urls}${myuser.avatar}`} onClick={e => e.preventDefault()} />
+                <img alt="Avatar" className="img_avatar" src={`${urls}${myuser.avatar}`} onClick={e => e.preventDefault()} />
             </Dropdown>
             
             <p>{`${myuser.last_name} ${myuser.first_name}`}</p>
@@ -93,7 +80,7 @@ const Avatar = ({myuser, setUser}) => {
                 onCancel={hideAvatar}
                 footer={null}
                 >
-                <img className="img_avt" src={`${urls}${myuser.avatar}`} />
+                <img alt="Avatar" className="img_avt" src={`${urls}${myuser.avatar}`} />
             </Modal>
         </div>
         

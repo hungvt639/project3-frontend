@@ -54,13 +54,9 @@ const AvatarHeader = ({myuser, setUser}) => {
                 </a>
 
                 <Dropdown className='avatar_user' overlay={menu} placement="bottomRight">
-                    <span><Avatar src={`${urls}${myuser.avatar}`} />  {`${myuser.first_name} ${myuser.last_name}`}</span> 
+                    <span><Avatar src={`${urls}${myuser.avatar}`} />  {`${myuser.last_name} ${myuser.first_name}`}</span> 
                 </Dropdown>
             </div>
-            
-            
-            
-        
         )
     }
     else{

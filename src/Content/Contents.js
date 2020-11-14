@@ -4,11 +4,12 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import HomePage from './home';
 import Profile from './profile';
+import Detail from './Detail'
 import { Route, Switch } from 'react-router-dom';
 const { Content } = Layout;
 
 
-const Contents = () => {
+const Contents = ({myuser, setUser}) => {
     return(
             <Content
                 style={{
@@ -19,10 +20,10 @@ const Contents = () => {
                 }}
             >
                 <Switch>
-                    <Route exact path="/home" component={HomePage} />
-                    <Route exact path="/home/profile" component={Profile} />
+                    <Route exact path="/home" component={()=><HomePage myuser={myuser} setUser={setUser}/>} />
+                    <Route exact path="/home/profile" component={()=><Profile myuser={myuser} setUser={setUser}/>} />
+                    <Route exact path="/home/detail/:id" component={()=><Detail myuser={myuser} setUser={setUser}/>} />
                 </Switch>
-                {/* <div style={{height: 50}}></div> */}
             </Content>
 
             
