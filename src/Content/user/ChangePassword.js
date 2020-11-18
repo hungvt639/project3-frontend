@@ -1,8 +1,8 @@
 import React from 'react';
 import {Form, Input} from 'antd';
-import getFactory from '../request/index';
-import Notification from '../general/Notification';
-import errorNotification from '../general/errorNotification';
+import getFactory from '../../request/index';
+import Notification from '../../general/Notification';
+import errorNotification from '../../general/errorNotification';
 const ChangePassword = () => {
     const API = getFactory('user');
     const editPassword = async (values) => {

@@ -3,8 +3,8 @@ import errorNotification from '../general/errorNotification';
 import './index.css';
 import 'antd/dist/antd.css';
 import getFactory from '../request/index';
-import IndexProduct from './IndexProduct';
-
+import IndexProduct from './product/IndexProduct';
+import {Empty} from 'antd'
 
 const Homepage = ({myuser, setUser}) => {
     const [products, setProduct] = useState([]);
@@ -22,15 +22,22 @@ const Homepage = ({myuser, setUser}) => {
     useEffect(()=>{
         getproduct()
     },[])
-    console.log(products);
 
     
     const items=[]
     for(const i of products){
         items.push(<IndexProduct key={i.id} product={i}/>);
     }
-    return(
-        <span className="items">{items}</span>
-    )
+    if(items.length){
+        return(
+            <span className="items">{items}</span>
+        )
+    }
+    else{
+        return(
+            <Empty />
+        )
+    }
+    
 }
 export default Homepage;

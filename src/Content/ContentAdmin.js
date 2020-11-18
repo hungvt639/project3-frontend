@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 const { Content } = Layout;
 
 
-const Contents = ({myuser, setUser, cart, setCart}) => {
+const ContentAdmin = ({myuser, setUser}) => {
     return(
             <Content
                 style={{
@@ -22,13 +22,9 @@ const Contents = ({myuser, setUser, cart, setCart}) => {
                 <Switch>
                     <Route exact path="/home" component={()=><HomePage myuser={myuser} setUser={setUser}/>} />
                     <Route exact path="/home/profile" component={()=><Profile myuser={myuser} setUser={setUser}/>} />
-                    <Route exact path="/home/detail/:id" component={()=><Detail myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />} />
+                    <Route exact path="/home/detail/:id" component={()=><Detail myuser={myuser} setUser={setUser}/>} />
                 </Switch>
             </Content>
-
-            
- 
-        
     )
 }
-export default Contents;
+export default ContentAdmin;

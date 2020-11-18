@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Upload, Modal, Menu, Dropdown} from 'antd'
-import urls from '../const';
+import urls from '../../const';
 import ImgCrop from 'antd-img-crop';
-import errorNotification from '../general/errorNotification';
-import Notification from '../general/Notification';
+import errorNotification from '../../general/errorNotification';
+import Notification from '../../general/Notification';
 const Avatar = ({myuser, setUser}) => {
     const [visibleAvatar, setVisibleAvatar] = useState(false);
     const showAvatar = () => {

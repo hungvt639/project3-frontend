@@ -10,7 +10,7 @@ import {
 
 const { Header } = Layout;
 
-const Headers = ({toggle, collapsed, myuser, setUser, cart, setCart}) => {
+const HeaderAdmin = ({toggle, collapsed, myuser, setUser}) => {
 
 
     return(
@@ -20,8 +20,8 @@ const Headers = ({toggle, collapsed, myuser, setUser, cart, setCart}) => {
                 style: {marginTop:'10px' ,marginLeft: '24px', fontSize : '40px', lineHeight:1},
                 onClick: toggle,
             })}</div>
-            <div className="head_user"><AvatarHeader myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} /></div>
+            <div className="head_user"><AvatarHeader myuser={myuser} setUser={setUser} /></div>
           </Header>
     );
 };
-export default Headers
+export default HeaderAdmin;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './index.css';
+import '../index.css';
 import {Redirect } from 'react-router-dom';
 import ModalChangeProfile from './ModalChangeProfile';
 import ChangePassword from './ChangePassword';

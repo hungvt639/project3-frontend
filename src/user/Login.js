@@ -8,7 +8,7 @@ import  errorNotification from '../general/errorNotification';
 import  { useHistory } from 'react-router-dom'
 
 
-const Login = () => {
+const Login = ({setUser}) => {
     const history = useHistory()
 
     const API = getFactory('user');
@@ -16,6 +16,7 @@ const Login = () => {
     try{
       const res = await API.getProfile();
       localStorage.setItem('user', JSON.stringify(res));
+      setUser(res);
       Notification("Bạn đã đăng nhập thành công!");
       history.push("/home");
     }

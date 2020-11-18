@@ -1,8 +1,8 @@
 import React from 'react';
-import './index.css';
-import getFactory from '../request/index';
-import Notification from '../general/Notification';
-import errorNotification from '../general/errorNotification';
+import '../index.css';
+import getFactory from '../../request/index';
+import Notification from '../../general/Notification';
+import errorNotification from '../../general/errorNotification';
 import { Form, Button, Input, Radio, Modal, DatePicker, Space } from 'antd';
 import moment from 'moment';
 const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {

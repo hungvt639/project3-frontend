@@ -1,21 +1,44 @@
-import React from 'react';
-// import ReactDOM from 'react-dom';
+import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import { Menu, Layout } from 'antd';
 import {useHistory} from 'react-router-dom';
-import {
-    HomeOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-} from '@ant-design/icons';
+import {HomeOutlined} from '@ant-design/icons';
+import getFactory from '../request/index';
+
 const { Sider } = Layout;
-const Siders = ({collapsed}) => {
+const Siders = ({collapsed, search, setSearch}) => {
+    const [type, setType] = useState([])
     const history=useHistory()
     const getDefaultSelectKey = () =>{
         const key = localStorage.getItem('selectkey');
         if (key) return key;
-        else return '1';
+        else return '0';
+    }
+    const getTypes = async ()=>{
+        const API = getFactory('product');
+        try{
+            const res = await API.getType()
+            setType(res.data)
+        }catch{
+            setType([])
+        }
+    }
+    useEffect(()=>{
+        getTypes()
+    },[])
+    const onClickType = (type) => {
+        setSearch({...search,"type":type.key}); 
+        localStorage.setItem('selectkey', type.key);
+        history.push('/home')
+    }
+    const menu_types = []
+    for (var i=0; i < type.length; i++){
+        menu_types.push(
+            <Menu.Item className="menu_item" onClick={(item)=>onClickType(item)}
+                key={type[i].id} >
+                {type[i].type}
+            </Menu.Item>)
     }
     return (
         <Sider className="sider" trigger={null} collapsible collapsed={collapsed}
@@ -25,21 +48,15 @@ const Siders = ({collapsed}) => {
                 background:'#FF6000',
                 overflow: 'auto',
                 height: '100vh',
-                // position: 'fixed',
                 left: 0,
             }}
         >
             <div className="logo" />
             <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey()]}>
-                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '1')}} key="1" icon={<HomeOutlined style={{fontSize:'20px'}} />}>
+                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '0'); setSearch({})}} key="0" icon={<HomeOutlined className="icon_sider" />}>
                     Trang chủ
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '2')}} key="2" icon={<VideoCameraOutlined style={{fontSize:'20px'}}  />}>
-                    nav 2
-                </Menu.Item>
-                <Menu.Item className="menu_item" onClick={()=>{history.push('/home'); localStorage.setItem('selectkey', '3')}} key="3" icon={<UploadOutlined style={{fontSize:'20px'}}  />}>
-                    nav 3
-                </Menu.Item>
+                {menu_types}
             </Menu>
         </Sider>
     );

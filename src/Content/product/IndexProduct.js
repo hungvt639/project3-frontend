@@ -1,7 +1,7 @@
 import React from 'react';
-import './index.css';
+import '../index.css';
 import 'antd/dist/antd.css';
-import urls from '../const';
+import urls from '../../const';
 import { useHistory } from 'react-router-dom'
 // import { Layout } from 'antd';
  const IndexProduct = ({product}) => {
