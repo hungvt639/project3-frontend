@@ -6,6 +6,7 @@ import HomePage from './home';
 import Profile from './user/profile';
 import Detail from './product/Detail'
 import { Route, Switch } from 'react-router-dom';
+import Cart from './cart/Cart';
 const { Content } = Layout;
 
 
@@ -23,6 +24,7 @@ const Contents = ({myuser, setUser, cart, setCart}) => {
                     <Route exact path="/home" component={()=><HomePage myuser={myuser} setUser={setUser}/>} />
                     <Route exact path="/home/profile" component={()=><Profile myuser={myuser} setUser={setUser}/>} />
                     <Route exact path="/home/detail/:id" component={()=><Detail myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />} />
+                    <Route exact path="/home/cart" component={()=><Cart myuser={myuser} cart={cart} setCart={setCart} />} />
                 </Switch>
             </Content>
 

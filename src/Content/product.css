@@ -143,12 +143,12 @@
 }
 .mess_detail{
     margin: 10px;
-    color: #FF6633;
+    color: #FF6600;
     margin-top: 20px;
 }
 .button_boder:hover{
-    color: #FF9900;
-    border-color: #FF9900;
+    color: #FF6000;
+    border-color: #FF6000;
 }
 .button_boder:active{
     color: #FF6000;

@@ -15,7 +15,6 @@ const Detail = ({myuser, cart, setCart}) => {
         const API = getFactory('product');
         try{
             const res = await API.getDetailProduct(id);
-            console.log(res);
             setProduct(res);
         }catch (e) {
             if(e.request.status === 0){

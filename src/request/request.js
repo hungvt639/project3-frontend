@@ -21,7 +21,6 @@ export default function getInstanceAxios(baseAPI,isToken) {
                 // eslint-disable-next-line no-useless-computed-key
                 // ["secret-key"]: localStorage.getItem("secretKey"),
             };
-        // console.log("token:",isToken)
         if(!isToken ) delete  config.headers.Authorization
                 return config;
         },

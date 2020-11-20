@@ -11,8 +11,7 @@ const Register = () => {
     const history = useHistory();
     async function register(data){
         try{
-            const res = await API.signUp(data);
-            console.log(res)
+            await API.signUp(data);
             Notification("Đăng ký tài khoản thành công!");
             history.push("/login");
         }catch (e) {
@@ -39,7 +38,6 @@ const Register = () => {
       },
     };
   const onFinish = values => {
-    // console.log(values)
     register(values)
   };
 

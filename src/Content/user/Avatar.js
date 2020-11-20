@@ -14,7 +14,6 @@ const Avatar = ({myuser, setUser}) => {
     }
 
     const onChange = (infor) => {
-        console.log(infor)
         if(infor.file.status==="error"){
             if(infor.file.response){
                 for(const e in infor.file.response){

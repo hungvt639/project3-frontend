@@ -16,3 +16,7 @@ code {
     display: flex;
     flex-direction: column;
 }
+/* input[type=button], input[type=submit]{
+    background: #FF6000;
+    border-color: #ff6000;
+} */

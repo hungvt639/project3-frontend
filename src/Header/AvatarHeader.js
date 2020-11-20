@@ -54,13 +54,13 @@ const AvatarHeader = ({myuser, setUser, cart, setCart}) => {
         return(
             <div>
                 <a href="/home/cart" className="avatar_cart">
-                    <Badge count={cart.length}>
-                        <Avatar icon={<ShoppingCartOutlined />} />
+                    <Badge className='badge_header' count={cart.length}>
+                        <Avatar className="cart_header" icon={<ShoppingCartOutlined />} />
                     </Badge>
                 </a>
                 <a href="/home/notify" className="avatar_notify">
-                    <Badge count={1}>
-                        <Avatar icon={<BellOutlined />} />
+                    <Badge className='badge_header' count={1}>
+                        <Avatar className='cart_header' icon={<BellOutlined />} />
                     </Badge>
                 </a>
 

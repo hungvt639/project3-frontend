@@ -34,7 +34,6 @@ const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {
     }
     const onFinish = (values) => {
         values.birthday=birthday;
-        console.log(values)
         chaneProfile(values);
         setVisible(false);
     }
@@ -115,7 +114,7 @@ const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {
                     </Radio.Group>
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                        <Button type="primary" htmlType="submit">
+                        <Button className="change_profile_submit" type="primary" htmlType="submit">
                         Chỉnh sửa thông tin
                         </Button>
                     </Form.Item>

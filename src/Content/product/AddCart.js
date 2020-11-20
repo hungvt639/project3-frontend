@@ -7,12 +7,10 @@ import getFactory from '../../request/index'
 import {ShoppingCartOutlined} from '@ant-design/icons'
 
 const AddCart = ({product_detail, cart, setCart}) => {
-    console.log(product_detail);
-    console.log(cart);
     const [number_product, setNumberProduct] = useState(1);
     const addNumber = () => {
         if (number_product < product_detail.amount){
-            setNumberProduct(number_product+1);
+            setNumberProduct(parseInt(number_product)+1);
         }else{
             setNumberProduct(product_detail.amount)
         }
@@ -20,7 +18,7 @@ const AddCart = ({product_detail, cart, setCart}) => {
     }
     const subNumber = () => {
         if (number_product > 1){
-            setNumberProduct(number_product-1)
+            setNumberProduct(parseInt(number_product)-1)
         }else setNumberProduct(0)
     }
     const changeNumber = (value) => {
@@ -54,14 +52,13 @@ const AddCart = ({product_detail, cart, setCart}) => {
             }else errorNotification(e.message);
         }
     }
-console.log(number_product)
     const addToCart = () => {
         if(product_detail.amount <= 0){
             errorNotification("Sản phẩm tạm thời hết hàng")
         }else{
             if(number_product<=0) errorNotification('Số lượng phải lớn hơn 0');
             else{
-                const data = {'product_detail': product_detail.id, 'amount': number_product}
+                const data = {'product_detail': product_detail.id, 'amount': parseInt(number_product)}
                 addCart(data)
             }
         }

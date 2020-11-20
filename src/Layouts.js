@@ -16,7 +16,6 @@ const Layouts = ({myuser, setUser}) => {
     const toggle = () => {
     setCollapsed(!collapsed);
   };
-console.log(search)
     if(myuser && myuser.groups[0].name === "admin"){
         return(
             <Layout>

@@ -37,3 +37,22 @@
 .menu_avatar{
     font-size: 18px;
 }
+.cart_header{
+    border: 2px solid red;
+    background-color: white;
+    color: red;
+    font-weight: 5;
+    font-size: 20px !important;
+}
+.cart_header:hover{
+    background-color: #FFAA00;
+}
+.badge_header{
+    background-color: #FF6000;
+}
+.badge_header sup{
+    background-color: #FF6000;
+}
+.badge_header sup:hover{
+    background-color: #FF0000;
+}
