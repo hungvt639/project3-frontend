@@ -14,15 +14,14 @@ const ModalChangeProfile = ({myuser, setUser, visible, setVisible}) => {
             const res = await API.EditProfile(data);
             setUser(res);
             localStorage.setItem('user', JSON.stringify(res));
-            // window.location.reload();
             Notification("Cập nhật thông tin thành công");
             
         }catch(e){
             if(e.request.status === 0){
                 errorNotification("Lỗi mạng!");
-            }else if (e.request.status === 400){
-                errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
-            }else errorNotification(e.message);
+            }else if(e.response.data.message){
+                e.response.data.message.map(x => errorNotification(x))
+            }else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
         }
     }
     const value_date = () =>{

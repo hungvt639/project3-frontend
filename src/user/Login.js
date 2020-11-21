@@ -8,33 +8,18 @@ import  errorNotification from '../general/errorNotification';
 import  { useHistory } from 'react-router-dom'
 
 
-const Login = ({setUser}) => {
+const Login = () => {
     const history = useHistory()
 
     const API = getFactory('user');
-    async function getProfile(){
-    try{
-      const res = await API.getProfile();
-      localStorage.setItem('user', JSON.stringify(res));
-      setUser(res);
-      Notification("Bạn đã đăng nhập thành công!");
-      history.push("/home");
-    }
-    catch(e){
-        if(e.request.status === 0){
-            errorNotification("Lỗi mạng!");
-        }else if (e.request.status === 400){
-            errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
-        }else errorNotification(e.message);
-    }
-  }
 
 
   async function getToken(data) {
     try{
       const res = await API.signIn(data);
       localStorage.setItem('token', res.token);
-      getProfile(); 
+      Notification("Bạn đã đăng nhập thành công!");
+      history.push("/home");
     }
       
     catch(e){

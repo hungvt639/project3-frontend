@@ -20,3 +20,61 @@ code {
     background: #FF6000;
     border-color: #ff6000;
 } */
+.ant-input:hover{
+    border-color: #ff6000 !important;
+}
+.ant-input:hover{
+    border-color: #ff6000 !important;
+}
+/* .ant-input:focus{
+    border-color: #ff6000 !important;
+    box-shadow: 1px 1px 4px 1px #ff6000 !important;
+} */
+input[type=text]:focus{
+    border-bottom: 2px solid #ff9900 !important;
+    box-shadow: 1px 1px 4px 1px #ff6000 !important;
+    border-color: #ff6000 !important;
+}
+ .ant-picker-focused{
+    border-color: #ff6000 !important;
+    box-shadow: 1px 1px 4px 1px #ff6000 !important;
+}
+
+.ant-picker:hover{
+    border-color: #ff6000 !important;
+}
+
+.ant-input-affix-wrapper:hover{
+    border-color: #ff6000 !important;
+}
+/* .ant-input-affix-wrapper:focus{
+    border-color: #ff6000 !important;
+    box-shadow: 1px 1px 4px 1px #ff6000 !important;
+} */
+/* .ant-input-affix-wrapper > input.ant-input:focus{
+    border-color: #ff6000 !important;
+    box-shadow: 1px 1px 4px 1px #ff6000 !important;
+} */
+.ant-input-affix-wrapper-focused{
+    border-color: #ff6000 !important;
+    box-shadow: 1px 1px 4px 1px #ff6000 !important;
+}
+.ant-radio-checked .ant-radio-inner{
+    /* background-color: #ff6000; */
+    border-color: #ff6000 !important;
+    /* color: #ff6000 !important; */
+}
+
+.ant-radio-inner::after{
+    background-color: #ff6000 !important;
+}
+
+.ant-radio:hover .ant-radio-inner{
+    border-color: #ff6000 !important;
+}
+
+:checked{
+    background-color: #ff6000 !important;
+    color: #ff6000 !important;
+    border-color: #ff6000 !important;
+}

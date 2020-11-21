@@ -208,3 +208,9 @@ input[type="checkbox" i]:hover{
     margin: 20px;
     padding: 20px;
   }
+  .cart_amount_product input::-webkit-inner-spin-button,
+  .cart_amount_product input::-webkit-outer-spin-button
+  {
+    -webkit-appearance: none !important;
+    /* text-align: center; */
+  }

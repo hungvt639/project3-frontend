@@ -12,12 +12,12 @@ const DetailCart = ({cart_detail, cart, setCart}) => {
     const history=useHistory()
     const API = getFactory('cart')
     const [amount, setAmount] = useState(cart_detail.amount)
-
+    const [amountInput, setAmountInput] = useState(cart_detail.amount)
     const updateNumberProductInCart = async (data) =>{
         try{
             const res = await API.editNumberProductInCart(data, cart_detail.id)
-            console.log(res)
             setAmount(res.data.amount)
+            setAmountInput(res.data.amount)
         }
         catch(e){
             if(e.request.status === 0){
@@ -29,25 +29,39 @@ const DetailCart = ({cart_detail, cart, setCart}) => {
     }
 
     const minusNumber = async () =>{
-        if (amount > 1){
-            const data = {"amount": parseInt(amount)-1}
+        if (cart_detail.amount > 1){
+            const data = {"amount": parseInt(cart_detail.amount)-1}
             updateNumberProductInCart(data)
-        }else console.log(amount)
+        }else console.log(cart_detail.amount)
     }
     const plusNumber = () =>{
-        if (amount < cart_detail.product_detail.amount){
-            const data = {"amount": parseInt(amount)+1}
+        if (cart_detail.amount < cart_detail.product_detail.amount){
+            const data = {"amount": parseInt(cart_detail.amount)+1}
             updateNumberProductInCart(data)
         }else{
             errorNotification("Số lượng không thể lớn hơn số sản phẩm có sẵn")
         }
     }
     const changeNumber = (number) =>{
-        console.log(number)
+        // console.log(Number.isInteger(number))
+        setAmountInput(parseInt(number))
     }
     
+    const updateNumber = () => {
+        if(amountInput){
+            if(amountInput>0){
+                const data = {"amount": parseInt(amountInput)}
+                updateNumberProductInCart(data)
+            }
+            else{
+                errorNotification("Số lượng phải lớn hơn  0")
+            }
+        }else{
+            errorNotification("Vui lòng nhập số lượng")
+        }
+    }
+
     const showDetail = () => {
-        console.log(11111)
         history.push(`/home/detail/${cart_detail.product_detail.product.id}`)
     }
 
@@ -88,13 +102,13 @@ const DetailCart = ({cart_detail, cart, setCart}) => {
             </div>
             <div className="cart_even_product">
                 <div className="cart_sum_price cart_price_color">
-                    <p><i style={{'textDecorationLine':'underline'}}>đ</i> {(amount*cart_detail.product_detail.saleprice).toLocaleString('vi-VN')}</p>
+                    <p><i style={{'textDecorationLine':'underline'}}>đ</i> {(cart_detail.amount*cart_detail.product_detail.saleprice).toLocaleString('vi-VN')}</p>
                 </div>
                 <div className="cart_amount_product">
                     <Button size="small" className="button_boder cart_button" onClick={minusNumber} >
                         <MinusOutlined />
                     </Button>
-                    <input value={amount} className="input_add_cart cart_input" onFocusOut={(event)=>changeNumber(event.target.value)} />
+                    <input type="number" min="0" step="1" defaultValue={cart_detail.amount} value={amountInput} onBlur={updateNumber} className="input_add_cart cart_input" onChange={(event)=>changeNumber(event.target.value)} />
                     <Button size="small" className="button_boder cart_button" onClick={plusNumber}>
                         <PlusOutlined />
                     </Button>

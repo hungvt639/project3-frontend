@@ -285,3 +285,16 @@
   .img_avt{
       text-align: center;
   }
+  .sex_list{
+      display: flex;
+      flex-direction: row;
+      margin-right: 50px;
+  }
+  .sex_input{
+      display: flex;
+      flex-direction: row-reverse;
+  }
+  .sex_input input{
+    margin: 5px;
+    width: auto;
+  }

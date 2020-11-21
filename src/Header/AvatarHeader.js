@@ -3,23 +3,29 @@ import urls from '../const';
 import { Avatar,  Menu, Dropdown, Button, Badge } from 'antd';
 import './index.css';
 import { UserOutlined, LogoutOutlined, BellOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import getFactory from '../request/index'
-import {useHistory} from 'react-router-dom'
+import getFactory from '../request/index';
+import {useHistory} from 'react-router-dom';
+import errorNotification from '../general/errorNotification'
 
 const AvatarHeader = ({myuser, setUser, cart, setCart}) => {
     const history = useHistory();
-    const getCarts = async ()=>{
-        const API = getFactory('cart')
-        try{
-            const res = await API.getCart()
-            setCart(res.data)
-        }catch{
-            
-        }
-    }
+    
     useEffect(()=>{
+        const getCarts = async ()=>{
+            const API = getFactory('cart')
+            try{
+                const res = await API.getCart()
+                setCart(res.data)
+            }catch(e){
+                if(e.request.status === 0){
+                    errorNotification("Lỗi mạng!");
+                }else if(e.response.data.message){
+                    e.response.data.message.map(x => errorNotification(x))
+                }else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+            }
+        }
         getCarts()
-    },[myuser])
+    },[])
 
     if(myuser) {
 

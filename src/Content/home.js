@@ -9,17 +9,17 @@ import {Empty} from 'antd'
 const Homepage = ({myuser, setUser}) => {
     const [products, setProduct] = useState([]);
     const API = getFactory('product');
-    const getproduct = async () =>{
-        try{
-            const res = await API.getProducts();
-            setProduct(res.data)
-        }
-        catch(e){
-            errorNotification("Lỗi mạng")
-        }
-    }
-
+    
     useEffect(()=>{
+        const getproduct = async () =>{
+            try{
+                const res = await API.getProducts();
+                setProduct(res.data)
+            }
+            catch(e){
+                errorNotification("Lỗi mạng")
+            }
+        }
         getproduct()
     },[])
 

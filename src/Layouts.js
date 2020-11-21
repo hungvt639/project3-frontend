@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.scss';
 import 'antd/dist/antd.css';
 import Siders from "./Sider/Siders";
@@ -8,14 +8,34 @@ import HeaderAdmin from "./Header/HeaderAdmin";
 import Contents from "./Content/Contents";
 import ContentAdmin from "./Content/ContentAdmin";
 import { Layout } from 'antd';
-
-const Layouts = ({myuser, setUser}) => {
+import getFactory from './request/index';
+const Layouts = () => {
     const [cart, setCart] = useState([]);
     const [search, setSearch] = useState({});
     const [collapsed, setCollapsed] = useState(true);
     const toggle = () => {
     setCollapsed(!collapsed);
   };
+
+  const [myuser, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+
+  useEffect(()=>{
+    const getProfile = async () => {
+        const API = getFactory('user');
+        try{
+            const res = await API.getProfile()
+            localStorage.setItem('user', JSON.stringify(res));
+            setUser(res)
+        }
+        catch (e){
+            
+            setUser(0)
+        }
+    }
+    getProfile()
+}, [])
+
+
     if(myuser && myuser.groups[0].name === "admin"){
         return(
             <Layout>
