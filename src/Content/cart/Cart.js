@@ -1,22 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './index.css'
 import {Redirect} from 'react-router-dom';
 import DetailCart from './DetailCart';
 import {Empty} from 'antd';
-
+import Cartorder from './CartOrder';
 const Cart = ({myuser, cart, setCart,}) => {
-    // console.log(cart)
+    const [cartProduct, setCartProduct] = useState(cart);
+    const ordercart = JSON.parse(localStorage.getItem("ordercart"));
+    const [cartOrder, setCartOrder] = useState(ordercart?ordercart:[]);
+    // console.log(cartOrder)
     if(myuser){
         if(cart.length){
 
-            const carts=cart.map(cart_detail => <DetailCart key={cart_detail.id} cart_detail={cart_detail} cart={cart} setCart={setCart} />)
+            const carts=cartProduct.map(cart_detail => <DetailCart key={cart_detail.id}
+                cart_detail={cart_detail} cart={cart} setCart={setCart}
+                cartProduct={cartProduct} setCartProduct={setCartProduct}
+                cartOrder={cartOrder} setCartOrder={setCartOrder} />)
             return(
                 <div className="cart">
                     <div className="item_in_cart">
                         {carts}
                     </div>
                     <div className="sum_price">
-                        <p>Hihi</p>
+                        <Cartorder cart={cart} setCart={setCart} cartOrder={cartOrder} setCartOrder={setCartOrder} />
                     </div>
                 </div>
             )

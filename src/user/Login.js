@@ -17,6 +17,7 @@ const Login = () => {
   async function getToken(data) {
     try{
       const res = await API.signIn(data);
+      localStorage.clear()
       localStorage.setItem('token', res.token);
       Notification("Bạn đã đăng nhập thành công!");
       history.push("/home");

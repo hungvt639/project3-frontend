@@ -5,6 +5,8 @@ import ModalChangeProfile from './ModalChangeProfile';
 import ChangePassword from './ChangePassword';
 import Avatar from './Avatar';
 const Profile = ({myuser, setUser}) => {
+    // localStorage.removeItem('ordercart');
+
     const [visible, setVisible] = useState(false);
     
     const onFinish = () => {

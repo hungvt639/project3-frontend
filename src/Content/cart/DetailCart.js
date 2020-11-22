@@ -8,19 +8,29 @@ import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
 import {useHistory} from 'react-router-dom'
 
-const DetailCart = ({cart_detail, cart, setCart}) => {
+const DetailCart = ({cart_detail, cart, setCart, cartProduct, setCartProduct, cartOrder, setCartOrder}) => {
+    
     const history=useHistory()
     const API = getFactory('cart')
-    const [amount, setAmount] = useState(cart_detail.amount)
     const [amountInput, setAmountInput] = useState(cart_detail.amount)
     const updateNumberProductInCart = async (data) =>{
         try{
             const res = await API.editNumberProductInCart(data, cart_detail.id)
-            setAmount(res.data.amount)
-            setAmountInput(res.data.amount)
+            const index = cartProduct.findIndex(x => x.id === res.data.id);
+            if (index < 0){
+                setCartProduct(cartProduct.concat(res.data))
+            }else{
+                setCartProduct(cartProduct.slice(0, index).concat(res.data).concat(cartProduct.slice(index+1)))
+            }
+            const i = cartOrder.findIndex(x => x.id === res.data.id);
+            if(i >= 0) {
+                setCartOrder(cartOrder.slice(0, i).concat(res.data).concat(cartOrder.slice(i+1)));
+                localStorage.setItem("ordercart", JSON.stringify(cartOrder.slice(0, i).concat(res.data).concat(cartOrder.slice(i+1))));
+            }
+            setAmountInput(res.data.amount);
         }
         catch(e){
-            if(e.request.status === 0){
+            if(e.request.status && e.request.status === 0){
                 errorNotification("Lỗi mạng!");
             }else if(e.response.data.message){
                 e.response.data.message.map(x => errorNotification(x))
@@ -43,7 +53,6 @@ const DetailCart = ({cart_detail, cart, setCart}) => {
         }
     }
     const changeNumber = (number) =>{
-        // console.log(Number.isInteger(number))
         setAmountInput(parseInt(number))
     }
     
@@ -68,23 +77,38 @@ const DetailCart = ({cart_detail, cart, setCart}) => {
     const deleteItem = async () =>{
         try{
             const res = await API.deleteProductCart(cart_detail.id);
+            const index = cartOrder.findIndex(x => x.id === cart_detail.id);
+            if(index >= 0) localStorage.setItem("ordercart", JSON.stringify(cartOrder.filter(c => c.id !== cart_detail.id)));
             setCart(cart.filter(c => c.id !== cart_detail.id));
             Notification(res.message);
         }
         catch (e){
-            if(e.request.status === 0){
+            if(e.request.status && e.request.status === 0){
                 errorNotification("Lỗi mạng!");
             }else if(e.response.data.message){
                 e.response.data.message.map(x => errorNotification(x))
             }else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
         }
     }
-    console.log(cart_detail)
+
+    const checkeds = (cartOrder.findIndex(x => x.id === cart_detail.id) >= 0)? true : false;
+    const checkedChange = () => {
+        const index = cartOrder.findIndex(x => x.id === cart_detail.id);
+        if(index < 0){
+            setCartOrder(cartOrder.concat(cart_detail));
+            localStorage.setItem("ordercart", JSON.stringify(cartOrder.concat(cart_detail)));
+        }else{
+            localStorage.setItem("ordercart", JSON.stringify(cartOrder.filter(c => c.id !== cart_detail.id)));
+            setCartOrder(cartOrder.filter(c => c.id !== cart_detail.id));
+        }
+        
+    }
+    const classs = (cartOrder.findIndex(x => x.id === cart_detail.id) >= 0)? "cart_detail_item cart_detail_item_checked" : "cart_detail_item";
     return(
-        <div className="cart_detail_item">
+        <div className={classs}>
             <div className="cart_product">
                 <div className="cart_checkbox">
-                    <Checkbox className="cart_checkbox_product" />
+                    <Checkbox checked={checkeds} onChange={checkedChange} className="cart_checkbox_product" />
                 </div>
                 <div  className="cart_img">
                     <img onClick={showDetail} src={`${urls}${cart_detail.product_detail.product.avatar}`} alt="Lỗi hiển thị" width="120px" height="120px" />
@@ -106,22 +130,20 @@ const DetailCart = ({cart_detail, cart, setCart}) => {
                 </div>
                 <div className="cart_amount_product">
                     <Button size="small" className="button_boder cart_button" onClick={minusNumber} >
-                        <MinusOutlined />
+                        <MinusOutlined className="cart_button_icon" />
                     </Button>
                     <input type="number" min="0" step="1" defaultValue={cart_detail.amount} value={amountInput} onBlur={updateNumber} className="input_add_cart cart_input" onChange={(event)=>changeNumber(event.target.value)} />
                     <Button size="small" className="button_boder cart_button" onClick={plusNumber}>
-                        <PlusOutlined />
+                        <PlusOutlined className="cart_button_icon" />
                     </Button>
                 </div>
                 <div className="cart_action">
-                    <a onClick={deleteItem} className="cart_delete">Xóa</a>
+                    <div onClick={deleteItem} className="cart_delete">Xóa</div>
                     <p className="cart_price_color"><i style={{'textDecorationLine':'underline'}}>đ</i>{cart_detail.product_detail.saleprice.toLocaleString('vi-VN')}/sản phẩm</p>
                 </div>
             </div>
         </div>
         
     )
-    
-    
 }
 export default DetailCart;

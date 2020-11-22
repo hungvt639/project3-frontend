@@ -28,7 +28,6 @@ const Layouts = () => {
             setUser(res)
         }
         catch (e){
-            
             setUser(0)
         }
     }

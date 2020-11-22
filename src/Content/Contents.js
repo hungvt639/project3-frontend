@@ -11,6 +11,9 @@ const { Content } = Layout;
 
 
 const Contents = ({myuser, setUser, cart, setCart}) => {
+    const url = window.location.href.split('/').pop();
+    if(url !== 'cart') localStorage.removeItem('ordercart');
+
     return(
             <Content
                 style={{

@@ -7,6 +7,7 @@ import IndexProduct from './product/IndexProduct';
 import {Empty} from 'antd'
 
 const Homepage = ({myuser, setUser}) => {
+    // localStorage.removeItem('ordercart');
     const [products, setProduct] = useState([]);
     const API = getFactory('product');
     

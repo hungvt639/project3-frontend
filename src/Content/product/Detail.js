@@ -8,6 +8,8 @@ import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import {Redirect} from 'react-router-dom'
 const Detail = ({myuser, cart, setCart}) => {
+    // localStorage.removeItem('ordercart');
+
     const [product, setProduct] = useState({})
     const [product_detail, setDetail] = useState({id: 0});
 
@@ -62,7 +64,7 @@ const Detail = ({myuser, cart, setCart}) => {
             )
         }
     
-        const select = (product_detail.id !== 0)? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} />: <br></br>;
+        const select = (product_detail.id !== 0)? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} />: <br></br>;
         const sold = (product.sold<1000)?`${product.sold}`:`${(product.sold/1000).toFixed(1)}k`
         const mess = (myuser)?
             ((product.details.length)?
