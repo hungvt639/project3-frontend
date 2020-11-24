@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {Upload, Modal, Menu, Dropdown} from 'antd'
+import React, { useState } from 'react';
+import { Upload, Modal, Menu, Dropdown } from 'antd'
 import urls from '../../const';
 import ImgCrop from 'antd-img-crop';
 import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
-const Avatar = ({myuser, setUser}) => {
+const Avatar = ({ myuser, setUser }) => {
     const [visibleAvatar, setVisibleAvatar] = useState(false);
     const showAvatar = () => {
         setVisibleAvatar(true);
@@ -14,20 +14,20 @@ const Avatar = ({myuser, setUser}) => {
     }
 
     const onChange = (infor) => {
-        if(infor.file.status==="error"){
-            if(infor.file.response){
-                for(const e in infor.file.response){
+        if (infor.file.status === "error") {
+            if (infor.file.response) {
+                for (const e in infor.file.response) {
                     errorNotification(infor.file.response[e]);
                 }
-            }else errorNotification("Lỗi mạng!");
+            } else errorNotification("Lỗi mạng!");
         }
-        if(infor.file.status === "done"){
+        if (infor.file.status === "done") {
             Notification("Cập nhật ảnh đại diện thành công");
-            setUser({...myuser, avatar:infor.file.response.avatar})
+            setUser({ ...myuser, avatar: infor.file.response.avatar })
         }
     };
-    
-      const onPreview = async file => {
+
+    const onPreview = async file => {
         let src = file.url;
         if (!src) {
             src = await new Promise(resolve => {
@@ -55,34 +55,34 @@ const Avatar = ({myuser, setUser}) => {
                         showUploadList={false}
                         headers={
                             {
-                                Authorization:  "Token " + localStorage.getItem("token"),
+                                Authorization: "Token " + localStorage.getItem("token"),
                             }
                         }
                         onChange={onChange}
                         onPreview={onPreview}
                     >Đổi ảnh đại diện</Upload>
-                    
+
                 </ImgCrop>
             </Menu.Item>
         </Menu>
-      );
-    return(
+    );
+    return (
         <div>
             <Dropdown overlay={menu} trigger={['click']}>
                 <img alt="Avatar" className="img_avatar" src={`${urls}${myuser.avatar}`} onClick={e => e.preventDefault()} />
             </Dropdown>
-            
+
             <p>{`${myuser.last_name} ${myuser.first_name}`}</p>
             <Modal
                 width={"80%"}
                 visible={visibleAvatar}
                 onCancel={hideAvatar}
                 footer={null}
-                >
+            >
                 <img alt="Avatar" className="img_avt" src={`${urls}${myuser.avatar}`} />
             </Modal>
         </div>
-        
+
     )
 }
 export default Avatar;

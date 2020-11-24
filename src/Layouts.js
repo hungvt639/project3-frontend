@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import 'antd/dist/antd.css';
 import Siders from "./Sider/Siders";
@@ -14,29 +15,29 @@ const Layouts = () => {
     const [search, setSearch] = useState({});
     const [collapsed, setCollapsed] = useState(true);
     const toggle = () => {
-    setCollapsed(!collapsed);
-  };
+        setCollapsed(!collapsed);
+    };
 
-  const [myuser, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+    const [myuser, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  useEffect(()=>{
-    const getProfile = async () => {
-        const API = getFactory('user');
-        try{
-            const res = await API.getProfile()
-            localStorage.setItem('user', JSON.stringify(res));
-            setUser(res)
+    useEffect(() => {
+        const getProfile = async () => {
+            const API = getFactory('user');
+            try {
+                const res = await API.getProfile()
+                localStorage.setItem('user', JSON.stringify(res));
+                setUser(res)
+            }
+            catch (e) {
+                setUser(0)
+            }
         }
-        catch (e){
-            setUser(0)
-        }
-    }
-    getProfile()
-}, [])
+        getProfile()
+    }, [])
 
 
-    if(myuser && myuser.groups[0].name === "admin"){
-        return(
+    if (myuser && myuser.groups[0].name === "admin") {
+        return (
             <Layout>
                 <SiderAdmin collapsed={collapsed} />
                 <Layout className="site-layout">
@@ -46,12 +47,12 @@ const Layouts = () => {
             </Layout>
         )
     }
-    else{
-        return(
+    else {
+        return (
             <Layout>
-                <Siders collapsed={collapsed} search={search} setSearch={setSearch} />
+                {/* <Siders collapsed={collapsed} search={search} setSearch={setSearch} /> */}
                 <Layout className="site-layout">
-                    <Headers toggle={toggle} collapsed={collapsed} myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />
+                    <Headers myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />
                     <Contents myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />
                 </Layout>
             </Layout>

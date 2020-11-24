@@ -1,28 +1,29 @@
-.avatar_user{
+.avatar_user {
     margin-right: 15px;
     color: white;
     font-size: 150%;
     /* margin-bottom: 30px; */
     padding-bottom: 25px;
 }
-.avatar_notify{
+.avatar_notify {
     padding-right: 30px;
 }
-.avatar_cart{
+.avatar_cart {
     padding-right: 30px;
 }
-.head_user{
+.head_user {
+    width: 200px;
     flex: 1;
     flex-direction: row-reverse;
     display: flex;
 }
-.header{
+.header {
     padding: 0px;
-    background-color: #FF6000;
+    background-color: #ff6000;
     display: flex;
 }
 
-.button-login{
+.button-login {
     background-color: brown;
     color: white;
     font-size: 20px;
@@ -34,25 +35,35 @@
     margin-right: 15px;
     height: 40px;
 }
-.menu_avatar{
+.menu_avatar {
     font-size: 18px;
 }
-.cart_header{
+.cart_header {
     border: 2px solid red;
     background-color: white;
     color: red;
     font-weight: 5;
     font-size: 20px !important;
 }
-.cart_header:hover{
-    background-color: #FFAA00;
+.cart_header:hover {
+    background-color: #ffaa00;
 }
-.badge_header{
-    background-color: #FF6000;
+.badge_header {
+    background-color: #ff6000;
 }
-.badge_header sup{
-    background-color: #FF6000;
+.badge_header sup {
+    background-color: #ff6000;
 }
-.badge_header sup:hover{
-    background-color: #FF0000;
+.badge_header sup:hover {
+    background-color: #ff0000;
+}
+.header_user {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #ff6000;
+}
+.head_space {
+    max-width: 1250px;
+    width: 100%;
 }

@@ -1,7 +1,7 @@
 import Client from '../UserClient';
 const resource = 'product';
-const getProducts = () => {
-    return Client(false).get(`${resource}/product/`);
+const getProducts = (data) => {
+    return Client(false).get(`${resource}/product/${data}`);
 };
 const getDetailProduct = (id) => {
     return Client(false).get(`${resource}/product/${id}/`);

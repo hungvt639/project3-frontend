@@ -166,20 +166,40 @@
 }
 .button_add_to_cart{
     margin: 0px 10px;
-    background-color: #FF6000;
-    color: #FFF;
+    background-color: #eebeaf;
+    color: #FF3300;
     padding: 10px 10px;
     height: auto;
     border-radius: 5px;
     font-size: 18px;
+    border: 1px solid #FF3300;
 }
 .button_add_to_cart:hover{
-    background-color: #FF9900;
-    color: #FFF;
-    border-color: #FF9900;
+    background-color: #e7a28d;
+    color: #FF3300;
+    border-color: #FF3300;
 }
 .button_add_to_cart:focus{
-    background-color: #FF3300;
+    background-color: #e79d87;
+    color: #FF3300;
+    border-color: #FF3300;
+}
+.button_add_to_cart_order{
+    margin: 0px 10px;
+    background-color: #FF5500;
+    color: #FFF;
+    padding: 10px 50px;
+    height: auto;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.button_add_to_cart_order:hover{
+    background-color: #FF6600;
+    color: #FFF;
+    border-color: #FF7700;
+}
+.button_add_to_cart_order:focus{
+    background-color: #e02d00;
     color: #FFF;
     border-color: #FF9900;
 }

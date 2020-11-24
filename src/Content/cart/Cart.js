@@ -8,7 +8,7 @@ const Cart = ({myuser, cart, setCart,}) => {
     const [cartProduct, setCartProduct] = useState(cart);
     const ordercart = JSON.parse(localStorage.getItem("ordercart"));
     const [cartOrder, setCartOrder] = useState(ordercart?ordercart:[]);
-    // console.log(cartOrder)
+
     if(myuser){
         if(cart.length){
 
