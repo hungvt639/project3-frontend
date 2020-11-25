@@ -1,11 +1,11 @@
-.margin{
+.margin {
     background-color: #ff0000;
 }
 
-.sider{
+.sider {
     background-color: #ff0000;
 }
-.menu{
+.menu {
     background-color: #ff6000;
     padding: 10px 0px;
     margin: 20px 0px;
@@ -14,41 +14,46 @@
     padding: 0px 0px !important;
     /* text-align: center; */
 }
-.menu_item:hover{
+.menu_item:hover {
     color: #ffffff;
     border: 2px solid #ffffff;
     border-radius: 5px;
 }
 
-
-.ant-menu-item-selected{
+.ant-menu-item-selected {
     background-color: #ff0000 !important;
     color: rgb(255, 255, 255);
     border-radius: 5px;
     font-size: 20px;
-
 }
-.menu_item{
+.menu_item {
     padding: 0px 0px !important;
     color: white;
 }
 
-.menu_item::after{
+.menu_item::after {
     border-right-color: #ff0000 !important;
 }
-.icon_sider{
+.icon_sider {
     font-size: 25px !important;
 }
-.ant-menu-inline-collapsed{
+.ant-menu-inline-collapsed {
     text-align: center;
 }
-.ant-menu-inline .menu_item{
+.ant-menu-inline .menu_item {
     padding: 0px 32px !important;
 }
-.ant-menu-inline .ant-menu-item, .ant-menu-inline .ant-menu-submenu-title{
+.ant-menu-inline .ant-menu-item,
+.ant-menu-inline .ant-menu-submenu-title {
     width: 100%;
 }
-.ant-menu-root.ant-menu-inline-collapsed .ant-menu-item > .ant-menu-inline-collapsed-noicon, .ant-menu-root.ant-menu-inline-collapsed .ant-menu-submenu .ant-menu-submenu-title > .ant-menu-inline-collapsed-noicon{
+.ant-menu-root.ant-menu-inline-collapsed
+    .ant-menu-item
+    > .ant-menu-inline-collapsed-noicon,
+.ant-menu-root.ant-menu-inline-collapsed
+    .ant-menu-submenu
+    .ant-menu-submenu-title
+    > .ant-menu-inline-collapsed-noicon {
     font-size: 30px;
     text-align: center;
     text-transform: uppercase;

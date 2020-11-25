@@ -3,9 +3,9 @@ import React from 'react';
 import './index.css';
 import { Form, Input, Checkbox } from 'antd';
 import getFactory from '../request';
-import  Notification from '../general/Notification';
-import  errorNotification from '../general/errorNotification';
-import  { useHistory } from 'react-router-dom'
+import Notification from '../general/Notification';
+import errorNotification from '../general/errorNotification';
+import { useHistory } from 'react-router-dom'
 
 
 const Login = () => {
@@ -14,38 +14,38 @@ const Login = () => {
     const API = getFactory('user');
 
 
-  async function getToken(data) {
-    try{
-      const res = await API.signIn(data);
-      localStorage.clear()
-      localStorage.setItem('token', res.token);
-      Notification("Bạn đã đăng nhập thành công!");
-      history.push("/home");
+    async function getToken(data) {
+        try {
+            const res = await API.signIn(data);
+            localStorage.clear()
+            localStorage.setItem('token', res.token);
+            Notification("Bạn đã đăng nhập thành công!");
+            history.push("/home");
+        }
+
+        catch (e) {
+            // response.data.non_field_errors
+            if (e.request.status === 0) {
+                errorNotification("Lỗi mạng!");
+            } else if (e.request.status === 400) {
+                errorNotification("Sai tên tài khoản hoặc mật khẩu!");
+            } else errorNotification(e.message);
+        }
     }
-      
-    catch(e){
-      // response.data.non_field_errors
-        if(e.request.status === 0){
-            errorNotification("Lỗi mạng!");
-        }else if (e.request.status === 400){
-            errorNotification("Sai tên tài khoản hoặc mật khẩu!");
-        }else errorNotification(e.message);
-    }
-  }
     const onFinish = values => {
         getToken(values);
 
     };
 
-    return(
+    return (
         <div className="wrapper fadeInDown">
             <div id="formContent">
-            <h2 className="active"> Đăng nhập </h2>
-            <h2 className="inactive underlineHover"><a href='/register'>Đăng ký </a></h2>
+                <h2 className="active"> Đăng nhập </h2>
+                <h2 className="inactive underlineHover"><a href='/register'>Đăng ký </a></h2>
 
-            <div className="fadeIn first">
-            {/* <img src="#" /> */}
-            </div>
+                <div className="fadeIn first">
+                    {/* <img src="#" /> */}
+                </div>
                 <Form
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
@@ -54,13 +54,13 @@ const Login = () => {
                         name="username"
                         rules={[{ required: true, message: 'Nhập tên đăng nhập của bạn!' }]}
                     >
-                        <Input className="fadeIn second input_login input_login1"  placeholder="Username" maxLength="50" />
+                        <Input className="fadeIn second input_login input_login1" placeholder="Username" maxLength="50" />
                     </Form.Item>
                     <Form.Item
                         name="password"
                         rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
                     >
-                        <Input type='password' className="fadeIn second input_login input_login1"  placeholder="Password" maxLength="100" />
+                        <Input type='password' className="fadeIn second input_login input_login1" placeholder="Password" maxLength="100" />
                     </Form.Item>
                     <Form.Item>
                         <Form.Item name="remember" valuePropName="checked" noStyle>

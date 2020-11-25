@@ -1,4 +1,6 @@
 .cart {
+    /* margin: 20px 0px; */
+    padding: 20px 0px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -304,4 +306,9 @@ input[type="checkbox" i]:hover {
     .cart_sum_price_text {
         flex-direction: column !important;
     }
+}
+.cart_name {
+    color: #ff3300;
+    font-size: 24px;
+    margin-bottom: 10px;
 }

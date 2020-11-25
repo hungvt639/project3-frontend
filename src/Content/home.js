@@ -63,6 +63,9 @@ const Homepage = () => {
         <div className="home_list_product">
             <div className="list_type">
                 {types}
+                {/* <div className="xxxx">
+                    xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx
+                </div> */}
             </div>
             <span className="items">{items}</span>
         </div>

@@ -21,7 +21,7 @@ const Contents = ({ myuser, setUser, cart, setCart }) => {
             <Content
                 style={{
                     // margin: '24px 0px',
-                    padding: '24px 5px',
+                    // padding: '24px 5px',
                     // maxHeight: '100vh',
                     // overflow: 'auto',
                     maxWidth: 1250,

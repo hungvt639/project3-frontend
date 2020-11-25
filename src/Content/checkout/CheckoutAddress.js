@@ -1,15 +1,15 @@
 import React from 'react';
 
-const CheckoutAddress = () =>{
+const CheckoutAddress = () => {
 
 
-    return(
+    return (
         <div className="checkout_address">
             <p>hihih</p>
             <p>hihih</p>
             <p>hihih</p>
             <p>hihih</p>
-            
+
         </div>
     )
 }
