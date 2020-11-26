@@ -9,14 +9,16 @@ import errorNotification from '../../general/errorNotification';
 
 const Checkout = ({ myuser }) => {
     const products = JSON.parse(localStorage.getItem('checkout'))
-    const [productList, setProductLish] = useState(products ? products : [])
+    const [productList, setProductList] = useState(products ? products : [])
+    const [addressList, setAddressList] = useState([])
     const [address, setAddress] = useState([])
     const API = getFactory('address')
     useEffect(() => {
         const getAddress = async () => {
             try {
                 const res = await API.getAdd()
-                setAddress(res.data)
+                setAddressList(res.data)
+                if (res.data.length) setAddress(res.data[0])
             } catch (e) {
                 if (e.request.status && e.request.status === 0) {
                     errorNotification("Lỗi mạng!");
@@ -35,7 +37,7 @@ const Checkout = ({ myuser }) => {
         console.log(productList)
         return (
             <div className="checkout">
-                <CheckoutAddress />
+                <CheckoutAddress address={address} setAddress={setAddress} addressList={addressList} setAddressList={setAddressList} />
                 <div className="checkout_content">
                     <div className="checkout_product">
                         <p>hihihih</p>

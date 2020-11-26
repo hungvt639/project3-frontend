@@ -94,7 +94,7 @@
     display: none;
 }
 .detail_product_detail_activate {
-    border: 2px solid #ff6000;
+    border: 1px solid #ff6000;
     color: #ff6000;
 }
 /* .detail_product_detail_activate:active{

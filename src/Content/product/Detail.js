@@ -64,7 +64,8 @@ const Detail = ({ myuser, cart, setCart }) => {
             )
         }
 
-        const select = (product_detail.id !== 0) ? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} /> : <br></br>;
+        // const select = (product_detail.id !== 0) ? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} /> : <br></br>;
+        const select = <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} />;
         const sold = (product.sold < 1000) ? `${product.sold}` : `${(product.sold / 1000).toFixed(1)}k`
         const mess = (myuser) ?
             ((product.details.length) ?

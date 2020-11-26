@@ -6,7 +6,8 @@ import errorNotification from '../../general/errorNotification';
 import getFactory from '../../request/index';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
-const AddCart = ({ product_detail, cart, setCart, myuser }) => {
+const AddCart = ({ product_detail, setCart, myuser }) => {
+    console.log(product_detail)
     const [number_product, setNumberProduct] = useState(1);
     const history = useHistory();
     if (myuser) {
@@ -49,27 +50,33 @@ const AddCart = ({ product_detail, cart, setCart, myuser }) => {
             }
         }
         const addToCart = () => {
-            if (product_detail.amount <= 0) {
-                errorNotification("Sản phẩm tạm thời hết hàng")
-            } else {
-                if (number_product <= 0) errorNotification('Số lượng phải lớn hơn 0');
-                else {
-                    const data = { 'product_detail': product_detail.id, 'amount': parseInt(number_product) }
-                    addCart(data)
+            if (product_detail.id === 0) errorNotification("Vui lòng chọn sản phẩm trước khi thêm vào giỏ hàng");
+            else {
+                if (product_detail.amount <= 0) {
+                    errorNotification("Sản phẩm tạm thời hết hàng")
+                } else {
+                    if (number_product <= 0) errorNotification('Số lượng phải lớn hơn 0');
+                    else {
+                        const data = { 'product_detail': product_detail.id, 'amount': parseInt(number_product) }
+                        addCart(data)
+                    }
                 }
             }
         }
         const addToCartOrder = async () => {
-            if (product_detail.amount <= 0) {
-                errorNotification("Sản phẩm tạm thời hết hàng")
-            } else {
-                if (number_product <= 0) errorNotification('Số lượng phải lớn hơn 0');
-                else {
-                    const data = { 'product_detail': product_detail.id, 'amount': parseInt(number_product) };
-                    await addCart(data);
-                    if (res) {
-                        localStorage.setItem("ordercart", JSON.stringify([res.data[0]]));
-                        history.push('/home/cart')
+            if (product_detail.id === 0) errorNotification("Vui lòng chọn sản phẩm trước khi thêm vào giỏ hàng");
+            else {
+                if (product_detail.amount <= 0) {
+                    errorNotification("Sản phẩm tạm thời hết hàng")
+                } else {
+                    if (number_product <= 0) errorNotification('Số lượng phải lớn hơn 0');
+                    else {
+                        const data = { 'product_detail': product_detail.id, 'amount': parseInt(number_product) };
+                        await addCart(data);
+                        if (res) {
+                            localStorage.setItem("ordercart", JSON.stringify([res.data[0]]));
+                            history.push('/home/cart')
+                        }
                     }
                 }
             }
