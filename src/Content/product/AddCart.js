@@ -13,22 +13,35 @@ const AddCart = ({ product_detail, setCart, myuser }) => {
     if (myuser) {
         var res = null;
         const addNumber = () => {
-            if (number_product < product_detail.amount) {
-                setNumberProduct(parseInt(number_product) + 1);
+            if (product_detail.id) {
+                if (number_product < product_detail.amount) {
+                    setNumberProduct(parseInt(number_product) + 1);
+                } else {
+                    setNumberProduct(product_detail.amount)
+                }
             } else {
-                setNumberProduct(product_detail.amount)
+                errorNotification("Vui lòng chọn sản phẩm")
             }
-
         }
         const subNumber = () => {
-            if (number_product > 1) {
-                setNumberProduct(parseInt(number_product) - 1)
-            } else setNumberProduct(0)
+            if (product_detail.id) {
+                if (number_product > 1) {
+                    setNumberProduct(parseInt(number_product) - 1)
+                } else setNumberProduct(0)
+            }
+            else {
+                errorNotification("Vui lòng chọn sản phẩm")
+            }
         }
         const changeNumber = (value) => {
-            if (value < 1) { setNumberProduct(0) }
-            else if (value >= product_detail.amount) setNumberProduct(product_detail.amount)
-            else setNumberProduct(value)
+            if (product_detail.id) {
+                if (value < 1) { setNumberProduct(0) }
+                else if (value >= product_detail.amount) setNumberProduct(product_detail.amount)
+                else setNumberProduct(value)
+            }
+            else {
+                errorNotification("Vui lòng chọn sản phẩm")
+            }
         }
 
         const addCart = async (data) => {

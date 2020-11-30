@@ -67,3 +67,8 @@
     max-width: 1250px;
     width: 100%;
 }
+.goHome {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
