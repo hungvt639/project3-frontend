@@ -6,7 +6,7 @@ import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
 import { useHistory } from 'react-router-dom'
 
-const CartOrder = ({ cart, setCart, cartOrder, setCartOrder }) => {
+const CartOrder = ({ cart, setCart, cartOrder, setCartOrder, cartProduct }) => {
     const API = getFactory('cart');
     const checkeds = (cart.length === cartOrder.length) ? true : false;
     const history = useHistory()
@@ -16,8 +16,8 @@ const CartOrder = ({ cart, setCart, cartOrder, setCartOrder }) => {
             localStorage.setItem("ordercart", JSON.stringify([]));
             setCartOrder([])
         } else {
-            localStorage.setItem("ordercart", JSON.stringify(cart));
-            setCartOrder(cart)
+            localStorage.setItem("ordercart", JSON.stringify(cartProduct));
+            setCartOrder(cartProduct)
         }
     }
     const order_buy = () => {
@@ -30,6 +30,10 @@ const CartOrder = ({ cart, setCart, cartOrder, setCartOrder }) => {
     }
 
     const deleteListCart = async () => {
+        if (cartOrder.length === 0) {
+            errorNotification("Vui lòng chọn sản phẩm trước khi sử dụng chức năng này")
+            return;
+        }
         const data = { "ids": cartOrder.map((i) => i.id) }
         try {
 

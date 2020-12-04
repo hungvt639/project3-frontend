@@ -12,7 +12,6 @@ const editNumberProductInCart = (data, id) => {
     return Client(true).put(`cart/${id}/`, data);
 }
 const deleteList = (data) => {
-    // console.log(data)
 
     return Client(true).put('cart/', data);
 }

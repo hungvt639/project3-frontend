@@ -8,6 +8,8 @@ import Detail from './product/Detail'
 import { Route, Switch } from 'react-router-dom';
 import Cart from './cart/Cart';
 import Checkout from './checkout/Checkout';
+import Purchase from './purchase/Purchase'
+import Address from './address/Address';
 const { Content } = Layout;
 
 
@@ -35,6 +37,8 @@ const Contents = ({ myuser, setUser, cart, setCart }) => {
                     <Route exact path="/home/detail/:id" component={() => <Detail myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />} />
                     <Route exact path="/home/cart" component={() => <Cart myuser={myuser} cart={cart} setCart={setCart} />} />
                     <Route exact path="/home/checkout" component={() => <Checkout myuser={myuser} />} />
+                    <Route exact path="/home/purchase" component={Purchase} />
+                    <Route exact path="/home/address" component={Address} />
                 </Switch>
             </Content>
         </div>

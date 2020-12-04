@@ -7,7 +7,6 @@ import getFactory from '../../request/index';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 const AddCart = ({ product_detail, setCart, myuser }) => {
-    console.log(product_detail)
     const [number_product, setNumberProduct] = useState(1);
     const history = useHistory();
     if (myuser) {

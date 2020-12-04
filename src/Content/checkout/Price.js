@@ -4,8 +4,6 @@ import errorNotification from '../../general/errorNotification';
 import getFactory from '../../request/index';
 import { useHistory } from 'react-router-dom';
 const Price = ({ address, productList }) => {
-    // console.log(productList)
-    // console.log(address)
     const sum_price = (productList.length) ? (productList.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next)) : 0;
     const [mess, setMess] = useState("");
     const history = useHistory()
@@ -28,7 +26,7 @@ const Price = ({ address, productList }) => {
     const orderProducts = () => {
         if (productList.length) {
             if (address) {
-                const p = productList.map(product => { return { 'detail_product': product.product_detail.id, 'amount': product.amount } })
+                const p = productList.map(product => { return { 'product_detail': product.product_detail.id, 'amount': product.amount } })
                 const data = {
                     'delivery_address': address.id,
                     'message': mess,

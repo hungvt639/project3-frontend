@@ -42,7 +42,7 @@ const DetailCart = ({ cart_detail, cart, setCart, cartProduct, setCartProduct, c
         if (cart_detail.amount > 1) {
             const data = { "amount": parseInt(cart_detail.amount) - 1 }
             updateNumberProductInCart(data)
-        } else console.log(cart_detail.amount)
+        } else { }
     }
     const plusNumber = () => {
         if (cart_detail.amount < cart_detail.product_detail.amount) {

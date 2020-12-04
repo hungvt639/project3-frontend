@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import urls from '../const';
 import { Avatar, Menu, Dropdown, Button, Badge } from 'antd';
 import './index.css';
-import { UserOutlined, LogoutOutlined, BellOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, BellOutlined, ShoppingCartOutlined, FileDoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import getFactory from '../request/index';
 import { useHistory } from 'react-router-dom';
 import errorNotification from '../general/errorNotification'
@@ -50,6 +50,12 @@ const AvatarHeader = ({ myuser, setUser, cart, setCart }) => {
                 <Menu>
                     <Menu.Item className='menu_avatar'>
                         <a href="/home/profile"><UserOutlined /> Thông tin cá nhân</a>
+                    </Menu.Item>
+                    <Menu.Item className='menu_avatar'>
+                        <a href="/home/purchase"><FileDoneOutlined /> Danh sách đơn hàng</a>
+                    </Menu.Item>
+                    <Menu.Item className='menu_avatar'>
+                        <a href="/home/address"><EnvironmentOutlined /> Danh sách địa chỉ</a>
                     </Menu.Item>
                     <Menu.Item className='menu_avatar'>
                         <span onClick={logout}><LogoutOutlined style={{ fontSize: '18px' }} /> Đăng xuất</span>

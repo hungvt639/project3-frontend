@@ -23,7 +23,7 @@ const Cart = ({ myuser, cart, setCart, }) => {
                         {carts}
                     </div>
                     <div className="sum_price">
-                        <Cartorder cart={cart} setCart={setCart} cartOrder={cartOrder} setCartOrder={setCartOrder} />
+                        <Cartorder cart={cart} cartProduct={cartProduct} setCart={setCart} cartOrder={cartOrder} setCartOrder={setCartOrder} />
                     </div>
                 </div>
             )

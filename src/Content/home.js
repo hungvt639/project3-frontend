@@ -46,18 +46,12 @@ const Homepage = () => {
             errorNotification("Lỗi mạng")
         }
     }
-    // const classType = t => (t === classfortype) ? "type_select" : "";
-    // const classType = (t) => {
-    //     console.log(t)
-    //     return "type_select"
-    // }
-    // const classType = "type_select";
     const types = (type.length) ? (type.map(t => <p className={(t.id === classfortype) ? "type_select" : ""} onClick={() => setTyperSearch(t)} key={t.id}>{t.type}</p>)) : <div></div>
     const items = []
     for (const i of products) {
         items.push(<IndexProduct key={i.id} product={i} />);
     }
-    if (items.length === 0) items.push(<Empty />)
+    if (items.length === 0) items.push(<Empty key={0} />)
 
     return (
         <div className="home_list_product">
@@ -67,7 +61,7 @@ const Homepage = () => {
                     xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx
                 </div> */}
             </div>
-            <span className="items">{items}</span>
+            <span className="items">{items}<div className="space_button"></div></span>
         </div>
 
     )

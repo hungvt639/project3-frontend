@@ -8,19 +8,23 @@ import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import { Redirect } from 'react-router-dom';
 import Description from './Description';
+import IndexProduct from '../product/IndexProduct';
+
 const Detail = ({ myuser, cart, setCart }) => {
 
     // localStorage.removeItem('ordercart');
 
     const [product, setProduct] = useState({})
     const [product_detail, setDetail] = useState({ id: 0 });
+    var [same_product, setSameProduct] = useState([])
 
     useEffect(() => {
         const getDetailProduct = async (id) => {
             const API = getFactory('product');
             try {
                 const res = await API.getDetailProduct(id);
-                setProduct(res);
+                setProduct(res.product);
+                setSameProduct(res.same_product);
             } catch (e) {
                 if (e.request.status === 0) {
                     errorNotification("Lỗi mạng!");
@@ -37,14 +41,18 @@ const Detail = ({ myuser, cart, setCart }) => {
 
 
     if (Object.keys(product).length) {
+        const products_same = same_product.map(p => <IndexProduct key={p.id} product={p} />)
+        const products_same_text = (products_same.length) ? <p className="products_same_text">SẢN PHẨM TƯƠNG TỰ</p> : <div></div>;
         const prices = (product_detail.id !== 0) ?
             <p id="price">
-                Giá: {product_detail.saleprice}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
-            </p> :
-            <p id="price">
-                Giá: {product.from_saleprice}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
-                {product.to_saleprice}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
-            </p>;
+                Giá: {product_detail.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+            </p> : (product.from_saleprice !== product.to_saleprice) ?
+                <p id="price">
+                    Giá: {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
+                {product.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                </p> : <p id="price">
+                    Giá: {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                </p>;
 
 
         const imgs = []
@@ -55,7 +63,7 @@ const Detail = ({ myuser, cart, setCart }) => {
 
         const describes = []
         for (const describe of product.describe) {
-            describes.push(<li key={describe.id}>{describe.header} : {describe.context}</li>)
+            describes.push(<li key={describe.id}> {describe.context}</li>)
         }
 
 
@@ -74,9 +82,9 @@ const Detail = ({ myuser, cart, setCart }) => {
                 ('Vui lòng chọn sản phẩm để thêm vào giỏ hàng') :
                 ('Sản phẩm hiện chưa được bán, vui lòng quay lại sau')) :
             ('Vui lòng đăng nhập để mua hàng')
-
-        const descriptions = product.description.map(des => <Description description={des} />)
-        const check_descriptions = (descriptions.length) ? <p className="check_descriptions">Chi tiết sản phẩm</p> : <div></div>
+        const descriptions = product.description.map(des => <Description key={des.id} description={des} />)
+        descriptions.push(<div key={0} className="space_button"></div>)
+        const check_descriptions = (descriptions.length - 1) ? <p className="check_descriptions">Chi tiết sản phẩm</p> : <div></div>
         return (
             <div>
                 <div className="detail">
@@ -109,6 +117,12 @@ const Detail = ({ myuser, cart, setCart }) => {
                         {details}
                         <br></br>
                         {select}
+                    </div>
+                </div>
+                <div className="same_products">
+                    {products_same_text}
+                    <div className="same_product_product">
+                        {products_same}
                     </div>
                 </div>
                 <div className="detail_description">

@@ -17,7 +17,7 @@ const Checkout = ({ myuser }) => {
     useEffect(() => {
         const getAddress = async () => {
             try {
-                const res = await API.getAdd()
+                const res = await API.getAdd("?order-by=1")
                 setAddressList(res.data)
                 if (res.data.length) setAddress(res.data[0])
             } catch (e) {
@@ -35,9 +35,7 @@ const Checkout = ({ myuser }) => {
     }, [])
     const sum_product = (productList.length) ? (productList.map((c) => c.amount).reduce((per, next) => per + next)) : 0;
     const sum_price = (productList.length) ? (productList.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next)) : 0;
-    // console.log(address)
     if (myuser) {
-        // console.log(productList)
         const listProduct = productList.map(product => <Products key={product.id} product={product} />)
         return (
             <div className="checkout">

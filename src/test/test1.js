@@ -11,9 +11,7 @@ const Test1 = () => {
     const changeAvatar = async (data) => {
         try {
             const res = await API.EditProfile(data);
-            console.log(res);
         } catch (e) {
-            console.log(e);
         }
     }
     const onFileUpload = () => {
@@ -26,7 +24,6 @@ const Test1 = () => {
             // selectedFile.name 
         );
         // Details of the uploaded file 
-        // console.log(selectedFile); 
         changeAvatar(formData);
     };
 
