@@ -163,3 +163,44 @@ p {
 .checkout_select_addr {
     font-weight: 700;
 }
+.checkout_addr_action {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.checkout_addr_action a,
+.checkout_addr_action button {
+    background-color: #ffffff;
+    color: #808080;
+    border: 1px solid #cccccc;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-left: 20px;
+}
+.checkout_addr_action a:hover,
+.checkout_addr_action button:hover,
+.checkout_addr_action a:focus,
+.checkout_addr_action button:focus {
+    background-color: #e9e9e9;
+    border-color: #e66536da;
+}
+
+.change_addr_submit {
+    color: #ff4400;
+    background: #f5d9c3;
+    border: 1px solid #ff4400;
+    font-weight: 400;
+    white-space: nowrap;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    touch-action: manipulation;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+    border-radius: 2px;
+    float: right;
+    height: 40px;
+}
+.change_addr_submit:hover,
+.change_addr_submit:focus {
+    background: #ff6600;
+    border-color: #ff6600;
+}

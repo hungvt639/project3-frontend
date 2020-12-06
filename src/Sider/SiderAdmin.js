@@ -4,9 +4,7 @@ import './index.css';
 import { Menu, Layout } from 'antd';
 import { useHistory } from 'react-router-dom';
 import {
-    HomeOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
+    HomeOutlined, FolderOutlined, OrderedListOutlined
 } from '@ant-design/icons';
 const { Sider } = Layout;
 const SiderAdmin = ({ collapsed }) => {
@@ -33,15 +31,15 @@ const SiderAdmin = ({ collapsed }) => {
                 <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '1') }} key="1" icon={<HomeOutlined className="icon_sider" />}>
                     Trang chủ
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '2') }} key="2" icon={<VideoCameraOutlined className="icon_sider" />}>
-                    nav 2
+                <Menu.Item className="menu_item" onClick={() => { history.push('/home/products'); localStorage.setItem('selectkey', '2') }} key="2" icon={<FolderOutlined className="icon_sider" />}>
+                    Sản phẩm
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '3') }} key="3" icon={<UploadOutlined className="icon_sider" />}>
-                    nav 3
+                <Menu.Item className="menu_item" onClick={() => { history.push('/home/orders'); localStorage.setItem('selectkey', '3') }} key="3" icon={<OrderedListOutlined className="icon_sider" />}>
+                    Đơn hàng
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '3') }} key="3" icon={<UploadOutlined className="icon_sider" />}>
+                {/* <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '3') }} key="4" icon={<UploadOutlined className="icon_sider" />}>
                     nav 4
-                </Menu.Item>
+                </Menu.Item> */}
             </Menu>
         </Sider>
     );

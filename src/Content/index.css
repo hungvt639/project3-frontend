@@ -4,9 +4,9 @@
     flex-direction: column;
 }
 .items {
-    overflow: auto;
+    /* overflow: auto; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     flex-wrap: wrap;
     width: 100%;
     /* background-color: red; */
@@ -57,9 +57,9 @@
 }
 
 .index_product {
-    width: 250px;
+    width: 260px;
     height: 400px;
-    margin: 10px;
+    margin: 10px auto;
     background-color: white;
     border-radius: 5px;
     cursor: pointer;

@@ -134,6 +134,7 @@ h2.active {
 }
 
 .input_login1 {
+    text-transform: inherit;
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;

@@ -28,7 +28,7 @@ const CheckoutAddress = ({ address, setAddress, addressList, setAddressList }) =
                 footer={null}
                 width="800px"
             >
-                <Address address={address} setChangAddress={setChangAddress} setAddress={setAddress} addressList={addressList} />
+                <Address address={address} setChangAddress={setChangAddress} setAddress={setAddress} addressList={addressList} setAddressList={setAddressList} />
             </Modal>
         </div >
     )

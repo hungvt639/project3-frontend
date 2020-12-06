@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import 'antd/dist/antd.css';
-import AvatarHeader from './AvatarHeader';
+import AvatarHeaderAdmin from './AvatarHeaderAdmin';
 import { Layout } from 'antd';
 import {
     MenuUnfoldOutlined,
@@ -20,7 +20,7 @@ const HeaderAdmin = ({ toggle, collapsed, myuser, setUser }) => {
                 style: { marginTop: '10px', marginLeft: '24px', fontSize: '40px', lineHeight: 1 },
                 onClick: toggle,
             })}</div>
-            <div className="head_user"><AvatarHeader myuser={myuser} setUser={setUser} /></div>
+            <div className="head_user"><AvatarHeaderAdmin myuser={myuser} setUser={setUser} /></div>
         </Header>
     );
 };
