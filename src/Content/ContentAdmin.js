@@ -22,7 +22,7 @@ const ContentAdmin = ({ myuser, setUser }) => {
             }}
         >
             <Switch>
-                <Route exact path="/home" component={() => <HomePage myuser={myuser} setUser={setUser} />} />
+                <Route exact path="/home" component={() => <HomePage />} />
                 <Route exact path="/home/profile" component={() => <Profile myuser={myuser} setUser={setUser} />} />
                 <Route exact path="/home/detail/:id" component={() => <Detail myuser={myuser} setUser={setUser} />} />
                 <Route exact path="/home/products" component={() => <ProductsAdmin myuser={myuser} setUser={setUser} />} />
