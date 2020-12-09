@@ -1,7 +1,11 @@
 .products-admin {
     background-color: white;
     padding: 0px 30px 10px 30px;
-    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
 }
 .products-admin-select {
     display: flex;
@@ -35,8 +39,11 @@
     margin: 20px 0px;
 }
 .products-admin-action {
-    height: 100%;
+    /* height: 100%; */
     overflow: auto;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
 }
 .products-admin-actions button {
     margin-left: 1px;
@@ -52,19 +59,32 @@
     background-color: #ff8800;
     box-shadow: 0px 0px 1px 0px #ff8800;
 }
-.products-admin-actions input {
+.products-admin-actions input,
+.products-admin-actions select {
     border: 1px solid #dddddd;
     border-radius: 5px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    padding: 8px 5px 6px 10px;
+}
+.products-admin-actions select:after {
+    right: 10px;
 }
 .products-admin-actions-add {
     margin-left: 10px !important;
 }
 .products-admin-table {
     width: 100%;
-    border-radius: 1em;
-    overflow: hidden;
+    /* border-radius: 1em; */
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    /* overflow: hidden; */
+    /* height: 100%; */
     font-size: 16px;
+}
+.products-admin-table-1 {
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    overflow: hidden;
 }
 
 .products-admin-table tr th {
@@ -96,9 +116,9 @@
     padding: 2px 7px;
 }
 
-td {
+.products-admin-table tr td {
     border: 1px solid #dddddd;
-    padding: 4px 8px;
+    padding: 15px 10px;
 }
 .ant-btn-primary {
     background-color: #ff6600 !important;
@@ -121,6 +141,11 @@ td {
     margin: 20px 0px;
     justify-content: flex-end;
     flex-direction: row;
+}
+.pagination-div {
+    width: 100%;
+    height: 80px;
+    /* background-color: yellowgreen; */
 }
 .ant-pagination-item-active a {
     color: #ff6600 !important;
@@ -162,4 +187,19 @@ td {
 .ant-select-focused .ant-select-selector {
     border-color: #ff6600 !important;
     box-shadow: 0px 0px 1px 0px #ff6600 !important;
+}
+.products-admin-1 {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 100%;
+}
+.products-admin-2 {
+    overflow: auto;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+    border-radius: 1em;
 }

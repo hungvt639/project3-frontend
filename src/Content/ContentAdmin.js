@@ -13,12 +13,15 @@ const { Content } = Layout;
 
 const ContentAdmin = ({ myuser, setUser }) => {
     return (
+        // <div className="content">
         <Content
             style={{
-                margin: '24px 16px',
+                // margin: '24px 16px',
                 padding: 24,
                 maxHeight: '100vh',
-                overflow: 'auto',
+                // overflow: 'auto',
+                // maxWidth: 1250,
+                height: '100%'
             }}
         >
             <Switch>
@@ -28,6 +31,7 @@ const ContentAdmin = ({ myuser, setUser }) => {
                 <Route exact path="/home/products" component={() => <ProductsAdmin myuser={myuser} setUser={setUser} />} />
             </Switch>
         </Content>
+        // </div>
     )
 }
 export default ContentAdmin;

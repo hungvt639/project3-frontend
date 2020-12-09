@@ -6,6 +6,9 @@ const getProducts = (data) => {
 const getDetailProduct = (id) => {
     return Client(false).get(`${resource}/product/${id}/`);
 };
+const deleteProducts = (id) => {
+    return Client(true).delete(`${resource}/product/${id}/`);
+};
 const getType = (data) => {
     return Client(false).get(`${resource}/type/${data}`)
 }
@@ -21,6 +24,7 @@ const editType = (id, data) => {
 export default {
     getProducts,
     getDetailProduct,
+    deleteProducts,
 
     getType,
     deleteType,

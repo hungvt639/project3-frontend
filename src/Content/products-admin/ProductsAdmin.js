@@ -8,7 +8,7 @@ const ProductsAdmin = ({ myuser, setUser }) => {
         <div className="products-admin">
             <div className="products-admin-select">
                 <div onClick={() => setSelect(1)} className="products-admin-select-1">
-                    <p className={select === 1 ? "products-admin-selected-p" : ""}>Loại</p>
+                    <p className={select === 1 ? "products-admin-selected-p" : ""}>Nhóm sản phẩm</p>
                     <div className={select === 1 ? "products-admin-selected" : ""}></div>
                 </div>
                 <div onClick={() => setSelect(2)} className="products-admin-select-1">

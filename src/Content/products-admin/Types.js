@@ -14,17 +14,19 @@ const Types = () => {
     const [showEdit, setShowEdit] = useState(false)
     const [types, setType] = useState({})
     var [values, setValues] = useState({})
+    const [search, setSearch] = useState("")
+    var [searchInput, setSearchInput] = useState("");
     useEffect(() => {
         const getTypes = async () => {
             try {
-                const res = await API.getType(`?page=${page}&limit=${limit}`)
+                const res = await API.getType(`?page=${page}&limit=${limit}${search}`)
                 setType(res)
             } catch {
                 setType([])
             }
         }
         getTypes()
-    }, [page, limit])
+    }, [page, limit, search])
     const deleteType = async (id) => {
         try {
             const res = await API.deleteType(id, `?page=${page}&limit=${limit}`)
@@ -70,40 +72,46 @@ const Types = () => {
         onChange={onChange}
         total={types.total}
     /> : <Pagination className="pagination" current={1} showSizeChanger disabled total={1} />
+    const p = []
+    for (var i = 0; i < 100; i++) { p.push(<p>{i}</p>) }
+    const searchProduct = () => {
+        var searchs = "";
+        if (searchInput) { searchs = searchs + `&search=${searchInput}` };
+        setSearch(searchs)
+    }
     return (
         <div className="products-admin-action">
 
             <div className="products-admin-actions">
                 <button onClick={() => setShowCreate(true)} className="products-admin-actions-add"><PlusCircleOutlined /> Thêm mới</button>
-                <button><SearchOutlined /></button>
-                <input placeholder="Loại sản phẩm" />
-            </div>
-            <table className="products-admin-table">
-                <thead>
-                    <tr>
-                        <th>Loại quần áo</th>
-                        <th className="products-admin-table-action">Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableTypes}
-                </tbody>
 
-            </table>
-            {tableTypes.length === 0 ? <Empty /> : ""}
-            {pagination}
-            <Drawer
-                title="Tạo nhóm sản phẩm mới"
-                placement="right"
-                width={400}
-                closable={true}
-                onClose={() => setShowCreate(false)}
-                visible={showCreate}
-                getContainer={false}
-                style={{ position: 'absolute' }}
-            >
-                <FormType setShowCreate={setShowCreate} setType={setType} page={page} limit={limit} />
-            </Drawer>
+                <button onClick={searchProduct}><SearchOutlined /></button>
+                <input onChange={(val) => setSearchInput(val.target.value)} placeholder="Loại sản phẩm" />
+            </div>
+            <div className="products-admin-1">
+                {/* {p} */}
+                <div className="products-admin-2">
+                    <table className="products-admin-table">
+                        <thead className="products-admin-table-1">
+                            <tr>
+                                <th>Nhóm sản phẩm</th>
+                                <th className="products-admin-table-action">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableTypes}
+                        </tbody>
+
+                    </table>
+                    {tableTypes.length === 0 ? <Empty /> : ""}
+                    <div className="pagination-div">
+                        {pagination}
+                    </div>
+                    <div style={{ height: "250px" }}></div>
+                </div>
+            </div>
+
+
             <Modal
                 title="Chỉnh sửa nhóm sản phẩm"
                 visible={showEdit}
@@ -113,7 +121,18 @@ const Types = () => {
             >
                 <FormTypeEdit types={types} setShowEdit={setShowEdit} setType={setType} values={values} />
             </Modal>
+            <Drawer
+                title="Tạo nhóm sản phẩm mới"
+                placement="right"
+                width={400}
+                closable={true}
+                onClose={() => setShowCreate(false)}
+                visible={showCreate}
+            >
+                <FormType setShowCreate={setShowCreate} setType={setType} page={page} limit={limit} />
+            </Drawer>
         </div>
+
     )
 }
 export default Types;
