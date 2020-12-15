@@ -18,11 +18,12 @@ const AvatarHeader = ({ myuser, setUser, cart, setCart }) => {
                 const res = await API.getCart()
                 setCart(res.data)
             } catch (e) {
-                if (e.request.status === 0) {
-                    errorNotification("Lỗi mạng!");
-                } else if (e.response.data.message) {
-                    e.response.data.message.map(x => errorNotification(x))
-                } else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+                // if (e.request.status === 0) {
+                //     errorNotification("Lỗi mạng!");
+                // } else if (e.response.data.message) {
+                //     e.response.data.message.map(x => errorNotification(x))
+                // } else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+                setCart([])
             }
         }
         getCarts()

@@ -10,7 +10,7 @@ const Test1 = () => {
     };
     const changeAvatar = async (data) => {
         try {
-            const res = await API.EditProfile(data);
+            // const res = await API.EditProfile(data);
         } catch (e) {
         }
     }

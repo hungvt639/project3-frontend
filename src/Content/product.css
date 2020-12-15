@@ -146,7 +146,7 @@
     list-style-type: square;
 }
 .describe_detail ul li {
-    padding: 5px 0px;
+    padding: 5px 10px 5px 0px;
 }
 .mess_detail {
     margin: 10px;

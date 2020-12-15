@@ -10,21 +10,23 @@ import AddAddress from './AddAddress';
 const Address = () => {
     const [addressList, setAddressList] = useState([])
     const [showAddAddr, setShowAddAddr] = useState(false)
-    const API = getFactory('address')
+    // const API = getFactory('address')
     useEffect(() => {
         const getAddress = async () => {
+            const API = getFactory('address')
             try {
                 const res = await API.getAdd("")
                 setAddressList(res.data)
             } catch (e) {
-                if (e.request.status && e.request.status === 0) {
-                    errorNotification("Lỗi mạng!");
-                } else if (e.request.status === 400) {
-                    if (e.response.data.message) {
-                        e.response.data.message.map(x => errorNotification(x))
-                    }
-                    else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
-                } else errorNotification(e.message);
+                // if (e.request.status && e.request.status === 0) {
+                //     errorNotification("Lỗi mạng!");
+                // } else if (e.request.status === 400) {
+                //     if (e.response.data.message) {
+                //         e.response.data.message.map(x => errorNotification(x))
+                //     }
+                //     else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+                // } else errorNotification(e.message);
+                setAddressList([])
             }
         }
         getAddress()

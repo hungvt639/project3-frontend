@@ -21,14 +21,15 @@ const Checkout = ({ myuser }) => {
                 setAddressList(res.data)
                 if (res.data.length) setAddress(res.data[0])
             } catch (e) {
-                if (e.request.status && e.request.status === 0) {
-                    errorNotification("Lỗi mạng!");
-                } else if (e.request.status === 400) {
-                    if (e.response.data.message) {
-                        e.response.data.message.map(x => errorNotification(x))
-                    }
-                    else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
-                } else errorNotification(e.message);
+                // if (e.request.status && e.request.status === 0) {
+                //     errorNotification("Lỗi mạng!");
+                // } else if (e.request.status === 400) {
+                //     if (e.response.data.message) {
+                //         e.response.data.message.map(x => errorNotification(x))
+                //     }
+                //     else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+                // } else errorNotification(e.message);
+                setAddressList([])
             }
         }
         getAddress()

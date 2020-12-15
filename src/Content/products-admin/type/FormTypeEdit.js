@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
-import getFactory from '../../request/index';
-import errorNotification from '../../general/errorNotification';
-import Notification from '../../general/Notification';
+import getFactory from '../../../request/index';
+import errorNotification from '../../../general/errorNotification';
+import Notification from '../../../general/Notification';
 const FormTypeEdit = ({ types, setShowEdit, setType, values }) => {
     const [form] = Form.useForm()
     useEffect(() => {
@@ -37,7 +37,7 @@ const FormTypeEdit = ({ types, setShowEdit, setType, values }) => {
                     rules={[
                         {
                             required: true,
-                            message: 'Vui lòng nhập tên nhóm sản phẩm muốn thêm',
+                            message: 'Vui lòng nhập tên nhóm sản phẩm!',
                         },
                     ]}
                 >
@@ -45,7 +45,7 @@ const FormTypeEdit = ({ types, setShowEdit, setType, values }) => {
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                     <Button className="change_profile_submit" type="primary" htmlType="submit">
-                        Thêm mới
+                        Chỉnh sửa
                         </Button>
                 </Form.Item>
             </Form>

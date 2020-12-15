@@ -9,6 +9,33 @@ const getDetailProduct = (id) => {
 const deleteProducts = (id) => {
     return Client(true).delete(`${resource}/product/${id}/`);
 };
+const createProduct = (data) => {
+    return Client(true).post(`${resource}/product/`, data);
+};
+
+
+const createListDescribes = (data) => {
+    return Client(true).post(`${resource}/describe/`, data);
+}
+const deleteDescribes = (id) => {
+    return Client(true).delete(`${resource}/describe/${id}/`);
+}
+
+
+const getDetail = (search) => {
+    return Client(false).get(`${resource}/detail/${search}`);
+};
+const editDetail = (id, data) => {
+    return Client(true).put(`${resource}/detail/${id}/`, data);
+};
+const deleteDetail = (id) => {
+    return Client(true).delete(`${resource}/detail/${id}/`);
+};
+const createDetail = (data) => {
+    return Client(true).post(`${resource}/detail/`, data);
+};
+
+
 const getType = (data) => {
     return Client(false).get(`${resource}/type/${data}`)
 }
@@ -25,6 +52,15 @@ export default {
     getProducts,
     getDetailProduct,
     deleteProducts,
+    createProduct,
+
+    createListDescribes,
+    deleteDescribes,
+
+    getDetail,
+    editDetail,
+    deleteDetail,
+    createDetail,
 
     getType,
     deleteType,

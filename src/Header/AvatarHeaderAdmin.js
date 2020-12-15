@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React from 'react';
 import urls from '../const';
 import { Avatar, Menu, Dropdown, Button, Badge } from 'antd';
 import './index.css';
-import { UserOutlined, LogoutOutlined, BellOutlined, ShoppingCartOutlined, FileDoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, BellOutlined } from '@ant-design/icons';
 import getFactory from '../request/index';
 import { useHistory } from 'react-router-dom';
 

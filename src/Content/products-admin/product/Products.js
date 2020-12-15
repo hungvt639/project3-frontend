@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import getFactory from '../../request/index';
-import { Empty, Popconfirm, Pagination, Modal, Drawer, Image } from 'antd';
-import { PlusCircleOutlined, SearchOutlined, EditOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import Notification from '../../general/Notification';
-import errorNotification from '../../general/errorNotification';
-import urls from '../../const';
-
-
+import getFactory from '../../../request/index';
+import { Empty, Popconfirm, Pagination, Drawer, Image } from 'antd';
+import { PlusCircleOutlined, SearchOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import Notification from '../../../general/Notification';
+import errorNotification from '../../../general/errorNotification';
+import urls from '../../../const';
+import FormCreateProduct from './FormCreateProduct';
+import { useHistory } from 'react-router-dom';
 const Products = () => {
     const API = getFactory('product');
     const [limit, setLimit] = useState(5)
@@ -18,10 +18,11 @@ const Products = () => {
     var [searchSelect, setSearchSelect] = useState("0");
     const [types, setTypes] = useState([])
     const [number, setNumber] = useState(0)
-
+    const history = useHistory()
 
     useEffect(() => {
         const getTypes = async () => {
+            const API = getFactory('product');
             try {
                 const res = await API.getType("")
                 setTypes(res.data)
@@ -86,7 +87,7 @@ const Products = () => {
                     {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
                 </p>}</td>
             <td className="products-admin-table-td">
-                <p style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
+                <p onClick={() => history.push(`/home/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
                 <Popconfirm
                     placement="topRight"
                     title="Xóa sản phẩm?"
@@ -108,7 +109,7 @@ const Products = () => {
         current={page}
         onChange={onChange}
         total={products.total}
-    /> : <Pagination className="pagination" current={1} showSizeChanger disabled total={1} />
+    /> : <Pagination className="pagination" current={page} onChange={onChange} showSizeChanger disabled total={1} />
 
 
 
@@ -139,7 +140,7 @@ const Products = () => {
                 <input onChange={(val) => onChangeInputSearch(val.target.value)} name="search" placeholder="Tìm kiếm sản phẩm" />
                 <select onChange={(val) => onChangeTypeSearch(val.target.value)}>
                     <option value={0}>Tất cả</option>
-                    {types.map(t => <option value={t.id}>{t.type}</option>)}
+                    {types.map(t => <option key={t.id} value={t.id}>{t.type}</option>)}
                 </select>
             </div>
             <div className="products-admin-1">
@@ -169,12 +170,12 @@ const Products = () => {
             <Drawer
                 title="Tạo nhóm sản phẩm mới"
                 placement="right"
-                width={400}
+                width={600}
                 closable={true}
                 onClose={() => setShowCreate(false)}
                 visible={showCreate}
             >
-                {/* <FormType setShowCreate={setShowCreate} setType={setType} page={page} limit={limit} /> */}
+                <FormCreateProduct val={{}} types={types} setShowCreate={setShowCreate} />
             </Drawer>
         </div>
     )

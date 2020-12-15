@@ -1,0 +1,86 @@
+.ant-upload.ant-upload-select-picture-card:hover {
+    border: none;
+}
+.ant-upload.ant-upload-select-picture-card {
+    border: none;
+    background-color: #ff6600;
+    border-radius: 2px;
+    width: auto;
+    height: auto;
+    float: right;
+    top: -38px;
+    margin: 0px;
+    position: relative;
+}
+.avatar-uploader-button {
+    font-size: 18px;
+    color: white;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+.avatar-uploader-button_loading {
+    font-size: 18px;
+    color: white;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+.avatar-uploader-loading .ant-upload.ant-upload-select-picture-card {
+    background-color: #00000040;
+    width: 95px;
+    cursor: no-drop;
+}
+.ant-btn-dashed:focus,
+.ant-btn-dashed:active {
+    color: #ff6600;
+    border-color: #ff6600;
+}
+.antd_space_item {
+    width: 100%;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    margin: 0px 20px 10px 0px;
+}
+/* .antd_space_item .ant-space-item {
+    width: 100%;
+} */
+.antd_space_item2 {
+    margin-left: 10px;
+}
+.antd_space_item_form {
+    width: 100%;
+}
+.antd_space_item .ant-row {
+    margin: 0px;
+    width: 100%;
+}
+.antd_button_from_list {
+    padding: 10px 45px 10px 0px;
+}
+.antd_button_from_submit {
+    float: right;
+    margin-right: 45px;
+    margin-bottom: 10px;
+}
+.li_describe:hover {
+    background-color: #fff4ec;
+}
+.button_delete_describe {
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ff6600;
+    border-radius: 2px;
+    color: #ff6600;
+}
+.button_delete_describe:hover {
+    background-color: #ffccaa;
+}
+.button_delete_describe:focus {
+    background-color: #ff6600;
+    color: white;
+}
+.li_describe {
+    padding-right: 20px;
+}

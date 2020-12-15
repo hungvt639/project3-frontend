@@ -9,11 +9,10 @@ import {
 const { Sider } = Layout;
 const SiderAdmin = ({ collapsed }) => {
     const history = useHistory()
-    const getDefaultSelectKey = () => {
-        const key = localStorage.getItem('selectkey');
-        if (key) return key;
-        else return '1';
-    }
+    // const key = localStorage.getItem('selectkey');
+    // const getDefaultSelectKey = key ? key : '1'
+    const getDefaultSelectKey = "1"
+
     return (
         <Sider className="sider" trigger={null} collapsible collapsed={collapsed}
             width="250"
@@ -27,7 +26,7 @@ const SiderAdmin = ({ collapsed }) => {
             }}
         >
             <div className="logo" />
-            <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey()]}>
+            <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey]}>
                 <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '1') }} key="1" icon={<HomeOutlined className="icon_sider" />}>
                     Trang chủ
                 </Menu.Item>

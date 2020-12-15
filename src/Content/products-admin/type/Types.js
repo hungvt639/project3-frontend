@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import getFactory from '../../request/index';
+import getFactory from '../../../request/index';
 import { Empty, Popconfirm, Pagination, Modal, Drawer } from 'antd';
 import { PlusCircleOutlined, SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import Notification from '../../general/Notification';
-import errorNotification from '../../general/errorNotification';
+import Notification from '../../../general/Notification';
+import errorNotification from '../../../general/errorNotification';
 import FormType from './FormType';
 import FormTypeEdit from './FormTypeEdit';
 const Types = () => {
@@ -18,6 +18,7 @@ const Types = () => {
     var [searchInput, setSearchInput] = useState("");
     useEffect(() => {
         const getTypes = async () => {
+            const API = getFactory('product');
             try {
                 const res = await API.getType(`?page=${page}&limit=${limit}${search}`)
                 setType(res)
@@ -49,7 +50,7 @@ const Types = () => {
     }
     const tableTypes = types.data ? types.data.map(t => <>
         <tr key={t.id}>
-            <td>{t.type}</td>
+            <td >{t.type}</td>
             <td className="products-admin-table-td">
                 <p onClick={() => { setShowEdit(true); setValues(t) }} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
                 <Popconfirm
@@ -71,9 +72,7 @@ const Types = () => {
         current={page}
         onChange={onChange}
         total={types.total}
-    /> : <Pagination className="pagination" current={1} showSizeChanger disabled total={1} />
-    const p = []
-    for (var i = 0; i < 100; i++) { p.push(<p>{i}</p>) }
+    /> : <Pagination className="pagination" current={page} onChange={onChange} showSizeChanger disabled total={1} />
     const searchProduct = () => {
         var searchs = "";
         if (searchInput) { searchs = searchs + `&search=${searchInput}` };
@@ -94,8 +93,8 @@ const Types = () => {
                     <table className="products-admin-table">
                         <thead className="products-admin-table-1">
                             <tr>
-                                <th>Nhóm sản phẩm</th>
-                                <th className="products-admin-table-action">Hành động</th>
+                                <th key={1}>Nhóm sản phẩm</th>
+                                <th key={2} className="products-admin-table-action">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>

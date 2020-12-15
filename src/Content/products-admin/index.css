@@ -57,7 +57,7 @@
 }
 .products-admin-actions button:hover {
     background-color: #ff8800;
-    box-shadow: 0px 0px 1px 0px #ff8800;
+    box-shadow: 0px 0px 4px -1px #ff8800;
 }
 .products-admin-actions input,
 .products-admin-actions select {
@@ -128,8 +128,7 @@
 .ant-btn-primary:focus {
     border-color: #ff6600;
 }
-.ant-btn:hover,
-.ant-btn:focus {
+.ant-btn:hover {
     color: #fff;
     border-color: #ff6600;
 }
@@ -178,7 +177,7 @@
 .ant-select-single:not(.ant-select-customize-input) .ant-select-selector:focus,
 .ant-select-single:not(.ant-select-customize-input)
     .ant-select-selector:active {
-    box-shadow: 0px 0px 1px 0px #ff6600 !important;
+    box-shadow: 0px 0px 4px -1px #ff6600 !important;
     border-color: #ff6600 !important;
 }
 .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
@@ -186,7 +185,7 @@
 }
 .ant-select-focused .ant-select-selector {
     border-color: #ff6600 !important;
-    box-shadow: 0px 0px 1px 0px #ff6600 !important;
+    box-shadow: 0px 0px 4px -1px #ff6600 !important;
 }
 .products-admin-1 {
     display: flex;
@@ -202,4 +201,15 @@
     flex-direction: column;
     /* background-color: yellow; */
     border-radius: 1em;
+}
+.ant-input-number {
+    width: 150px !important;
+}
+.ant-input-number:hover {
+    border-color: #ff6600;
+}
+.ant-input-number:focus,
+.ant-input-number-focused {
+    border-color: #ff6600;
+    box-shadow: 0px 0px 4px -1px #ff6600;
 }

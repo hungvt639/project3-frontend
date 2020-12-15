@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
-import getFactory from '../../request/index';
-import errorNotification from '../../general/errorNotification';
-import Notification from '../../general/Notification';
+import getFactory from '../../../request/index';
+import errorNotification from '../../../general/errorNotification';
+import Notification from '../../../general/Notification';
 const FormType = ({ setShowCreate, setType, page, limit }) => {
     const layout = {
         labelCol: { span: 6 },

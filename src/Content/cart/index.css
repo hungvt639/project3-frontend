@@ -38,7 +38,7 @@
 }
 .cart_detail_item_checked {
     border: 1px solid #ff6000;
-    box-shadow: 0px 0px 4px 0px #ff6000 !important;
+    box-shadow: 0px 0px 4px -1px #ff6000 !important;
 }
 .cart_product {
     width: 50%;
