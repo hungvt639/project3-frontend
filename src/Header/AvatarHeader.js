@@ -6,7 +6,7 @@ import './index.css';
 import { UserOutlined, LogoutOutlined, BellOutlined, ShoppingCartOutlined, FileDoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import getFactory from '../request/index';
 import { useHistory } from 'react-router-dom';
-import errorNotification from '../general/errorNotification'
+// import errorNotification from '../general/errorNotification'
 
 const AvatarHeader = ({ myuser, setUser, cart, setCart }) => {
     const history = useHistory();

@@ -48,6 +48,11 @@ const createType = (data, datas) => {
 const editType = (id, data) => {
     return Client(true).put(`${resource}/type/${id}/`, data)
 }
+
+
+const createAmount = (data) => {
+    return Client(true).post(`${resource}/amount/`, data)
+}
 export default {
     getProducts,
     getDetailProduct,
@@ -66,4 +71,6 @@ export default {
     deleteType,
     createType,
     editType,
+
+    createAmount,
 };

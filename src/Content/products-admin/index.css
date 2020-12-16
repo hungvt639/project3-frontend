@@ -109,7 +109,7 @@
     cursor: pointer;
     text-decoration-line: underline;
     display: inline;
-    margin: 10px 5px;
+    margin: 0px 5px;
     border-radius: 50%;
     border: 2px solid #ff6600;
     font-size: 24px;
@@ -212,4 +212,49 @@
 .ant-input-number-focused {
     border-color: #ff6600;
     box-shadow: 0px 0px 4px -1px #ff6600;
+}
+.products-admin-table-td1 {
+    font-size: 30px;
+    text-align: center;
+}
+.products-admin-table-td1 p {
+    display: inline;
+    text-align: center;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+.products-admin-table-td1 p:hover {
+    color: #ff6600 !important;
+}
+.amount-add-name {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+.amount-add-image {
+    margin-top: 5px;
+    text-align: center;
+}
+.amount-add-atr {
+    display: flex;
+    justify-content: center;
+}
+.amount-add-atr p {
+    display: inline;
+    margin: 10px 10px 5px 10px;
+    padding: 0px 5px;
+    border: 1px solid #d6d6d6;
+    color: #555555;
+    /* border-right: 1px solid #808080; */
+}
+.amount-add-amo {
+    text-align: center;
+    margin-top: 10px;
+    color: #ff6600;
+}
+.amount-add-form {
+    margin-top: 10px;
+}
+.amount-add-input {
+    width: 100% !important;
 }

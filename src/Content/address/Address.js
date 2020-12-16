@@ -4,7 +4,7 @@ import './index.css';
 import { PlusOutlined } from '@ant-design/icons';
 import Addr from './Addr';
 import getFactory from '../../request/index';
-import errorNotification from '../../general/errorNotification';
+// import errorNotification from '../../general/errorNotification';
 import { Drawer } from 'antd';
 import AddAddress from './AddAddress';
 const Address = () => {

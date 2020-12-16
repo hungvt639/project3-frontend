@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import getFactory from '../../../request/index';
-import { Empty, Popconfirm, Pagination, Drawer, Modal } from 'antd';
-import { PlusCircleOutlined, SearchOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { Empty, Popconfirm, Pagination, Drawer, Modal, Popover } from 'antd';
+import { PlusCircleOutlined, SearchOutlined, DeleteOutlined, EditOutlined, PlusSquareOutlined, MinusSquareOutlined } from '@ant-design/icons';
 import Notification from '../../../general/Notification';
 import errorNotification from '../../../general/errorNotification';
 import WarehouseFormEdit from './WarehouseFormEdit';
 import WarehouseForm from './WarehouseForm';
+import FormAmount from './FormAmount'
 const Warehouse = () => {
     const API = getFactory('product');
     const [limit, setLimit] = useState(5)
@@ -19,6 +20,8 @@ const Warehouse = () => {
     const [types, setTypes] = useState([])
     const [number, setNumber] = useState(0)
     const [showEdit, setShowEdit] = useState(false)
+    const [valueAsAmount, setValueAsAmount] = useState({ "is_plus": true })
+    const [showAsAmountm, setShowAsAmount] = useState(false)
     var [values, setValues] = useState({})
 
 
@@ -86,6 +89,15 @@ const Warehouse = () => {
                 {t.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
             </p></td>
             <td>{t.amount}</td>
+            <td className="products-admin-table-td1">
+                <Popover className="products-admin-table-td1-hover" trigger="hover" content="Bớt số lượng" placement="topRight">
+                    <p onClick={() => { setValueAsAmount({ "is_plus": false, "detail": t }); setShowAsAmount(true) }} style={{ color: "#808080", borderColor: "#808080" }}><MinusSquareOutlined /></p>
+                </Popover >
+                <Popover className="products-admin-table-td1-hover" trigger="hover" content="Thêm số lượng" placement="topLeft">
+                    <p onClick={() => { setValueAsAmount({ "is_plus": true, "detail": t }); setShowAsAmount(true) }} style={{ color: "#808080", borderColor: "#808080" }}><PlusSquareOutlined /></p>
+
+                </Popover>
+            </td>
             <td className="products-admin-table-td">
                 <p onClick={() => { setShowEdit(true); setValues(t) }} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
                 <Popconfirm
@@ -175,6 +187,7 @@ const Warehouse = () => {
                                 <th>Màu sắc</th>
                                 <th>Giá bán</th>
                                 <th>Số lượng</th>
+                                <th>Chỉnh sửa</th>
                                 <th className="products-admin-table-action">Hành động</th>
                             </tr>
                         </thead>
@@ -189,6 +202,15 @@ const Warehouse = () => {
                     <div style={{ height: "250px" }}></div>
                 </div>
             </div>
+            <Modal
+                title={valueAsAmount.is_plus ? "Thêm số lượng sản phẩm vào kho" : "Bớt số lượng sản phẩm trong kho"}
+                visible={showAsAmountm}
+                onCancel={() => setShowAsAmount(false)}
+                footer={null}
+                width="400px"
+            >
+                < FormAmount details={details} setShowAsAmount={setShowAsAmount} setDetails={setDetails} valueAsAmount={valueAsAmount} />
+            </Modal>
             <Modal
                 title="Chỉnh sửa nhóm sản phẩm"
                 visible={showEdit}

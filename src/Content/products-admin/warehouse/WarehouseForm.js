@@ -3,7 +3,6 @@ import { Form, Input, Button, Select, InputNumber } from 'antd';
 import getFactory from '../../../request/index';
 import errorNotification from '../../../general/errorNotification';
 import Notification from '../../../general/Notification';
-import { useHistory } from 'react-router-dom';
 
 const WarehouseForm = ({ types, setShowCreate, number, setNumber }) => {
     const [form] = Form.useForm()
@@ -25,8 +24,7 @@ const WarehouseForm = ({ types, setShowCreate, number, setNumber }) => {
             } catch { console.log("lỗi") }
         }
         getProduct()
-    }, [type])
-    console.log("products1", products)
+    }, [form, type])
     const onFinish = async (values) => {
         const API = getFactory('product')
         console.log(values)
@@ -46,11 +44,9 @@ const WarehouseForm = ({ types, setShowCreate, number, setNumber }) => {
         }
     }
     const onGenderChangeType = async (val) => {
-        console.log(val)
         setType(val)
     }
     const onGenderChange = () => {
-
     }
     return (
         <>
@@ -74,9 +70,6 @@ const WarehouseForm = ({ types, setShowCreate, number, setNumber }) => {
                         allowClear
                     >
                         {products.map(x => <Option key={x.id} value={x.id}>{x.name}</Option>)}
-                        {/* <Option value="male">male</Option>
-                        <Option value="female">female</Option>
-                        <Option value="other">other</Option> */}
                     </Select>
                 </Form.Item>
                 <Form.Item name="size" label="Size:"
