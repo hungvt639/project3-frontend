@@ -15,11 +15,6 @@ const FormProduct = ({ val, types, setShowCreate }) => {
         try {
 
             const res = await API.createProduct(values)
-            console.log(res)
-            // const res = await API.createType(values)
-            // setType(res)
-            // setShowCreate(false)
-
             Notification("Thêm mới sản phẩm thành công.")
             setShowCreate(false)
             history.push(`/home/detail/${res.data.id}`)

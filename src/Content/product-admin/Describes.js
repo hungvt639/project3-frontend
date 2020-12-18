@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Space } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Button, } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
@@ -48,7 +48,6 @@ const Describes = ({ product, setProduct }) => {
             } else errorNotification(e.message);
         }
     }
-    console.log(number)
     return (
         <>
             {describes}

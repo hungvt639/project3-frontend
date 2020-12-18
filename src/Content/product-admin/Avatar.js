@@ -26,7 +26,7 @@ const Avatar = ({ id, product, setProduct }) => {
         }
     };
     return (
-        <div>
+        <>
             <Image className="avatar_detail" width="100%" src={`${urls}${product.avatar}`} alt="Ảnh chính" />
             <ImgCrop
                 aspect={6 / 7}
@@ -45,7 +45,7 @@ const Avatar = ({ id, product, setProduct }) => {
                     {/* <SyncOutlined className="avatar-uploader-button" /> */}
                 </Upload>
             </ImgCrop>
-        </div>
+        </>
     )
 }
 export default Avatar;

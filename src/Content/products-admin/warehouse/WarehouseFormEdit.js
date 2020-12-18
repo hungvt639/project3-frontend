@@ -14,7 +14,6 @@ const WarehouseFormEdit = ({ details, setShowEdit, setDetails, values }) => {
     };
     const onFinish = async (value) => {
         const API = getFactory('product')
-        console.log(values)
         try {
             const res = await API.editDetail(values.id, value)
             const index = details.data.findIndex(x => x.id === res.id)

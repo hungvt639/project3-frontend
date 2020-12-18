@@ -53,6 +53,16 @@ const editType = (id, data) => {
 const createAmount = (data) => {
     return Client(true).post(`${resource}/amount/`, data)
 }
+
+
+const deleteImage = (id) => {
+    return Client(true).delete(`${resource}/image/${id}/`)
+}
+
+
+const createDescription = (data) => {
+    return Client(true).post(`${resource}/description/`, data);
+};
 export default {
     getProducts,
     getDetailProduct,
@@ -73,4 +83,8 @@ export default {
     editType,
 
     createAmount,
+
+    deleteImage,
+
+    createDescription,
 };

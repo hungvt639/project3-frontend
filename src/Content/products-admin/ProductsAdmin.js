@@ -5,7 +5,7 @@ import Products from './product/Products';
 import { Button } from 'antd';
 import Warehouse from './warehouse/Warehouse';
 const ProductsAdmin = ({ myuser, setUser }) => {
-    const [select, setSelect] = useState(3)
+    const [select, setSelect] = useState(1)
     return (
         <div className="products-admin">
             <Button></Button>

@@ -13,7 +13,6 @@ const FormAmount = ({ details, setShowAsAmount, setDetails, valueAsAmount }) => 
             "note": ""
         })
     }, [form, valueAsAmount])
-    console.log(valueAsAmount)
     const layout = {
         labelCol: { span: 6 },
         wrapperCol: { span: 16 },
@@ -23,8 +22,7 @@ const FormAmount = ({ details, setShowAsAmount, setDetails, valueAsAmount }) => 
         value.detail = valueAsAmount.detail.id
         const API = getFactory('product')
         try {
-            const res = await API.createAmount(value)
-            console.log(res)
+            await API.createAmount(value)
             const index = details.data.findIndex(x => x.id === valueAsAmount.detail.id)
             setDetails({ ...details, data: details.data.slice(0, index).concat({ ...details.data[index], amount: valueAsAmount.is_plus ? valueAsAmount.detail.amount + value.amount : valueAsAmount.detail.amount - value.amount }).concat(details.data.slice(index + 1)) })
             Notification("Cập nhật số lượng trong kho thành công!")

@@ -11,13 +11,14 @@ import Description from './Description';
 import Avatar from './Avatar';
 import ListImg from './ListImg';
 import Describes from './Describes';
-const Detail = ({ props }) => {
+const Detail = ({ match }) => {
+    // console.log("pop", match)
 
     // localStorage.removeItem('ordercart');
-    console.log(props)
     const [product, setProduct] = useState({})
     const [product_detail, setDetail] = useState({ id: 0 });
-    const id = window.location.href.split('/').pop();
+    // const id = window.location.href.split('/').pop();
+    const id = match.params.id
     useEffect(() => {
         const getDetailProduct = async (id) => {
             const API = getFactory('product');
@@ -34,7 +35,8 @@ const Detail = ({ props }) => {
                 } else errorNotification(e.message);
             }
         }
-        const id = window.location.href.split('/').pop();
+        // const id = window.location.href.split('/').pop();
+        const id = match.params.id
         getDetailProduct(id)
     }, [])
 
@@ -74,16 +76,18 @@ const Detail = ({ props }) => {
         // const select = (product_detail.id !== 0) ? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} /> : <br></br>;
         // const select = <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} />;
         const sold = (product.sold < 1000) ? `${product.sold}` : `${(product.sold / 1000).toFixed(1)}k`
-        const descriptions = product.description.map(des => <Description key={des.id} description={des} />)
-        descriptions.push(<div key={0} className="space_button"></div>)
-        const check_descriptions = (descriptions.length - 1) ? <p className="check_descriptions">Chi tiết sản phẩm</p> : <div></div>
-        console.log(product)
+        const descriptions = product.description.map(des => <div key={des.id} className="descriptions">
+            {des.text ? <p className="description_text">{des.text}</p> : <div></div>}
+            {(des.img) ? <img className="description_img" src={`${urls}${des.img}`} alt="" /> : <div></div>}
+        </div>)
+        // descriptions.push(<div key={0} className="space_button"></div>)
+
         return (
             <div>
                 <div className="detail">
                     <div className="detail_left">
                         <Avatar id={id} product={product} setProduct={setProduct} />
-                        <div className="imgs_detail">
+                        <div className="imgs_detail images_upload">
                             {/* {imgs} */}
                             <ListImg product={product} setProduct={setProduct} />
                         </div>
@@ -113,8 +117,10 @@ const Detail = ({ props }) => {
                 </div>
 
                 <div className="detail_description">
-                    {check_descriptions}
+                    <p className="check_descriptions">Chi tiết sản phẩm</p>
                     {descriptions}
+                    <Description product={product} setProduct={setProduct} />
+                    <div key={0} className="space_button"></div>
                 </div>
             </div>
 

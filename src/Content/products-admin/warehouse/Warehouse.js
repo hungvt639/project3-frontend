@@ -124,12 +124,10 @@ const Warehouse = () => {
     /> : <Pagination className="pagination" current={page} onChange={onChange} showSizeChanger disabled total={1} />
 
 
-    console.log(searchSelect, searchInput)
     const searchProduct = () => {
         var searchs = "";
         if (searchSelect !== "0") { searchs = searchs + `&type=${searchSelect}` };
         if (searchInput) { searchs = searchs + `&product=${searchInput}` };
-        console.log(searchs)
         setSearch(searchs)
     }
 
@@ -158,7 +156,6 @@ const Warehouse = () => {
     }
 
 
-    console.log(details)
     return (
         <div className="products-admin-action">
             <div className="products-admin-actions">

@@ -27,7 +27,6 @@ const WarehouseForm = ({ types, setShowCreate, number, setNumber }) => {
     }, [form, type])
     const onFinish = async (values) => {
         const API = getFactory('product')
-        console.log(values)
         try {
 
             await API.createDetail(values)

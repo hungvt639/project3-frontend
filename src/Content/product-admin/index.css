@@ -84,3 +84,40 @@
 .li_describe {
     padding-right: 20px;
 }
+.imgs_detail .ant-upload.ant-upload-select-picture-card {
+    top: 0;
+    float: inherit;
+    background-color: #f0f2f5;
+}
+.product_admin_upload_btn {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: auto;
+    display: inline-block;
+    width: 104px;
+    height: 104px;
+    margin: 0 8px 8px 0;
+    vertical-align: top;
+    border: 1px dashed #d9d9d9;
+    position: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #313131;
+}
+.product_admin_upload_btn:hover {
+    border-color: #ff6600;
+    color: #ff6600;
+}
+.images_upload {
+    height: auto;
+    white-space: break-spaces;
+    background-color: #f0f2f5;
+}
+.product_admin_upload_btn div {
+    display: flex;
+    flex-direction: column;
+}
+#rcDialogTitle0 {
+    display: none;
+}
