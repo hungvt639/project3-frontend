@@ -14,8 +14,8 @@ export default function getInstanceAxios(baseAPI, isToken) {
         function (config) {
             config.headers = {
                 Accept: "*/*",
-                // "Content-Type": "application/json",
-                "Content-Type": "multipart/form-data",
+                "Content-Type": "application/json",
+                // "Content-Type": "multipart/form-data",
                 Authorization: "Token " + localStorage.getItem("token"),
 
                 // Host: urls,

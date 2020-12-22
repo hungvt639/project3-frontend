@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
 import getFactory from '../../request/index';
-const ListImg = ({ product, setProduct }) => {
+const ListImg = ({ product }) => {
     var [fileList, setFileList] = useState(product.image.map(i => ({ ...i, status: "done", name: i.img, uid: `${i.id}`, response: { id: i.id }, url: `${urls}${i.img}` })));
     const [previewVisible, setPreviewVisible] = useState(false)
     const [previewImage, setPreviewImage] = useState('')

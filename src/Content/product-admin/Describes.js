@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
 import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
@@ -68,7 +68,7 @@ const Describes = ({ product, setProduct }) => {
                                         <Input placeholder="Mô tả" />
                                     </Form.Item>
 
-                                    <MinusCircleOutlined className="antd_space_item2" onClick={() => remove(field.name)} />
+                                    <CloseOutlined className="antd_space_item2" onClick={() => remove(field.name)} />
                                 </div>
                                 // <Space key={field.key} style={{ display: 'flex', marginBottom: 0 }} align="baseline" className="antd_space_item">
 

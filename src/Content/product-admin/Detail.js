@@ -3,7 +3,6 @@ import { Image, Empty } from 'antd';
 import urls from '../../const';
 import './index.css';
 import { Button } from 'antd';
-// import AddCart from './AddCart';
 import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import { Redirect } from 'react-router-dom';
@@ -12,12 +11,9 @@ import Avatar from './Avatar';
 import ListImg from './ListImg';
 import Describes from './Describes';
 const Detail = ({ match }) => {
-    // console.log("pop", match)
 
-    // localStorage.removeItem('ordercart');
     const [product, setProduct] = useState({})
     const [product_detail, setDetail] = useState({ id: 0 });
-    // const id = window.location.href.split('/').pop();
     const id = match.params.id
     useEffect(() => {
         const getDetailProduct = async (id) => {
@@ -35,10 +31,9 @@ const Detail = ({ match }) => {
                 } else errorNotification(e.message);
             }
         }
-        // const id = window.location.href.split('/').pop();
         const id = match.params.id
         getDetailProduct(id)
-    }, [])
+    }, [match.params.id])
 
 
     if (Object.keys(product).length) {
@@ -60,12 +55,6 @@ const Detail = ({ match }) => {
         }
 
 
-        // const describes = []
-        // for (const describe of product.describe) {
-        //     describes.push(<li key={describe.id}> {describe.context}</li>)
-        // }
-
-
         const details = []
         for (const detail of product.details) {
             details.push(
@@ -73,14 +62,7 @@ const Detail = ({ match }) => {
             )
         }
 
-        // const select = (product_detail.id !== 0) ? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} /> : <br></br>;
-        // const select = <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} />;
         const sold = (product.sold < 1000) ? `${product.sold}` : `${(product.sold / 1000).toFixed(1)}k`
-        const descriptions = product.description.map(des => <div key={des.id} className="descriptions">
-            {des.text ? <p className="description_text">{des.text}</p> : <div></div>}
-            {(des.img) ? <img className="description_img" src={`${urls}${des.img}`} alt="" /> : <div></div>}
-        </div>)
-        // descriptions.push(<div key={0} className="space_button"></div>)
 
         return (
             <div>
@@ -88,7 +70,6 @@ const Detail = ({ match }) => {
                     <div className="detail_left">
                         <Avatar id={id} product={product} setProduct={setProduct} />
                         <div className="imgs_detail images_upload">
-                            {/* {imgs} */}
                             <ListImg product={product} setProduct={setProduct} />
                         </div>
                     </div>
@@ -104,21 +85,17 @@ const Detail = ({ match }) => {
                         <div className="describe_detail">
                             <p>Mô tả sản phẩm</p>
                             <ul className="describes_details">
-                                {/* {describes} */}
                                 <Describes product={product} setProduct={setProduct} />
                             </ul>
                         </div>
-
-                        {/* <p className='mess_detail'>{mess}</p> */}
                         {details}
                         <br></br>
-                        {/* {select} */}
                     </div>
                 </div>
 
                 <div className="detail_description">
                     <p className="check_descriptions">Chi tiết sản phẩm</p>
-                    {descriptions}
+                    {/* {descriptions} */}
                     <Description product={product} setProduct={setProduct} />
                     <div key={0} className="space_button"></div>
                 </div>

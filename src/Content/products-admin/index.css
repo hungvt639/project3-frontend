@@ -258,3 +258,79 @@
 .amount-add-input {
     width: 100% !important;
 }
+.description_inputs {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.description_form {
+}
+.description_inputs_texts {
+    display: flex;
+}
+.description_inputs_text {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    width: 100%;
+    height: 5em;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+.description_inputs_text:hover,
+.description_inputs_text:focus {
+    border-color: #ff6600;
+}
+.product_admin_description_i {
+}
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: flex;
+    justify-content: center;
+    background-color: #f0f2f5;
+    border: 1px dashed #d9d9d9;
+    color: #060606;
+    height: 120px;
+    width: 120px;
+    border-radius: 3px;
+}
+.custom-file-upload:hover {
+    border-color: #ff6600;
+    color: #ff6600;
+}
+.description_inputs_image {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+.description_inputs_img {
+    width: inherit;
+    object-fit: cover;
+}
+.description_form_submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 20px 0px;
+}
+.description_form_submit input {
+    border-radius: 2px;
+    border: 1px solid #ff6600;
+    background-color: #ff6600;
+    color: white;
+    padding: 5px 15px;
+}
+.description_inputs_x {
+    border: none;
+    background: none;
+    height: fit-content;
+    margin: 2px 0px 0px 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.description_inputs_x:hover {
+    color: #ff6600;
+}

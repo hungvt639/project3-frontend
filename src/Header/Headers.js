@@ -22,7 +22,7 @@ const Headers = ({ myuser, setUser, cart, setCart }) => {
                 <Header className="header" >
                     <div className="goHome" onClick={goHome}>{React.createElement(HomeFilled, {
                         className: 'trigger',
-                        style: { marginLeft: "24px", marginTop: '10px', color: "#fff", fontSize: '40px', lineHeight: 1 },
+                        // style: { marginLeft: "24px", marginTop: '10px', color: "#fff", fontSize: '40px', lineHeight: 1 },
 
                     })} Trang chủ
                     </div>

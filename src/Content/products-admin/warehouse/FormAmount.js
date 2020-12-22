@@ -69,8 +69,8 @@ const FormAmount = ({ details, setShowAsAmount, setDetails, valueAsAmount }) => 
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                     <Button className="change_profile_submit" type="primary" htmlType="submit">
-                        Thêm mới
-                        </Button>
+                        {valueAsAmount.is_plus ? "Thêm" : "Bớt"}
+                    </Button>
                 </Form.Item>
             </Form>
         </>

@@ -15,9 +15,9 @@ const HeaderAdmin = ({ toggle, collapsed, myuser, setUser }) => {
 
     return (
         <Header className="header" >
-            <div>{React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            <div className="triggers">{React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                 className: 'trigger',
-                style: { marginTop: '10px', marginLeft: '24px', fontSize: '40px', lineHeight: 1 },
+                // style: { marginTop: '10px', marginLeft: '24px', fontSize: '40px', lineHeight: 1 },
                 onClick: toggle,
             })}</div>
             <div className="head_user"><AvatarHeaderAdmin myuser={myuser} setUser={setUser} /></div>

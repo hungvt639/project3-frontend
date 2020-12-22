@@ -60,8 +60,8 @@ const deleteImage = (id) => {
 }
 
 
-const createDescription = (data) => {
-    return Client(true).post(`${resource}/description/`, data);
+const deleteDescription = (id) => {
+    return Client(true).delete(`${resource}/description/${id}/`);
 };
 export default {
     getProducts,
@@ -86,5 +86,5 @@ export default {
 
     deleteImage,
 
-    createDescription,
+    deleteDescription,
 };

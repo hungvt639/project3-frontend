@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import 'antd/dist/antd.css';
-import Siders from "./Sider/Siders";
 import SiderAdmin from "./Sider/SiderAdmin";
 import Headers from "./Header/Headers";
 import HeaderAdmin from "./Header/HeaderAdmin";

@@ -19,7 +19,7 @@
 }
 .header {
     padding: 0px;
-    background-color: #ff6000;
+    background-color: #585858;
     display: flex;
 }
 
@@ -39,29 +39,31 @@
     font-size: 18px;
 }
 .cart_header {
-    border: 2px solid red;
-    background-color: white;
-    color: red;
+    border: 1px solid white;
+    background-color: #909090;
+    color: white;
     font-weight: 5;
     font-size: 20px !important;
 }
 .cart_header:hover {
-    background-color: #ffaa00;
+    background-color: #b1b1b1;
 }
 .badge_header {
-    background-color: #ff6000;
+    background-color: #585858;
 }
 .badge_header sup {
-    background-color: #ff6000;
+    background-color: #ffffff;
+    color: #ff0000;
+    font-weight: 600;
 }
 .badge_header sup:hover {
-    background-color: #ff0000;
+    background-color: #e2e2e2;
 }
 .header_user {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: #ff6000;
+    background-color: #585858;
 }
 .head_space {
     max-width: 1250px;
@@ -71,4 +73,19 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
+}
+.trigger {
+    color: white;
+    font-size: 30px;
+}
+.triggers {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.descriptions1 {
+    width: 100%;
+}
+.descriptions button {
+    height: fit-content;
 }

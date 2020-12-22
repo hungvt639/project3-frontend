@@ -3,20 +3,21 @@
 }
 
 .sider {
-    background-color: #ff0000;
+    background-color: rgb(57, 59, 63);
 }
 .menu {
-    background-color: #ff6000;
-    padding: 10px 0px;
-    margin: 20px 0px;
+    /* background-color: #ff6000; */
+    background-color: rgb(57, 59, 63);
+    margin: 0px 0px;
     font-size: 20px;
     border-right: 0;
-    padding: 0px 0px !important;
+    padding: 0px 15px;
     /* text-align: center; */
 }
 .menu_item:hover {
     color: #ffffff;
-    border: 2px solid #ffffff;
+    background-color: #636363;
+    /* border: 1px solid #ffffff; */
     border-radius: 5px;
 }
 
@@ -29,6 +30,7 @@
 .menu_item {
     padding: 0px 0px !important;
     color: white;
+    margin-bottom: 10px !important;
 }
 
 .menu_item::after {
@@ -57,4 +59,20 @@
     font-size: 30px;
     text-align: center;
     text-transform: uppercase;
+}
+.logo {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    width: 80px;
+}
+.logo span {
+    font-size: 22px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+.ant-layout-sider-collapsed .logo span {
+    display: none;
 }
