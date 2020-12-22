@@ -28,7 +28,7 @@ const ContentAdmin = ({ myuser, setUser }) => {
                 <Route exact path="/home" component={HomepageAdmin} />
                 <Route exact path="/home/profile" component={() => <Profile myuser={myuser} setUser={setUser} />} />
                 <Route exact path="/home/detail/:id" component={Detail} />
-                <Route exact path="/home/products" component={() => <ProductsAdmin myuser={myuser} setUser={setUser} />} />
+                <Route path="/home/products" component={ProductsAdmin} />
             </Switch>
         </Content>
         // </div>
