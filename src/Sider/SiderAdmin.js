@@ -8,11 +8,24 @@ import {
 } from '@ant-design/icons';
 import logo1 from '../image/logo1.png'
 const { Sider } = Layout;
-const SiderAdmin = ({ collapsed }) => {
+const SiderAdmin = ({ url, collapsed }) => {
     const history = useHistory()
-    // const key = localStorage.getItem('selectkey');
-    // const getDefaultSelectKey = key ? key : '1'
-    const getDefaultSelectKey = "1"
+    // console.log('props1', url)
+    var getDefaultSelectKey = "1"
+
+    const keys = {
+        "/home": "1",
+        "/home/products": "2",
+        "/home/products/type": "2",
+        "/home/products/warehouse": "2",
+        "/home/products/warehouse-history": "2",
+        "/home/orders": "3"
+
+    }
+    if (url in keys) {
+        getDefaultSelectKey = keys[url]
+    }
+
 
     return (
         <Sider className="sider" trigger={null} collapsible collapsed={collapsed}
@@ -30,13 +43,13 @@ const SiderAdmin = ({ collapsed }) => {
                 <img src={logo1} alt="Logo" /> <span>Shop Online</span>
             </div>
             <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey]}>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '1') }} key="1" icon={<HomeOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/home') }} key="1" icon={<HomeOutlined className="icon_sider" />}>
                     Trang chủ
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home/products'); localStorage.setItem('selectkey', '2') }} key="2" icon={<FolderOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/home/products') }} key="2" icon={<FolderOutlined className="icon_sider" />}>
                     Sản phẩm
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home/orders'); localStorage.setItem('selectkey', '3') }} key="3" icon={<OrderedListOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/home/orders') }} key="3" icon={<OrderedListOutlined className="icon_sider" />}>
                     Đơn hàng
                 </Menu.Item>
                 {/* <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '3') }} key="4" icon={<UploadOutlined className="icon_sider" />}>

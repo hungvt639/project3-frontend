@@ -5,7 +5,7 @@ import errorNotification from '../general/errorNotification';
 import './index.css';
 import 'antd/dist/antd.css';
 import getFactory from '../request/index';
-import IndexProduct from './product/IndexProduct';
+import IndexProductAdmin from './product/IndexProductAdmin';
 import { Empty } from 'antd'
 const HomepageAdmin = () => {
     // localStorage.removeItem('ordercart');
@@ -49,12 +49,12 @@ const HomepageAdmin = () => {
     const types = (type.length) ? (type.map(t => <p className={(t.id === classfortype) ? "type_select" : ""} onClick={() => setTyperSearch(t)} key={t.id}>{t.type}</p>)) : <div></div>
     const items = []
     for (const i of products) {
-        items.push(<IndexProduct key={i.id} product={i} />);
+        items.push(<IndexProductAdmin key={i.id} product={i} />);
     }
     if (items.length === 0) items.push(<Empty key={0} />)
 
     return (
-        <div className="home_list_product">
+        <div className="home_list_product home_list_product_admin">
             <div className="list_type">
                 {types}
             </div>

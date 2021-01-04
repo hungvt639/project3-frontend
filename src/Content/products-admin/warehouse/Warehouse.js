@@ -7,6 +7,7 @@ import errorNotification from '../../../general/errorNotification';
 import WarehouseFormEdit from './WarehouseFormEdit';
 import WarehouseForm from './WarehouseForm';
 import FormAmount from './FormAmount'
+import { Fragment } from 'react';
 const Warehouse = () => {
     const API = getFactory('product');
     const [limit, setLimit] = useState(5)
@@ -78,40 +79,6 @@ const Warehouse = () => {
     }
 
 
-    const tableProducts = details.data ? details.data.map(t => <>
-        <tr key={t.id}>
-            <td>{t.product.name}</td>
-            {/* <td style={{ textAlign: "center" }}><Image width={50} src={`${urls}${t.product.avatar}`} /></td> */}
-            <td>{t.product.type.type}</td>
-            <td>{t.size}</td>
-            <td>{t.color}</td>
-            <td><p id="price">
-                {t.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
-            </p></td>
-            <td>{t.amount}</td>
-            <td className="products-admin-table-td1">
-                <Popover className="products-admin-table-td1-hover" trigger="hover" content="Bớt số lượng" placement="topRight">
-                    <p onClick={() => { setValueAsAmount({ "is_plus": false, "detail": t }); setShowAsAmount(true) }} style={{ color: "#808080", borderColor: "#808080" }}><MinusSquareOutlined /></p>
-                </Popover >
-                <Popover className="products-admin-table-td1-hover" trigger="hover" content="Thêm số lượng" placement="topLeft">
-                    <p onClick={() => { setValueAsAmount({ "is_plus": true, "detail": t }); setShowAsAmount(true) }} style={{ color: "#808080", borderColor: "#808080" }}><PlusSquareOutlined /></p>
-
-                </Popover>
-            </td>
-            <td className="products-admin-table-td">
-                <p onClick={() => { setShowEdit(true); setValues(t) }} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
-                <Popconfirm
-                    placement="topRight"
-                    title="Xóa sản phẩm?"
-                    onConfirm={() => deleteDetail(t.id)}
-                    okText="Có"
-                    cancelText="Không"
-                ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
-            </td>
-        </tr>
-    </>) : []
-
-
     const pagination = Object.keys(details).length ? <Pagination className="pagination"
         showSizeChanger
         pageSize={limit}
@@ -179,20 +146,20 @@ const Warehouse = () => {
                             <tr>
                                 <th>Tên mặt hàng</th>
                                 {/* <th>Ảnh</th> */}
-                                <th>Nhóm</th>
-                                <th>Size</th>
-                                <th>Màu sắc</th>
-                                <th>Giá bán</th>
-                                <th>Số lượng</th>
-                                <th>Chỉnh sửa</th>
+                                <th className="textAlignCenter">Nhóm</th>
+                                <th className="textAlignCenter">Size</th>
+                                <th className="textAlignCenter">Màu sắc</th>
+                                <th className="textAlignCenter">Giá bán</th>
+                                <th className="textAlignCenter">Số lượng</th>
+                                <th className="textAlignCenter">Chỉnh sửa</th>
                                 <th className="products-admin-table-action">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {tableProducts}
+                            <TableWarehouses details={details} setValueAsAmount={setValueAsAmount} setShowAsAmount={setShowAsAmount} setShowEdit={setShowEdit} setValues={setValues} deleteDetail={deleteDetail} />
                         </tbody>
                     </table>
-                    {tableProducts.length === 0 ? <Empty /> : ""}
+                    {details.data ? details.data.length ? "" : <Empty /> : <Empty />}
                     <div className="pagination-div">
                         {pagination}
                     </div>
@@ -231,3 +198,44 @@ const Warehouse = () => {
     )
 }
 export default Warehouse;
+
+const TableWarehouses = React.memo(({ details, setValueAsAmount, setShowAsAmount, setShowEdit, setValues, deleteDetail }) => {
+    return (
+        <Fragment>
+            {details.data ? details.data.map(t => {
+                return (
+                    <tr key={t.id}>
+                        <td>{t.product.name}</td>
+                        {/* <td style={{ textAlign: "center" }}><Image width={50} src={`${urls}${t.product.avatar}`} /></td> */}
+                        <td className="textAlignCenter">{t.product.type.type}</td>
+                        <td className="textAlignCenter">{t.size}</td>
+                        <td className="textAlignCenter">{t.color}</td>
+                        <td className="textAlignCenter"><p id="price">
+                            {t.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                        </p></td>
+                        <td className="textAlignCenter">{t.amount}</td>
+                        <td className="products-admin-table-td1">
+                            <Popover className="products-admin-table-td1-hover" trigger="hover" content="Bớt số lượng" placement="topRight">
+                                <p onClick={() => { setValueAsAmount({ "is_plus": false, "detail": t }); setShowAsAmount(true) }} style={{ color: "#808080", borderColor: "#808080" }}><MinusSquareOutlined /></p>
+                            </Popover >
+                            <Popover className="products-admin-table-td1-hover" trigger="hover" content="Thêm số lượng" placement="topLeft">
+                                <p onClick={() => { setValueAsAmount({ "is_plus": true, "detail": t }); setShowAsAmount(true) }} style={{ color: "#808080", borderColor: "#808080" }}><PlusSquareOutlined /></p>
+
+                            </Popover>
+                        </td>
+                        <td className="products-admin-table-td">
+                            <p onClick={() => { setShowEdit(true); setValues(t) }} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
+                            <Popconfirm
+                                placement="topRight"
+                                title="Xóa sản phẩm?"
+                                onConfirm={() => deleteDetail(t.id)}
+                                okText="Có"
+                                cancelText="Không"
+                            ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
+                        </td>
+                    </tr>
+                )
+            }) : <Fragment />}
+        </Fragment>
+    )
+})

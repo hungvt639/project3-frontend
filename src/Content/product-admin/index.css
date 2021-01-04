@@ -121,3 +121,7 @@
 #rcDialogTitle0 {
     display: none;
 }
+.detail1 {
+    max-width: 1280px;
+    margin: auto;
+}

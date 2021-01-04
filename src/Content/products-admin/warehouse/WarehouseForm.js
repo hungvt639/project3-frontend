@@ -62,7 +62,7 @@ const WarehouseForm = ({ types, setShowCreate, number, setNumber }) => {
                     </Select>
                 </Form.Item>
 
-                <Form.Item name="product" label="Tên sản phẩm" rules={[{ required: true, message: "Vui lòng chọn tên sản phẩm" }]} initialValue={products.length ? products[0].id : null}>
+                <Form.Item name="product" label="Tên sản phẩm" rules={[{ required: true, message: "Vui lòng chọn tên sản phẩm" }]} >
                     <Select
                         placeholder="Chọn tên sản phẩm"
                         onChange={onGenderChange}

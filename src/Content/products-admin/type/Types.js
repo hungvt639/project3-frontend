@@ -6,6 +6,7 @@ import Notification from '../../../general/Notification';
 import errorNotification from '../../../general/errorNotification';
 import FormType from './FormType';
 import FormTypeEdit from './FormTypeEdit';
+import { Fragment } from 'react';
 const Types = () => {
     const API = getFactory('product');
     const [limit, setLimit] = useState(5)
@@ -44,25 +45,12 @@ const Types = () => {
     const onShowSizeChange = (current, pageSize) => {
         setLimit(pageSize)
     }
+
     const onChange = (page, limit) => {
         setPage(page)
         setLimit(limit)
     }
-    const tableTypes = types.data ? types.data.map(t => <>
-        <tr key={t.id}>
-            <td >{t.type}</td>
-            <td className="products-admin-table-td">
-                <p onClick={() => { setShowEdit(true); setValues(t) }} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
-                <Popconfirm
-                    placement="topRight"
-                    title="Tất cả các sản phẩm thuộc loại này đều sẽ dừng bán! Bạn có muốn tiếp tục xóa?"
-                    onConfirm={() => deleteType(t.id)}
-                    okText="Có"
-                    cancelText="Không"
-                ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
-            </td>
-        </tr>
-    </>) : []
+
     const pagination = Object.keys(types).length ? <Pagination className="pagination"
         showSizeChanger
         pageSize={limit}
@@ -98,11 +86,10 @@ const Types = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {tableTypes}
+                            <TableTypes types={types} setShowEdit={setShowEdit} setValues={setValues} deleteType={deleteType} />
                         </tbody>
-
                     </table>
-                    {tableTypes.length === 0 ? <Empty /> : ""}
+                    {types.data ? types.data.length ? "" : <Empty /> : <Empty />}
                     <div className="pagination-div">
                         {pagination}
                     </div>
@@ -135,3 +122,27 @@ const Types = () => {
     )
 }
 export default Types;
+
+const TableTypes = React.memo(({ types, setShowEdit, setValues, deleteType }) => {
+    return (
+        <Fragment>
+            {types.data ? types.data.map(t => {
+                return (
+                    <tr key={t.id}>
+                        <td >{t.type}</td>
+                        <td className="products-admin-table-td">
+                            <p onClick={() => { setShowEdit(true); setValues(t) }} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
+                            <Popconfirm
+                                placement="topRight"
+                                title="Tất cả các sản phẩm thuộc loại này đều sẽ dừng bán! Bạn có muốn tiếp tục xóa?"
+                                onConfirm={() => deleteType(t.id)}
+                                okText="Có"
+                                cancelText="Không"
+                            ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
+                        </td>
+                    </tr>
+                )
+            }) : <Fragment />}
+        </Fragment>
+    )
+})

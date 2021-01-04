@@ -7,6 +7,10 @@ import errorNotification from '../../../general/errorNotification';
 import urls from '../../../const';
 import FormCreateProduct from './FormCreateProduct';
 import { useHistory } from 'react-router-dom';
+import { Fragment } from 'react';
+
+
+
 const Products = () => {
     const API = getFactory('product');
     const [limit, setLimit] = useState(5)
@@ -73,31 +77,6 @@ const Products = () => {
     }
 
 
-    const tableProducts = products.data ? products.data.map(t => <>
-        <tr key={t.id}>
-            <td>{t.name}</td>
-            <td style={{ textAlign: "center" }}><Image width={50} src={`${urls}${t.avatar}`} /></td>
-            <td>{t.type.type}</td>
-            <td>{t.sold}</td>
-            <td>{(t.from_saleprice !== t.to_saleprice) ?
-                <p id="price">
-                    {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
-                {t.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
-                </p> : <p id="price">
-                    {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
-                </p>}</td>
-            <td className="products-admin-table-td">
-                <p onClick={() => history.push(`/home/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
-                <Popconfirm
-                    placement="topRight"
-                    title="Xóa sản phẩm?"
-                    onConfirm={() => deleteProduct(t.id)}
-                    okText="Có"
-                    cancelText="Không"
-                ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
-            </td>
-        </tr>
-    </>) : []
 
 
     const pagination = Object.keys(products).length ? <Pagination className="pagination"
@@ -110,7 +89,6 @@ const Products = () => {
         onChange={onChange}
         total={products.total}
     /> : <Pagination className="pagination" current={page} onChange={onChange} showSizeChanger disabled total={1} />
-
 
 
     const searchProduct = () => {
@@ -149,18 +127,18 @@ const Products = () => {
                         <thead className="products-admin-table-1">
                             <tr>
                                 <th>Tên mặt hàng</th>
-                                <th>Ảnh</th>
-                                <th>Nhóm</th>
-                                <th>Đã bán</th>
-                                <th>Giá</th>
+                                <th className="textAlignCenter">Ảnh</th>
+                                <th className="textAlignCenter">Nhóm</th>
+                                <th className="textAlignCenter">Đã bán</th>
+                                <th className="textAlignCenter">Giá</th>
                                 <th className="products-admin-table-action">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {tableProducts}
+                            <TableProducts history={history} products={products} deleteProduct={deleteProduct} />
                         </tbody>
                     </table>
-                    {tableProducts.length === 0 ? <Empty /> : ""}
+                    {products.data ? products.data.length ? "" : <Empty /> : <Empty />}
                     <div className="pagination-div">
                         {pagination}
                     </div>
@@ -181,3 +159,41 @@ const Products = () => {
     )
 }
 export default Products;
+
+
+
+const TableProducts = React.memo(({ history, products, deleteProduct }) => {
+    return (
+        <Fragment>
+            {products.data ? products.data.map((t) => {
+                return (
+                    <tr key={t.id}>
+                        <td>{t.name}</td>
+                        <td className="textAlignCenter"><Image width={50} src={`${urls}${t.avatar}`} /></td>
+                        <td className="textAlignCenter">{t.type.type}</td>
+                        <td className="textAlignCenter">{t.sold}</td>
+                        <td className="textAlignCenter">{(t.from_saleprice !== t.to_saleprice) ?
+                            <p id="price">
+                                {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
+                         {t.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                            </p> : <p id="price">
+                                {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                            </p>}</td>
+                        <td className="products-admin-table-td">
+                            <p onClick={() => history.push(`/home/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
+                            <Popconfirm
+                                placement="topRight"
+                                title="Xóa sản phẩm?"
+                                onConfirm={() => deleteProduct(t.id)}
+                                okText="Có"
+                                cancelText="Không"
+                            ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
+                        </td>
+                    </tr>
+                )
+            })
+                :
+                <Fragment></Fragment>}
+        </Fragment>
+    )
+})

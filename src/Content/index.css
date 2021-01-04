@@ -3,6 +3,10 @@
     display: flex;
     flex-direction: column;
 }
+.home_list_product_admin {
+    max-width: 1620px;
+    margin: auto;
+}
 .items {
     /* overflow: auto; */
     display: flex;
@@ -70,6 +74,9 @@
 }
 .index_product:hover {
     border: 1px solid #ff6600;
+}
+.index_product_admin {
+    margin: 10px;
 }
 .img_product {
     width: 240px;

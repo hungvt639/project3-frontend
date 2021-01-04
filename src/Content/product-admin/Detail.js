@@ -65,7 +65,7 @@ const Detail = ({ match }) => {
         const sold = (product.sold < 1000) ? `${product.sold}` : `${(product.sold / 1000).toFixed(1)}k`
 
         return (
-            <div>
+            <div className="detail1">
                 <div className="detail">
                     <div className="detail_left">
                         <Avatar id={id} product={product} setProduct={setProduct} />

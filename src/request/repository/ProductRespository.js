@@ -53,7 +53,9 @@ const editType = (id, data) => {
 const createAmount = (data) => {
     return Client(true).post(`${resource}/amount/`, data)
 }
-
+const getAmount = (search) => {
+    return Client(true).get(`${resource}/amount/${search}`)
+}
 
 const deleteImage = (id) => {
     return Client(true).delete(`${resource}/image/${id}/`)
@@ -83,6 +85,7 @@ export default {
     editType,
 
     createAmount,
+    getAmount,
 
     deleteImage,
 

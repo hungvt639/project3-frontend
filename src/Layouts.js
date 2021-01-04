@@ -9,9 +9,10 @@ import Contents from "./Content/Contents";
 import ContentAdmin from "./Content/ContentAdmin";
 import { Layout } from 'antd';
 import getFactory from './request/index';
-const Layouts = () => {
+const Layouts = (props) => {
+    // console.log("props", props)
     const [cart, setCart] = useState([]);
-    const [search, setSearch] = useState({});
+    // const [search, setSearch] = useState({});
     const [collapsed, setCollapsed] = useState(true);
     const toggle = () => {
         setCollapsed(!collapsed);
@@ -28,7 +29,7 @@ const Layouts = () => {
                 setUser(res)
             }
             catch (e) {
-                setUser(0)
+                // setUser(0)
             }
         }
         getProfile()
@@ -38,7 +39,7 @@ const Layouts = () => {
     if (myuser && myuser.groups[0].name === "admin") {
         return (
             <Layout>
-                <SiderAdmin collapsed={collapsed} />
+                <SiderAdmin url={props.location.pathname} collapsed={collapsed} />
                 <Layout className="site-layout">
                     <HeaderAdmin toggle={toggle} collapsed={collapsed} myuser={myuser} setUser={setUser} />
                     <ContentAdmin myuser={myuser} setUser={setUser} />
