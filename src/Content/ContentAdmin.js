@@ -3,7 +3,7 @@ import './index.css';
 import './general.scss'
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-import HomepageAdmin from './HomeAdmin';
+import HomepageAdmin from './home/HomeAdmin';
 import Profile from './user/profile';
 import Detail from './product-admin/Detail'
 import { Route, Switch } from 'react-router-dom';

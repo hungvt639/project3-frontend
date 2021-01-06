@@ -8,7 +8,7 @@ import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import { Redirect } from 'react-router-dom';
 import Description from './Description';
-import IndexProduct from '../product/IndexProduct';
+import IndexProduct from '../home/IndexProduct';
 
 const Detail = ({ myuser, cart, setCart }) => {
 

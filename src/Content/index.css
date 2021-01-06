@@ -8,6 +8,7 @@
     margin: auto;
 }
 .items {
+    padding-top: 10px;
     /* overflow: auto; */
     display: flex;
     /* justify-content: center; */

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import getFactory from '../../../request/index';
-import { Empty, Popconfirm, Pagination, Drawer, Modal, Popover } from 'antd';
-import { PlusCircleOutlined, SearchOutlined, DeleteOutlined, EditOutlined, PlusSquareOutlined, MinusCircleOutlined } from '@ant-design/icons';
-import Notification from '../../../general/Notification';
-import errorNotification from '../../../general/errorNotification';
-import FormAmount from './FormAmount';
+import { Empty, Pagination } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+// import Notification from '../../../general/Notification';
+// import errorNotification from '../../../general/errorNotification';
+// import FormAmount from './FormAmount';
 import { Fragment } from 'react';
 // import WarehouseFormEdit from './WarehouseFormEdit';
 // import WarehouseForm from './WarehouseForm';
@@ -16,18 +16,18 @@ const WarehouseHistory = () => {
         page: 1,
         limit: 5
     })
-    const [showCreate, setShowCreate] = useState(false)
+    // const [showCreate, setShowCreate] = useState(false)
     const [amount, setAmount] = useState({})
     const [search, setSearch] = useState("")
     var [searchInput, setSearchInput] = useState("");
     var [searchSelect, setSearchSelect] = useState("0");
     const [products, setProducts] = useState([])
     const [types, setTypes] = useState([])
-    const [number, setNumber] = useState(0)
-    const [showEdit, setShowEdit] = useState(false)
-    const [valueAsAmount, setValueAsAmount] = useState({ "is_plus": true })
-    const [showAsAmountm, setShowAsAmount] = useState(false)
-    var [values, setValues] = useState({})
+    // const [number, setNumber] = useState(0)
+    // const [showEdit, setShowEdit] = useState(false)
+    // const [valueAsAmount, setValueAsAmount] = useState({ "is_plus": true })
+    // const [showAsAmountm, setShowAsAmount] = useState(false)
+    // var [values, setValues] = useState({})
 
 
     useEffect(() => {
@@ -56,7 +56,7 @@ const WarehouseHistory = () => {
             }
         }
         getDetails()
-    }, [page, search, number, API])
+    }, [page, search, API])
 
 
     const onShowSizeChange = (current, pageSize) => {
@@ -114,15 +114,15 @@ const WarehouseHistory = () => {
         else getProduct(`?type=${val}`)
     }
 
-    const createAmounts = (val) => {
-        setValueAsAmount({ "is_plus": val }); setShowCreate(true)
-    }
+    // const createAmounts = (val) => {
+    //     setValueAsAmount({ "is_plus": val }); setShowCreate(true)
+    // }
 
     return (
         <div className="products-admin-action">
             <div className="products-admin-actions">
-                <button onClick={() => types.length ? createAmounts(true) : errorNotification("Không có nhóm sản phẩm nào, không thế thao tác!")} className="products-admin-actions-add"><PlusCircleOutlined /> Thêm</button>
-                <button onClick={() => types.length ? createAmounts(false) : errorNotification("Không có nhóm sản phẩm nào, không thế thao tác!")} className="products-admin-actions-add"><MinusCircleOutlined /> Bớt</button>
+                {/* <button onClick={() => types.length ? createAmounts(true) : errorNotification("Không có nhóm sản phẩm nào, không thế thao tác!")} className="products-admin-actions-add"><PlusCircleOutlined /> Thêm</button> */}
+                {/* <button onClick={() => types.length ? createAmounts(false) : errorNotification("Không có nhóm sản phẩm nào, không thế thao tác!")} className="products-admin-actions-add"><MinusCircleOutlined /> Bớt</button> */}
                 <button onClick={searchProduct} ><SearchOutlined /></button>
                 <select onChange={(val) => onChangeInputSearch(val.target.value)}>
                     <option value={0}>Tất cả</option>
@@ -140,12 +140,12 @@ const WarehouseHistory = () => {
                             <tr>
                                 <th className="textAlignCenter">Thao tác</th>
                                 <th className="textAlignCenter">Số lượng</th>
+                                <th className="textAlignCenter">Kho</th>
                                 <th>Tên mặt hàng</th>
                                 <th className="textAlignCenter">Nhóm</th>
                                 <th className="textAlignCenter">Size</th>
                                 <th className="textAlignCenter">Màu sắc</th>
                                 <th className="textAlignCenter">Giá</th>
-                                <th className="textAlignCenter">Kho</th>
                                 <th className="textAlignCenter">Ghi chú</th>
                             </tr>
                         </thead>
@@ -160,7 +160,7 @@ const WarehouseHistory = () => {
                     <div style={{ height: "250px" }}></div>
                 </div>
             </div>
-            <Drawer
+            {/* <Drawer
                 title={valueAsAmount.is_plus ? "Thêm sản phẩm vào kho!" : "Bớt sản phẩm trong kho!"}
                 placement="right"
                 width={600}
@@ -169,7 +169,7 @@ const WarehouseHistory = () => {
                 visible={showCreate}
             >
                 <FormAmount types={types} amount={amount} setShowAsAmount={setShowAsAmount} setAmount={setAmount} valueAsAmount={valueAsAmount} />
-            </Drawer>
+            </Drawer> */}
         </div>
     )
 }
@@ -183,6 +183,7 @@ const TableWarehouses = React.memo(({ amount }) => {
                     <tr key={t.id}>
                         <td className="textAlignCenter" ><p className={t.is_plus ? "amount_plus" : "amount_minus"}>{t.is_plus ? "Thêm" : "Bớt"}</p></td>
                         <td className="textAlignCenter">{t.amount}</td>
+                        <td className="textAlignCenter">{t.detail.amount}</td>
                         <td>{t.detail.product.name}</td>
                         {/* <td style={{ textAlign: "center" }}><Image width={50} src={`${urls}${t.product.avatar}`} /></td> */}
                         <td className="textAlignCenter">{t.detail.product.type.type}</td>
@@ -191,7 +192,6 @@ const TableWarehouses = React.memo(({ amount }) => {
                         <td className="textAlignCenter"><p id="price">
                             {t.price.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
                         </p></td>
-                        <td className="textAlignCenter">{t.detail.amount}</td>
                         <td className="textAlignCenter">{t.note}</td>
                     </tr>
                 )

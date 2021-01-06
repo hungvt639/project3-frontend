@@ -108,7 +108,6 @@ const Products = () => {
         setSearchSelect(val);
     }
 
-
     return (
         <div className="products-admin-action">
             <div className="products-admin-actions">

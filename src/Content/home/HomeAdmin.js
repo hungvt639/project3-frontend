@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import errorNotification from '../general/errorNotification';
-import './index.css';
+import errorNotification from '../../general/errorNotification';
+// import './index.css';
 import 'antd/dist/antd.css';
-import getFactory from '../request/index';
-import IndexProductAdmin from './product/IndexProductAdmin';
+import getFactory from '../../request/index';
+import IndexProductAdmin from './IndexProductAdmin';
 import { Empty } from 'antd'
 const HomepageAdmin = () => {
     // localStorage.removeItem('ordercart');
@@ -13,17 +13,23 @@ const HomepageAdmin = () => {
     const [products, setProduct] = useState([]);
     const API = getFactory('product');
     const [type, setType] = useState([])
+    const [search, setSearch] = useState("")
+    const [searchValues, setSearchValues] = useState({})
 
     useEffect(() => {
         const getproduct = async () => {
             try {
-                const res = await API.getProducts("");
+                const res = await API.getProducts(search);
                 setProduct(res.data)
             }
             catch (e) {
                 errorNotification("Lỗi mạng")
             }
         }
+        getproduct()
+    }, [search])
+
+    useEffect(() => {
         const getTypes = async () => {
             const API = getFactory('product');
             try {
@@ -33,9 +39,11 @@ const HomepageAdmin = () => {
                 setType([])
             }
         }
-        getproduct()
         getTypes()
     }, [])
+
+
+
     const setTyperSearch = async (item) => {
         const data = `?type=${item.id}`
         try {
