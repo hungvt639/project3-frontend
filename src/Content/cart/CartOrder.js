@@ -23,7 +23,7 @@ const CartOrder = ({ cart, setCart, cartOrder, setCartOrder, cartProduct }) => {
     const order_buy = () => {
         if (cartOrder.length) {
             localStorage.setItem('checkout', JSON.stringify(cartOrder))
-            history.push('/home/checkout')
+            history.push('/checkout')
         } else {
             errorNotification("Vui lòng chọn sản phẩm trước khi mua hàng")
         }

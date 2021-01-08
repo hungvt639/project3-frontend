@@ -179,7 +179,7 @@ const TableProducts = React.memo(({ history, products, deleteProduct }) => {
                                 {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
                             </p>}</td>
                         <td className="products-admin-table-td">
-                            <p onClick={() => history.push(`/home/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
+                            <p onClick={() => history.push(`/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
                             <Popconfirm
                                 placement="topRight"
                                 title="Xóa sản phẩm?"

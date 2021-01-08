@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import getFactory from '../../request/index';
+import React, { useState } from 'react';
+// import getFactory from '../../request/index';
 import { SearchOutlined } from '@ant-design/icons';
 import errorNotification from '../../general/errorNotification';
 
@@ -15,31 +15,8 @@ const HomeSearch = ({ search, setSearch, type }) => {
         to: ""
     })
 
-    const API = getFactory('product');
+    // const API = getFactory('product');
 
-    // useEffect(() => {
-
-    //     const getTypes = async () => {
-    //         const API = getFactory('product');
-    //         try {
-    //             const res = await API.getType("")
-    //             setType(res.data)
-    //         } catch {
-    //             setType([])
-    //         }
-    //     }
-    //     getTypes()
-    // }, [])
-
-    // console.log(type)
-    // const onChangeTypeSearch = (val) => {
-    //     console.log(val)
-    //     setSearchValues({ ...searchValues, type: val })
-    // }
-    // const onChangeInputSearch = (val) => {
-    //     console.log(val)
-    //     setSearchValues({ ...searchValues, input: val })
-    // }
     const searchProduct = () => {
         console.log(searchValues)
         if (searchValues.from && searchValues.to) {

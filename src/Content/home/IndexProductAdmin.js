@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 const IndexProductAdmin = ({ product }) => {
     const history = useHistory()
     const onclick = () => {
-        history.push(`/home/detail/${product.id}`)
+        history.push(`/detail/${product.id}`)
     }
     const sale = (product.from_saleprice === product.to_saleprice) ? <p className="price_product">
         {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>

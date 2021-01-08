@@ -14,12 +14,12 @@ const SiderAdmin = ({ url, collapsed }) => {
     var getDefaultSelectKey = "1"
 
     const keys = {
-        "/home": "1",
-        "/home/products": "2",
-        "/home/products/type": "2",
-        "/home/products/warehouse": "2",
-        "/home/products/warehouse-history": "2",
-        "/home/orders": "3"
+        "/": "1",
+        "/products": "2",
+        "/products/type": "2",
+        "/products/warehouse": "2",
+        "/products/warehouse-history": "2",
+        "/orders": "3"
 
     }
     if (url in keys) {
@@ -43,16 +43,16 @@ const SiderAdmin = ({ url, collapsed }) => {
                 <img src={logo1} alt="Logo" /> <span>Shop Online</span>
             </div>
             <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey]}>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home') }} key="1" icon={<HomeOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/') }} key="1" icon={<HomeOutlined className="icon_sider" />}>
                     Trang chủ
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home/products') }} key="2" icon={<FolderOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/products') }} key="2" icon={<FolderOutlined className="icon_sider" />}>
                     Sản phẩm
                 </Menu.Item>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home/orders') }} key="3" icon={<OrderedListOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/orders') }} key="3" icon={<OrderedListOutlined className="icon_sider" />}>
                     Đơn hàng
                 </Menu.Item>
-                {/* <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '3') }} key="4" icon={<UploadOutlined className="icon_sider" />}>
+                {/* <Menu.Item className="menu_item" onClick={() => { history.push('/'); localStorage.setItem('selectkey', '3') }} key="4" icon={<UploadOutlined className="icon_sider" />}>
                     nav 4
                 </Menu.Item> */}
             </Menu>

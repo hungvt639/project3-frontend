@@ -33,12 +33,12 @@ const Contents = ({ myuser, setUser, cart, setCart }) => {
             >
                 <Switch>
                     <Route exact path="/" component={HomePage} />
-                    <Route exact path="/home/profile" component={() => <Profile myuser={myuser} setUser={setUser} />} />
-                    <Route exact path="/home/detail/:id" component={() => <Detail myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />} />
-                    <Route exact path="/home/cart" component={() => <Cart myuser={myuser} cart={cart} setCart={setCart} />} />
-                    <Route exact path="/home/checkout" component={() => <Checkout myuser={myuser} />} />
-                    <Route exact path="/home/purchase" component={Purchase} />
-                    <Route exact path="/home/address" component={Address} />
+                    <Route exact path="/profile" component={() => <Profile myuser={myuser} setUser={setUser} />} />
+                    <Route exact path="/detail/:id" component={() => <Detail myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />} />
+                    <Route exact path="/cart" component={() => <Cart myuser={myuser} cart={cart} setCart={setCart} />} />
+                    <Route exact path="/checkout" component={() => <Checkout myuser={myuser} />} />
+                    <Route exact path="/purchase" component={Purchase} />
+                    <Route exact path="/address" component={Address} />
                 </Switch>
             </Content>
         </div>

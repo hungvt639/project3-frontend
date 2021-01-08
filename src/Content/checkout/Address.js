@@ -21,7 +21,7 @@ const Address = ({ address, setChangAddress, setAddress, addressList, setAddress
     return (
         <>
             <div className="checkout_addr_action">
-                <a href="/home/address">Thiết lập địa chỉ</a>
+                <a href="/address">Thiết lập địa chỉ</a>
                 <button onClick={() => setShowAddAddr(true)}>+ Thêm địa chỉ mới</button>
             </div>
             <Form name="nest-messages" onFinish={onFinish} initialValues={address}>

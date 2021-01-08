@@ -9,8 +9,13 @@ import Contents from "./Content/Contents";
 import ContentAdmin from "./Content/ContentAdmin";
 import { Layout } from 'antd';
 import getFactory from './request/index';
+import { Fragment } from 'react';
 const Layouts = (props) => {
     // console.log("props", props)
+    const paths = [
+        "/register",
+        "/login"
+    ]
     const [cart, setCart] = useState([]);
     // const [search, setSearch] = useState({});
     const [collapsed, setCollapsed] = useState(true);
@@ -20,22 +25,32 @@ const Layouts = (props) => {
 
     const [myuser, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-    useEffect(() => {
-        const getProfile = async () => {
-            const API = getFactory('user');
-            try {
-                const res = await API.getProfile()
-                localStorage.setItem('user', JSON.stringify(res));
-                setUser(res)
-            }
-            catch (e) {
-                // setUser(0)
-            }
-        }
-        getProfile()
-    }, [])
+    // useEffect(() => {
+    //     console.log("eeeeeeeeeeeeeeeee")
+    //     const getProfile = async () => {
+    //         const API = getFactory('user');
+    //         try {
+    //             const res = await API.getProfile()
+    //             localStorage.setItem('user', JSON.stringify(res));
+    //             setUser(res)
+    //             console.log("xxxxxxxx")
+    //         }
+
+    //         catch (e) {
+    //             console.log("looi")
+    //             // setUser(0)
+    //         }
+    //     }
+    //     getProfile()
+    // }, [])
 
 
+    if (paths.includes(props.location.pathname)) {
+        // console.log("2")
+        return (
+            <Fragment />
+        )
+    }
     if (myuser && myuser.groups[0].name === "admin") {
         return (
             <Layout>

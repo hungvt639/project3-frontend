@@ -50,13 +50,13 @@ const AvatarHeader = ({ myuser, setUser, cart, setCart }) => {
             return (
                 <Menu>
                     <Menu.Item className='menu_avatar'>
-                        <a href="/home/profile"><UserOutlined /> Thông tin cá nhân</a>
+                        <a href="/profile"><UserOutlined /> Thông tin cá nhân</a>
                     </Menu.Item>
                     <Menu.Item className='menu_avatar'>
-                        <a href="/home/purchase"><FileDoneOutlined /> Danh sách đơn hàng</a>
+                        <a href="/purchase"><FileDoneOutlined /> Danh sách đơn hàng</a>
                     </Menu.Item>
                     <Menu.Item className='menu_avatar'>
-                        <a href="/home/address"><EnvironmentOutlined /> Danh sách địa chỉ</a>
+                        <a href="/address"><EnvironmentOutlined /> Danh sách địa chỉ</a>
                     </Menu.Item>
                     <Menu.Item className='menu_avatar'>
                         <span onClick={logout}><LogoutOutlined style={{ fontSize: '18px' }} /> Đăng xuất</span>
@@ -67,12 +67,12 @@ const AvatarHeader = ({ myuser, setUser, cart, setCart }) => {
 
         return (
             <div>
-                <a href="/home/cart" className="avatar_cart">
+                <a href="/cart" className="avatar_cart">
                     <Badge className='badge_header' count={cart.length}>
                         <Avatar className="cart_header" icon={<ShoppingCartOutlined />} />
                     </Badge>
                 </a>
-                <a href="/home/notify" className="avatar_notify">
+                <a href="/notify" className="avatar_notify">
                     <Badge className='badge_header' count={1}>
                         <Avatar className='cart_header' icon={<BellOutlined />} />
                     </Badge>

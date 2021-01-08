@@ -20,7 +20,7 @@ const Login = () => {
             localStorage.clear()
             localStorage.setItem('token', res.token);
             Notification("Bạn đã đăng nhập thành công!");
-            history.push("/home");
+            history.push("/");
         }
 
         catch (e) {

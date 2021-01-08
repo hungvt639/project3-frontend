@@ -87,7 +87,7 @@ const AddCart = ({ product_detail, setCart, myuser }) => {
                         await addCart(data);
                         if (res) {
                             localStorage.setItem("ordercart", JSON.stringify([res.data[0]]));
-                            history.push('/home/cart')
+                            history.push('/cart')
                         }
                     }
                 }

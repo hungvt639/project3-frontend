@@ -4,7 +4,7 @@ const Details = ({ purchase }) => {
     const history = useHistory()
     const reOrder = () => {
         localStorage.setItem('checkout', JSON.stringify(purchase.product))
-        history.push('/home/checkout')
+        history.push('/checkout')
     }
     return (
         <div className="purchase_address">

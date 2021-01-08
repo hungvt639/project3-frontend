@@ -71,7 +71,7 @@ const DetailCart = ({ cart_detail, cart, setCart, cartProduct, setCartProduct, c
     }
 
     const showDetail = () => {
-        history.push(`/home/detail/${cart_detail.product_detail.product.id}`)
+        history.push(`/detail/${cart_detail.product_detail.product.id}`)
     }
 
     const deleteItem = async () => {

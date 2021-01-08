@@ -31,7 +31,7 @@ const Siders = ({ collapsed, search, setSearch }) => {
     const onClickType = (type) => {
         setSearch({ ...search, "type": type.key });
         localStorage.setItem('selectkey', type.key);
-        history.push('/home')
+        history.push('/')
     }
     const menu_types = []
     for (var i = 0; i < type.length; i++) {
@@ -54,7 +54,7 @@ const Siders = ({ collapsed, search, setSearch }) => {
         >
             <div className="logo" />
             <Menu className="menu" mode="inline" defaultSelectedKeys={[getDefaultSelectKey()]}>
-                <Menu.Item className="menu_item" onClick={() => { history.push('/home'); localStorage.setItem('selectkey', '0'); setSearch({}) }} key="0" icon={<HomeOutlined className="icon_sider" />}>
+                <Menu.Item className="menu_item" onClick={() => { history.push('/'); localStorage.setItem('selectkey', '0'); setSearch({}) }} key="0" icon={<HomeOutlined className="icon_sider" />}>
                     Trang chủ
                 </Menu.Item>
                 {menu_types}

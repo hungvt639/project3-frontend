@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import getFactory from '../../request/index';
 import IndexProductAdmin from './IndexProductAdmin';
 import { Empty } from 'antd'
+import HomeSearch from './HomeSearch';
 const HomepageAdmin = () => {
     // localStorage.removeItem('ordercart');
     const [classfortype, setClassForType] = useState(0)
@@ -44,17 +45,17 @@ const HomepageAdmin = () => {
 
 
 
-    const setTyperSearch = async (item) => {
-        const data = `?type=${item.id}`
-        try {
-            const res = await API.getProducts(data)
-            setProduct(res.data)
-            setClassForType(item.id)
-        } catch (e) {
-            errorNotification("Lỗi mạng")
-        }
-    }
-    const types = (type.length) ? (type.map(t => <p className={(t.id === classfortype) ? "type_select" : ""} onClick={() => setTyperSearch(t)} key={t.id}>{t.type}</p>)) : <div></div>
+    // const setTyperSearch = async (item) => {
+    //     const data = `?type=${item.id}`
+    //     try {
+    //         const res = await API.getProducts(data)
+    //         setProduct(res.data)
+    //         setClassForType(item.id)
+    //     } catch (e) {
+    //         errorNotification("Lỗi mạng")
+    //     }
+    // }
+    // const types = (type.length) ? (type.map(t => <p className={(t.id === classfortype) ? "type_select" : ""} onClick={() => setTyperSearch(t)} key={t.id}>{t.type}</p>)) : <div></div>
     const items = []
     for (const i of products) {
         items.push(<IndexProductAdmin key={i.id} product={i} />);
@@ -63,9 +64,10 @@ const HomepageAdmin = () => {
 
     return (
         <div className="home_list_product home_list_product_admin">
-            <div className="list_type">
+            {/* <div className="list_type">
                 {types}
-            </div>
+            </div> */}
+            <HomeSearch search={search} setSearch={setSearch} type={type} />
             <span className="items">{items}<div className="space_button"></div></span>
         </div>
 

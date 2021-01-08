@@ -14,7 +14,7 @@ const Price = ({ address, productList }) => {
             Notification('Đặt hàng thành công, bạn vui lòng vào danh sách đơn hàng để xem chi tiết')
             localStorage.removeItem('ordercart');
             localStorage.removeItem('checkout');
-            history.push('/home/purchase')
+            history.push('/purchase')
         } catch (e) {
             if (e.request.status && e.request.status === 0) {
                 errorNotification("Lỗi mạng!");
