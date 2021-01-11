@@ -1,7 +1,6 @@
 import React from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 
-
 const DescriptionInputs = ({ descriptions, description, index, setDescriptions }) => {
     function getBase64(file) {
         var reader = new FileReader();

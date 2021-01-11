@@ -12,10 +12,16 @@ const deleteProducts = (id) => {
 const createProduct = (data) => {
     return Client(true).post(`${resource}/product/`, data);
 };
+const editProduct = (id, data) => {
+    return Client(true).put(`${resource}/product/${id}/`, data);
+}
 
 
 const createListDescribes = (data) => {
     return Client(true).post(`${resource}/describe/`, data);
+}
+const editDescribes = (id, data) => {
+    return Client(true).put(`${resource}/describe/${id}/`, data);
 }
 const deleteDescribes = (id) => {
     return Client(true).delete(`${resource}/describe/${id}/`);
@@ -70,8 +76,10 @@ export default {
     getDetailProduct,
     deleteProducts,
     createProduct,
+    editProduct,
 
     createListDescribes,
+    editDescribes,
     deleteDescribes,
 
     getDetail,

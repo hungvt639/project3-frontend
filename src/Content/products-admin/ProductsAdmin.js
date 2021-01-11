@@ -17,7 +17,7 @@ const ProductsAdmin = ({ location }) => {
     const history = useHistory()
     return (
         <div className="products-admin">
-            <Button></Button>
+            {/* <Button></Button> */}
             <div className="products-admin-select">
                 <div onClick={() => { setSelect(1); history.push("/products") }} className="products-admin-select-1">
                     <p className={select === 1 ? "products-admin-selected-p" : ""}>Sản phẩm</p>

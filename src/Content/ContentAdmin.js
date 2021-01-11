@@ -5,11 +5,11 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import HomepageAdmin from './home/HomeAdmin';
 import Profile from './user/profile';
-import Detail from './product-admin/Detail'
+import Details from './product-admin/Details'
 import { Route, Switch } from 'react-router-dom';
 import ProductsAdmin from './products-admin/ProductsAdmin';
+import Order from './order-admin/Order'
 const { Content } = Layout;
-
 
 const ContentAdmin = ({ myuser, setUser }) => {
     return (
@@ -27,8 +27,9 @@ const ContentAdmin = ({ myuser, setUser }) => {
             <Switch>
                 <Route exact path="/" component={HomepageAdmin} />
                 <Route exact path="/profile" component={() => <Profile myuser={myuser} setUser={setUser} />} />
-                <Route exact path="/detail/:id" component={Detail} />
+                <Route exact path="/detail/:id" component={Details} />
                 <Route path="/products" component={ProductsAdmin} />
+                <Route path="/orders" component={Order} />
             </Switch>
         </Content>
         // </div>

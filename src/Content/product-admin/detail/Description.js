@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import getFactory from '../../request/index';
-import errorNotification from '../../general/errorNotification';
-import Notification from '../../general/Notification';
+import getFactory from '../../../request/index';
+import errorNotification from '../../../general/errorNotification';
+import Notification from '../../../general/Notification';
 import DescriptionInputs from './DescriptionInputs';
-import urls from './../../const';
+import urls from '.././../../const';
 import axios from 'axios';
 const Description = ({ product, setProduct }) => {
     const API = getFactory('product');
@@ -61,7 +61,7 @@ const Description = ({ product, setProduct }) => {
             } else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
         }
     }
-    const descriptionss = product.description.map((des, i) => <div key={des.id} className="descriptions">
+    const descriptionss = product.description.map((des, i) => <div key={des.id} className="descriptions descriptionss">
         <div className="descriptions1">
             {des.text ? <p className="description_text">{des.text}</p> : <div></div>}
             {(des.img) ? <img className="description_img" src={`${urls}${des.img}`} alt="" /> : <div></div>}

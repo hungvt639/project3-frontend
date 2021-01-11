@@ -6,7 +6,7 @@ import Notification from '../../../general/Notification';
 import urls from '../../../const';
 const FormAmount = ({ types, amount, setShowAsAmount, setAmount, valueAsAmount }) => {
     const [form] = Form.useForm()
-    console.log(types)
+    // console.log(types)
     useEffect(() => {
         form.setFieldsValue({
             "price": "",

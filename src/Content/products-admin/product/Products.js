@@ -145,7 +145,7 @@ const Products = () => {
                 </div>
             </div>
             <Drawer
-                title="Tạo nhóm sản phẩm mới"
+                title="Tạo sản phẩm mới"
                 placement="right"
                 width={600}
                 closable={true}

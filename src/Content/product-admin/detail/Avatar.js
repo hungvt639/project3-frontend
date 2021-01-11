@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Image, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import errorNotification from '../../general/errorNotification';
-import Notification from '../../general/Notification';
+import errorNotification from '../../../general/errorNotification';
+import Notification from '../../../general/Notification';
 import { LoadingOutlined } from '@ant-design/icons';
-import urls from '../../const';
+import urls from '../../../const';
 const Avatar = ({ id, product, setProduct }) => {
     const [loading, setLoading] = useState(false)
     const beforeUpload = (file) => {

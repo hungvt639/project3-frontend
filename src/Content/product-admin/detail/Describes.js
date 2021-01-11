@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, } from 'antd';
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
-import getFactory from '../../request/index';
-import errorNotification from '../../general/errorNotification';
-import Notification from '../../general/Notification';
+import getFactory from '../../../request/index';
+import errorNotification from '../../../general/errorNotification';
+import Notification from '../../../general/Notification';
 const Describes = ({ product, setProduct }) => {
     const [form] = Form.useForm()
     const API = getFactory('product');

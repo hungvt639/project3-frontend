@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Upload, Modal } from 'antd';
-import urls from '../../const';
+import urls from '../../../const';
 import { PlusOutlined } from '@ant-design/icons';
-import errorNotification from '../../general/errorNotification';
-import Notification from '../../general/Notification';
-import getFactory from '../../request/index';
-const ListImg = ({ product }) => {
-    var [fileList, setFileList] = useState(product.image.map(i => ({ ...i, status: "done", name: i.img, uid: `${i.id}`, response: { id: i.id }, url: `${urls}${i.img}` })));
+import errorNotification from '../../../general/errorNotification';
+import Notification from '../../../general/Notification';
+import getFactory from '../../../request/index';
+const ListImg = ({ product, setProduct, viewTable }) => {
+
+    const [fileLists, setFileList] = useState(product.image.map(i => ({ ...i, status: "done", name: i.img, uid: `${i.id}`, response: { id: i.id }, url: `${urls}${i.img}` })));
     const [previewVisible, setPreviewVisible] = useState(false)
     const [previewImage, setPreviewImage] = useState('')
-    const [previewTitle, setPreviewTitle] = useState('')
+    // const [previewTitle, setPreviewTitle] = useState('')
     function getBase64(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -18,9 +19,9 @@ const ListImg = ({ product }) => {
             reader.onerror = error => reject(error);
         });
     }
-    const onRemove = (file) => {
-        // console.log("remove", file)
-    }
+    // const onRemove = (file) => {
+    // console.log("remove", file)
+    // }
     const handleCancel = () => setPreviewVisible(false);
     const handlePreview = async file => {
         // console.log("onPerview", file)
@@ -30,7 +31,7 @@ const ListImg = ({ product }) => {
         }
         setPreviewImage(file.url || file.preview)
         setPreviewVisible(true)
-        setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
+        // setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
     }
     const uploadButton = (
         <div className="product_admin_upload_btn">
@@ -41,13 +42,16 @@ const ListImg = ({ product }) => {
 
         </div>
     )
+    // console.log("product", product)
     const handleChange = async ({ file, fileList }) => {
+
         if (file.status === "removed") {
             const API = getFactory('product')
             try {
                 await API.deleteImage(file.response.id)
                 Notification("Xóa ảnh thành công!")
-                setFileList(fileList)
+                setProduct({ ...product, "image": fileList.filter(f => f.status === "done") })
+                setFileList(fileList.filter(f => f.status === "done"))
             }
             catch (e) {
                 if (e.request.status && e.request.status === 0) {
@@ -58,40 +62,40 @@ const ListImg = ({ product }) => {
             }
         }
         if (file.status === "done") {
-            setFileList(fileList)
+            setProduct({ ...product, "image": product.image.concat(file.response) })
+            setFileList(fileList.filter(f => f.status === "done"))
         }
         if (file.status === "error") {
             if (file.response && file.response.message) file.response.message.map(m => errorNotification(m));
             else errorNotification("Đã có lỗi sảy ra, bạn vui lòng thử lại sau!")
         }
     }
-    // setFileList(fileList) };
-    // console.log(fileList)
-    // console.log(product)
+
     return (
 
-        <>
+        <div className={viewTable ? "imgs_detail images_upload images_upload_table" : "imgs_detail images_upload"}>
             <Upload
+                accept="image/png, image/jpeg"
                 name="img"
                 action={`${urls}/product/image/${product.id}/`}
                 listType="picture-card"
-                fileList={fileList}
+                fileList={fileLists}
                 onPreview={handlePreview}
                 onChange={handleChange}
                 headers={{ Authorization: "Token " + localStorage.getItem("token"), }}
-                onRemove={onRemove}
+            // onRemove={onRemove}
             >
-                {fileList.length >= 8 ? null : uploadButton}
+                {fileLists.length >= 8 ? null : uploadButton}
             </Upload>
             <Modal
                 visible={previewVisible}
-                title={previewTitle}
+                title="Ảnh"
                 footer={null}
                 onCancel={handleCancel}
             >
                 <img alt="example" style={{ width: '100%' }} src={previewImage} />
             </Modal>
-        </>
+        </div>
     )
 
 }
