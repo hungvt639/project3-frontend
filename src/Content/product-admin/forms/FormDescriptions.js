@@ -110,7 +110,7 @@ const FormDescriptions = ({ show, setShow, product, setProduct, values, index })
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                    <Button className="change_profile_submit" type="primary" htmlType="submit">
+                    <Button className="change_profile_submit submit_form" type="primary" htmlType="submit">
                         {index === -1 ? "Thêm mới" : "Chỉnh sửa"}
                     </Button>
                 </Form.Item>

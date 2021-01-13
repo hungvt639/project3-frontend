@@ -276,7 +276,7 @@
 .ant-input:focus,
 .ant-input-focused {
     border-color: #ff6600;
-    box-shadow: #ff66002e;
+    box-shadow: 0 0 0 2px rgb(255 98 24 / 14%);
 }
 .des_close {
     position: absolute;
@@ -297,4 +297,8 @@
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
+}
+.submit_form {
+    padding-left: 40px;
+    padding-right: 40px;
 }

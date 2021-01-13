@@ -2,11 +2,16 @@ import React, { useState, Fragment } from 'react'
 import { PlusCircleOutlined, EditOutlined, DeleteOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { Popconfirm, Empty } from 'antd'
 import FormWarehouse from '../forms/FormWarehouse'
+import FormWarehouseEdit from '../forms/FormWarehouseEdit'
 import getFactory from '../../../request/index'
 import Catch from '../../../general/Catch'
 import Notification from '../../../general/Notification'
+import FormAmount from '../forms/FormAmount'
 const Warehouse = ({ product, setProduct }) => {
     const [show, setShow] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+    const [showAsAmountm, setShowAsAmount] = useState(false)
+    const [valueAsAmount, setValueAsAmount] = useState({ is_plus: true })
     const [values, setValues] = useState({ color: "", price: "", product: "", saleprice: "", size: [] })
     const [index, setIndex] = useState(-1)
     async function deletes(id, i) {
@@ -23,7 +28,7 @@ const Warehouse = ({ product, setProduct }) => {
         <Fragment>
             <div className="tabledetails_des">
                 <div className="tabledetails_add">
-                    <button onClick={() => { setValues({ color: "", price: "", product: "", saleprice: "", size: [] }); setIndex(-1); setShow(true) }} ><PlusCircleOutlined /> Thêm mới</button>
+                    <button onClick={() => { setValues({ color: "", price: "", product: "", saleprice: "", size: [] }); setShow(true) }} ><PlusCircleOutlined /> Thêm mới</button>
                 </div>
                 <div className="products-admin-1">
                     <div className="products-admin-2">
@@ -40,27 +45,43 @@ const Warehouse = ({ product, setProduct }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <TableWarehouse details={product.details} setValues={setValues} setIndex={setIndex} setShow={setShow} deletes={deletes} />
+                                <TableWarehouse
+                                    details={product.details}
+                                    setValues={setValues}
+                                    setIndex={setIndex}
+                                    setShowEdit={setShowEdit}
+                                    deletes={deletes}
+                                    setValueAsAmount={setValueAsAmount}
+                                    setShowAsAmount={setShowAsAmount}
+                                />
                             </tbody>
                         </table>
                         {product.details.length ? <Fragment /> : <Empty />}
                     </div>
                 </div>
             </div>
-            <FormWarehouse show={show} setShow={setShow} product={product} setProduct={setProduct} index={index} values={values} />
+            <FormWarehouse show={show} setShow={setShow} product={product} setProduct={setProduct} values={values} />
+            <FormWarehouseEdit showEdit={showEdit} setShowEdit={setShowEdit} product={product} setProduct={setProduct} values={values} setValues={setValues} index={index} />
+            <FormAmount product={product} setProduct={setProduct} showAsAmountm={showAsAmountm} setShowAsAmount={setShowAsAmount} valueAsAmount={valueAsAmount} />
         </Fragment>
 
     )
 }
 export default Warehouse
 
-const TableWarehouse = React.memo(({ details, setValues, setIndex, setShow, deletes }) => {
+const TableWarehouse = React.memo(({ details, setValues, setIndex, setShowEdit, deletes, setValueAsAmount, setShowAsAmount }) => {
     function edit(des, i) {
-        // console.log(des, i)
         setIndex(i)
         setValues(des)
-
-        setShow(true)
+        setShowEdit(true)
+    }
+    function setPlus(t, i) {
+        setValueAsAmount({ ...t, is_plus: true, _index: i })
+        setShowAsAmount(true)
+    }
+    function setMinus(t, i) {
+        setValueAsAmount({ ...t, is_plus: false, _index: i })
+        setShowAsAmount(true)
     }
     return (
         <Fragment>
@@ -73,8 +94,8 @@ const TableWarehouse = React.memo(({ details, setValues, setIndex, setShow, dele
                         <td className="tabledetail_center">{t.saleprice.toLocaleString('vi-VN')}₫</td>
                         <td className="tabledetail_center">{t.amount}</td>
                         <td className="tabledetail_act">
-                            <span className="tabledetail_act_btn" style={{ color: "#ff6600", borderColor: "#ff6600" }}><MinusOutlined /></span>
-                            <span className="tabledetail_act_btn" style={{ color: "#ff6600", borderColor: "#ff6600" }}><PlusOutlined /></span>
+                            <span onClick={() => setMinus(t, i)} className="tabledetail_act_btn" style={{ color: "#ff6600", borderColor: "#ff6600" }}><MinusOutlined /></span>
+                            <span onClick={() => setPlus(t, i)} className="tabledetail_act_btn" style={{ color: "#ff6600", borderColor: "#ff6600" }}><PlusOutlined /></span>
                         </td>
                         <td className="tabledetail_act">
                             <span onClick={() => edit(t, i)} className="tabledetail_act_btn" style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></span>

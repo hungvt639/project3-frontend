@@ -7,7 +7,7 @@ const OrderSearch = ({ setSearch }) => {
 
     const setOrderSearch = (val) => {
         if (val) {
-            setSearch(`?status=${val}`)
+            setSearch(`status=${val}`)
         } else {
             setSearch("")
         }

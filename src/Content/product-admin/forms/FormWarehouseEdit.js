@@ -5,39 +5,43 @@ import Notification from '../../../general/Notification'
 import Catch from '../../../general/Catch'
 import urls from '../../../const'
 
-const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
+const FormWarehouseEdit = ({ showEdit, setShowEdit, setValues, product, setProduct, values, index }) => {
     const [other, setOther] = useState(false)
     const [form] = Form.useForm()
     const layout = {
         labelCol: { span: 5 },
         wrapperCol: { span: 16 },
     };
-    useEffect(() => {
-        form.setFieldsValue(values)
-    }, [values])
     const sizes = [
         'FreeSize', 'XS', 'S', 'X', 'L', 'XL', 'XXL', '28', '29', '30', '31', '32', '33'
     ]
+    useEffect(() => {
+        if (sizes.includes(values.size)) {
+            setOther(false)
+            form.setFieldsValue(values)
+        } else {
+            setOther(true)
+            form.setFieldsValue({ ...values, size: "Khác", othersize: values.size })
+        }
+
+    }, [values])
+
     console.log('product', product)
     async function onFinish(val) {
         const API = getFactory('product');
-        console.log(val)
+
         try {
-            const data = []
-            val.size.forEach(s => {
-                if (s !== "Khác") {
-                    data.push({ ...val, "size": s.trim(), "product": product.id })
-                }
-            });
-            if (val.othersize) {
-                val.othersize.split(";").forEach(s => {
-                    data.push({ ...val, "size": s.trim(), "product": product.id })
-                })
+
+            if (val.size === "Khác") {
+                val.size = val.othersize.trim()
             }
-            const res = await API.createDetail(data)
-            setProduct({ ...product, details: res.data.reverse().concat(product.details) })
-            Notification("Thêm mới thành công!")
-            setShow(false)
+            console.log('val', val)
+            console.log('values', values)
+            const res = await API.editDetail(values.id, val)
+            setProduct({ ...product, details: product.details.slice(0, index).concat(res).concat(product.details.slice(index + 1)) })
+
+            Notification("Chỉnh sửa thành công!")
+            setShowEdit(false)
         } catch (e) {
             Catch(e)
         }
@@ -49,15 +53,15 @@ const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
     }
     return (
         <Modal
-            title="Tạo mới sản phẩm"
-            visible={show}
-            onCancel={() => setShow(false)}
+            title="Chỉnh sửa sản phẩm"
+            visible={showEdit}
+            onCancel={() => setShowEdit(false)}
             footer={null}
         >
             <h2 className="tabletable_h1">{product.name}</h2>
             <div className="tabletable_img"><Image width="100px" src={`${urls}${product.avatar}`} alt="Ảnh chính" /></div>
 
-            <Form form={form} {...layout} name="nest-messages" onFinish={onFinish} initialValues={values}>
+            <Form form={form} {...layout} name="nest-messages" onFinish={onFinish}>
                 <Form.Item name="size" label="Size:"
                     rules={[
                         {
@@ -67,7 +71,6 @@ const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
                     ]}
                 >
                     <Select
-                        mode='multiple'
                         style={{ width: '100%' }}
                         placeholder="Chọn size"
                         onChange={handleChange}
@@ -79,11 +82,11 @@ const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
                     </Select>
                 </Form.Item>
 
-                {other ? <Form.Item name="othersize" label="Size khác" placeholder='Nhập các size cách nhau bởi dấu ";" '
+                {other ? <Form.Item name="othersize" label="Size khác" placeholder="Nhập 1 size duy nhất"
                     rules={[
                         {
                             required: true,
-                            message: 'Vui lòng nhập size! Các saize khác nhau cách nhau bởi dấu chấm phẩy "; ".',
+                            message: 'Vui lòng nhập size!',
                         },
                     ]}
                 >
@@ -124,11 +127,11 @@ const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
 
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                     <Button className="change_profile_submit submit_form" type="primary" htmlType="submit">
-                        Thêm mới
+                        Chỉnh sửa
                     </Button>
                 </Form.Item>
             </Form>
         </Modal>
     )
 }
-export default FormWarehouse
+export default FormWarehouseEdit
