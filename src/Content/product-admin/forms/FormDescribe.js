@@ -13,7 +13,7 @@ const FormDescribe = ({ show, setShow, product, setProduct, values, index }) => 
 
     useEffect(() => {
         form.setFieldsValue(values)
-    }, [values])
+    }, [values, form])
 
     async function onFinish(val) {
         const API = getFactory('product');

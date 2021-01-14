@@ -129,6 +129,7 @@ input[type="checkbox" i]:hover {
     padding: 0px 10px;
     display: flex;
     flex-flow: wrap;
+    flex-direction: column;
     /* align-items: center; */
 }
 .cart_detail .name {

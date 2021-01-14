@@ -16,10 +16,11 @@
 }
 .order_list_top {
     display: flex;
-    border: 1px solid #afafaf;
+    border: 1px solid #d1d1d1;
     padding: 5px;
     flex-direction: row;
-    border-radius: 2px;
+    border-radius: 3px;
+    background-color: #e9e9e9;
 }
 .inline {
     display: inline;
@@ -43,10 +44,10 @@
 .order_list_top_name {
     font-weight: 700;
     font-size: 16px;
-    margin: 1px 15px 0 0;
+    margin: 1px 0px 0 20px;
 }
 .order_list_top_address {
-    margin: 2px;
+    margin: 2px 30px;
 }
 .order_list_top_form {
     display: flex;
@@ -61,7 +62,7 @@
     color: #ff0000;
     font-size: 18px;
     font-weight: 700;
-    margin: 0 10px;
+    /* margin: 0 10px; */
 }
 .order_list_top_form_item {
     width: 120px;
@@ -71,4 +72,28 @@
 }
 .order_space {
     margin-bottom: 20px;
+    border-left: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+    border-bottom-left-radius: 3px;
+}
+.flex_colum {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    cursor: default;
+}
+.order_list_top_time {
+    margin: 4px 20px 0 20px;
+}
+.order_list_top_time span {
+    color: #ff6600;
+}
+.order_list_top_prices {
+    margin: 0 0 0 30px;
+}
+.order_list_top_mes {
+    margin: 2px 0;
+}
+.order_content {
+    margin-top: 30px;
 }

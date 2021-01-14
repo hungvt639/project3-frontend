@@ -12,7 +12,7 @@ const Status = ({ purchase, setPurchases, purchases }) => {
     const confirm = async () => {
         const API = getFactory('order')
         try {
-            const res = await API.cancelOrder(purchase.id, { "status": 5 })
+            const res = await API.editlOrder(purchase.id, { "status": 5 })
             const index = purchases.findIndex(x => x.id === res.id);
             setPurchases(purchases.slice(0, index).concat(res).concat(purchases.slice(index + 1)))
             Notification("Hủy đơn hàng thành công")

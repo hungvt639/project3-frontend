@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Modal, Form, Input, Button } from 'antd'
-import getFactory from '../../../request/index'
+// import getFactory from '../../../request/index'
 import urls from '../../../const'
 import errorNotification from '../../../general/errorNotification'
 import Notification from '../../../general/Notification'
@@ -23,7 +23,7 @@ const FormDescriptions = ({ show, setShow, product, setProduct, values, index })
     useEffect(() => {
         form.setFieldsValue(values)
         setImage({ image: values.img ? `${urls}${values.img}` : "", img: "" })
-    }, [values])
+    }, [values, form])
 
     function getBase64(file) {
         var reader = new FileReader();
@@ -38,7 +38,7 @@ const FormDescriptions = ({ show, setShow, product, setProduct, values, index })
     // }
 
     async function onFinish(val) {
-        const API = getFactory('product');
+        // const API = getFactory('product');
 
         if (val.text || image.img) {
             let formData = new FormData();

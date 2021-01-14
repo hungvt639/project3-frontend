@@ -12,6 +12,9 @@ const DetailPurchase = ({ order }) => {
                     <p className="checkout_product_name">Sản phẩm</p>
                 </div>
                 <div className="cart_even_product">
+                    <div className="cart_amount_product">
+                        <p>Kho</p>
+                    </div>
                     <div className="cart_sum_price cart_price_color">
                         <p>Đơn giá</p>
                     </div>
@@ -29,8 +32,7 @@ const DetailPurchase = ({ order }) => {
                     <p className="checkout_product_name">Tổng</p>
                 </div>
                 <div className="cart_even_product">
-                    <div className="cart_sum_price cart_price_color">
-                    </div>
+                    <div className="cart_sum_price cart_price_color"></div>
                     <div className="cart_amount_product">
                         <p>{sum_product}</p>
                     </div>

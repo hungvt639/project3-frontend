@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import Types from './type/Types';
 import Products from './product/Products';
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import Warehouse from './warehouse/Warehouse';
 import WarehouseHistory from './warehouse-history/WarehouseHistory'
 import { Route, Switch, useHistory } from 'react-router-dom';

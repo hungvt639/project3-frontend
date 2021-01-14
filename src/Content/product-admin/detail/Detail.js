@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Image, Empty } from 'antd';
+import React, { useState } from 'react';
+import { Image } from 'antd';
 import urls from '../../../const';
 // import './index.css';
 import { Button } from 'antd';
-import getFactory from '../../../request/index';
-import errorNotification from '../../../general/errorNotification';
-import { Redirect } from 'react-router-dom';
+// import getFactory from '../../../request/index';
+// import errorNotification from '../../../general/errorNotification';
+// import { Redirect } from 'react-router-dom';
 import Description from './Description';
 import Avatar from './Avatar';
 import ListImg from './ListImg';

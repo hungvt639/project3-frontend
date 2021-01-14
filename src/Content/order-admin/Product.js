@@ -19,6 +19,9 @@ const Product = ({ product }) => {
                 </div>
             </div>
             <div className="cart_even_product">
+                <div className="cart_amount_product">
+                    <p>{product.product_detail.amount}</p>
+                </div>
                 <div className="cart_sum_price cart_price_color">
                     <p><i style={{ 'textDecorationLine': 'underline' }}>đ</i> {product.product_detail.saleprice.toLocaleString('vi-VN')}/sản phẩm</p>
                 </div>

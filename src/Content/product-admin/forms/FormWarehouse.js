@@ -14,7 +14,7 @@ const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
     };
     useEffect(() => {
         form.setFieldsValue(values)
-    }, [values])
+    }, [values, form])
     const sizes = [
         'FreeSize', 'XS', 'S', 'X', 'L', 'XL', 'XXL', '28', '29', '30', '31', '32', '33'
     ]

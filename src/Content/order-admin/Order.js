@@ -10,7 +10,7 @@ import { Fragment } from 'react';
 const Order = () => {
     const [orders, setOrders] = useState({})
     const [search, setSearch] = useState("")
-    const [pages, setPages] = useState({ limit: 10, page: 1 })
+    const [pages, setPages] = useState({ limit: 5, page: 1 })
     useEffect(() => {
         const getPurchases = async (data) => {
             const API = getFactory('order');
@@ -40,7 +40,7 @@ const Order = () => {
         <div className="orderss">
             <div className="order1x">Danh sách đơn hàng</div>
             <OrderSearch setSearch={setSearch} />
-            <div className="purchase">
+            <div className="purchase order_content">
                 <ListOrders orders={orders} setOrders={setOrders} pages={pages} setPages={setPages} />
                 <Pagination className="pagination"
                     showSizeChanger

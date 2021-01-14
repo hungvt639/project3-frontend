@@ -24,7 +24,7 @@ const FormWarehouseEdit = ({ showEdit, setShowEdit, setValues, product, setProdu
             form.setFieldsValue({ ...values, size: "Khác", othersize: values.size })
         }
 
-    }, [values])
+    }, [values, form, sizes])
 
     console.log('product', product)
     async function onFinish(val) {
