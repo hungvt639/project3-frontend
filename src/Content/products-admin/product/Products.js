@@ -10,7 +10,6 @@ import { useHistory } from 'react-router-dom';
 import { Fragment } from 'react';
 
 
-
 const Products = () => {
     const API = getFactory('product');
     const [limit, setLimit] = useState(5)
@@ -37,7 +36,6 @@ const Products = () => {
         getTypes()
     }, [])
 
-
     useEffect(() => {
         const getProduct = async () => {
             try {
@@ -49,7 +47,6 @@ const Products = () => {
         }
         getProduct()
     }, [page, limit, search, number, API])
-
 
     const deleteProduct = async (id) => {
         try {
@@ -65,19 +62,14 @@ const Products = () => {
         }
     }
 
-
     const onShowSizeChange = (current, pageSize) => {
         setLimit(pageSize)
     }
-
 
     const onChange = (page, limit) => {
         setPage(page)
         setLimit(limit)
     }
-
-
-
 
     const pagination = Object.keys(products).length ? <Pagination className="pagination"
         showSizeChanger
@@ -93,9 +85,10 @@ const Products = () => {
 
     const searchProduct = () => {
         var searchs = "";
-        if (searchInput) { searchs = searchs + `&search=${searchInput}` };
-        if (searchSelect !== "0") { searchs = searchs + `&type=${searchSelect}` };
+        if (searchInput) { searchs += `&input=${searchInput}` };
+        if (searchSelect !== "0") { searchs += `&type=${searchSelect}` };
         setSearch(searchs)
+
     }
 
 

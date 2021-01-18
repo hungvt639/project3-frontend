@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { Image } from 'antd';
 import urls from '../../../const';
-// import './index.css';
 import { Button } from 'antd';
-// import getFactory from '../../../request/index';
-// import errorNotification from '../../../general/errorNotification';
-// import { Redirect } from 'react-router-dom';
 import Description from './Description';
 import Avatar from './Avatar';
 import ListImg from './ListImg';
@@ -13,30 +9,7 @@ import Describes from './Describes';
 
 const Detail = ({ match, product, setProduct }) => {
 
-    // const [product, setProduct] = useState({})
     const [product_detail, setDetail] = useState({ id: 0 });
-    // const id = match.params.id
-    // useEffect(() => {
-    //     const getDetailProduct = async (id) => {
-    //         const API = getFactory('product');
-    //         try {
-    //             const res = await API.getDetailProduct(id);
-    //             setProduct(res.product);
-    //         } catch (e) {
-    //             if (e.request.status === 0) {
-    //                 errorNotification("Lỗi mạng!");
-    //             } else if (e.request.status === 400) {
-    //                 errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
-    //             } else if (e.request.status === 404) {
-    //                 return <Redirect to="/sos" />
-    //             } else errorNotification(e.message);
-    //         }
-    //     }
-    //     const id = match.params.id
-    //     getDetailProduct(id)
-    // }, [match.params.id])
-
-
 
     const prices = (product_detail.id !== 0) ?
         <p id="price">

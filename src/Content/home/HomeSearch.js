@@ -31,12 +31,12 @@ const HomeSearch = ({ search, setSearch, type }) => {
         let s = "";
         for (const key in searchValues) {
             if (searchValues[key]) {
-                if (s) {
-                    s += `&${key}=${searchValues[key]}`
-                }
-                else {
-                    s += `?${key}=${searchValues[key]}`
-                }
+                // if (s) {
+                s += `&${key}=${searchValues[key]}`
+                // }
+                // else {
+                //     s += `?${key}=${searchValues[key]}`
+                // }
             }
         }
         setSearch(s)

@@ -81,7 +81,7 @@ const ListOrder = ({ order, index, orders, setOrders }) => {
                             {care ? <CaretDownOutlined /> : <CaretRightOutlined />}
                             <div style={{ backgroundColor: colors[order.status] }} className="order_list_top_status" >{status[order.status]}</div>
                         </div>
-
+                        <div className="order_list_top_id">ID: <span>{order.id}</span></div>
                         <div className="order_list_top_time">Khởi tạo: <span>{order.time_create}</span></div>
                         <div className="order_list_top_time">Cập nhật: <span>{order.time_update}</span></div>
                         <div className="order_list_top_prices">Tổng giá: <span className="order_list_top_price" >{order.price.toLocaleString('vi-VN')}₫</span> (Cả phí ship 30.000₫)</div>

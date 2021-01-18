@@ -3,9 +3,7 @@ import 'antd/dist/antd.css';
 import './index.css';
 import { Menu, Layout } from 'antd';
 import { useHistory } from 'react-router-dom';
-import {
-    HomeOutlined, FolderOutlined, OrderedListOutlined
-} from '@ant-design/icons';
+import { HomeOutlined, FolderOutlined, OrderedListOutlined, GiftOutlined } from '@ant-design/icons';
 import logo1 from '../image/logo1.png'
 const { Sider } = Layout;
 const SiderAdmin = ({ url, collapsed }) => {
@@ -19,7 +17,8 @@ const SiderAdmin = ({ url, collapsed }) => {
         "/products/type": "2",
         "/products/warehouse": "2",
         "/products/warehouse-history": "2",
-        "/orders": "3"
+        "/orders": "3",
+        "/promotions": "4"
 
     }
     if (url in keys) {
@@ -52,9 +51,9 @@ const SiderAdmin = ({ url, collapsed }) => {
                 <Menu.Item className="menu_item" onClick={() => { history.push('/orders') }} key="3" icon={<OrderedListOutlined className="icon_sider" />}>
                     Đơn hàng
                 </Menu.Item>
-                {/* <Menu.Item className="menu_item" onClick={() => { history.push('/'); localStorage.setItem('selectkey', '3') }} key="4" icon={<UploadOutlined className="icon_sider" />}>
-                    nav 4
-                </Menu.Item> */}
+                <Menu.Item className="menu_item" onClick={() => { history.push('/promotions') }} key="4" icon={<GiftOutlined className="icon_sider" />}>
+                    Khuyến mãi
+                </Menu.Item>
             </Menu>
         </Sider>
     );

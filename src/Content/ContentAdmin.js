@@ -8,7 +8,9 @@ import Profile from './user/profile';
 import Details from './product-admin/Details'
 import { Route, Switch } from 'react-router-dom';
 import ProductsAdmin from './products-admin/ProductsAdmin';
-import Order from './order-admin/Order'
+import Order from './order-admin/Order';
+import Promotion from './promotion-admin/Promotion';
+
 const { Content } = Layout;
 
 const ContentAdmin = ({ myuser, setUser }) => {
@@ -30,6 +32,7 @@ const ContentAdmin = ({ myuser, setUser }) => {
                 <Route exact path="/detail/:id" component={Details} />
                 <Route path="/products" component={ProductsAdmin} />
                 <Route path="/orders" component={Order} />
+                <Route path="/promotions" component={Promotion} />
             </Switch>
         </Content>
         // </div>

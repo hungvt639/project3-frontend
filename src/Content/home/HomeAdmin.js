@@ -1,34 +1,32 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import errorNotification from '../../general/errorNotification';
 // import './index.css';
 import 'antd/dist/antd.css';
 import getFactory from '../../request/index';
 import IndexProductAdmin from './IndexProductAdmin';
-import { Empty } from 'antd'
+import { Empty, Pagination } from 'antd'
 import HomeSearch from './HomeSearch';
 const HomepageAdmin = () => {
-    // localStorage.removeItem('ordercart');
-    const [classfortype, setClassForType] = useState(0)
-    const [products, setProduct] = useState([]);
+    const [products, setProduct] = useState({});
     const API = getFactory('product');
     const [type, setType] = useState([])
     const [search, setSearch] = useState("")
-    const [searchValues, setSearchValues] = useState({})
+    const [pages, setPages] = useState({ limit: 10, page: 1 })
 
     useEffect(() => {
         const getproduct = async () => {
             try {
-                const res = await API.getProducts(search);
-                setProduct(res.data)
+                const res = await API.getProducts(`?page=${pages.page}&limit=${pages.limit}${search}`);
+                setProduct(res)
             }
             catch (e) {
                 errorNotification("Lỗi mạng")
             }
         }
         getproduct()
-    }, [search])
+    }, [search, pages])
 
     useEffect(() => {
         const getTypes = async () => {
@@ -43,32 +41,33 @@ const HomepageAdmin = () => {
         getTypes()
     }, [])
 
-
-
-    // const setTyperSearch = async (item) => {
-    //     const data = `?type=${item.id}`
-    //     try {
-    //         const res = await API.getProducts(data)
-    //         setProduct(res.data)
-    //         setClassForType(item.id)
-    //     } catch (e) {
-    //         errorNotification("Lỗi mạng")
-    //     }
-    // }
-    // const types = (type.length) ? (type.map(t => <p className={(t.id === classfortype) ? "type_select" : ""} onClick={() => setTyperSearch(t)} key={t.id}>{t.type}</p>)) : <div></div>
-    const items = []
-    for (const i of products) {
-        items.push(<IndexProductAdmin key={i.id} product={i} />);
+    const onShowSizeChange = (current, pageSize) => {
+        setPages({ ...pages, limit: pageSize })
     }
-    if (items.length === 0) items.push(<Empty key={0} />)
+
+
+    const onChange = (page, limit) => {
+        setPages({ page: page, limit: limit })
+    }
 
     return (
         <div className="home_list_product home_list_product_admin">
-            {/* <div className="list_type">
-                {types}
-            </div> */}
             <HomeSearch search={search} setSearch={setSearch} type={type} />
-            <span className="items">{items}<div className="space_button"></div></span>
+            <span className="items">
+                <Items products={products} />
+            </span>
+            <div>
+                <Pagination className="pagination pagination_home"
+                    showSizeChanger
+                    pageSize={pages.limit}
+                    pageSizeOptions={[5, 10, 20, 50]}
+                    onShowSizeChange={onShowSizeChange}
+                    defaultCurrent={products.page}
+                    current={pages.page}
+                    onChange={onChange}
+                    total={products.total}
+                />
+            </div>
         </div>
 
     )
@@ -76,3 +75,21 @@ const HomepageAdmin = () => {
 
 }
 export default HomepageAdmin;
+const Items = ({ products }) => {
+    if (products.data && products.data.length) {
+        return (
+            <Fragment>
+                {products.data.map(p => {
+                    return (
+                        <IndexProductAdmin key={p.id} product={p} />
+                    )
+                })}
+            </Fragment>
+        )
+    }
+    else {
+        return (
+            <Empty />
+        )
+    }
+}
