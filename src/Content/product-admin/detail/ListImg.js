@@ -20,11 +20,9 @@ const ListImg = ({ product, setProduct, viewTable }) => {
         });
     }
     // const onRemove = (file) => {
-    // console.log("remove", file)
     // }
     const handleCancel = () => setPreviewVisible(false);
     const handlePreview = async file => {
-        // console.log("onPerview", file)
 
         if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
@@ -42,7 +40,6 @@ const ListImg = ({ product, setProduct, viewTable }) => {
 
         </div>
     )
-    // console.log("product", product)
     const handleChange = async ({ file, fileList }) => {
 
         if (file.status === "removed") {

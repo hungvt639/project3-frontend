@@ -16,7 +16,6 @@ const DescriptionInputs = ({ descriptions, description, index, setDescriptions }
     }
 
     const handleChange = (val) => {
-        console.log(val.target.value)
         setDescriptions(descriptions.slice(0, index).concat({ ...descriptions[index], "text": val.target.value }).concat(descriptions.slice(index + 1)))
     }
     const deleteInput = () => {

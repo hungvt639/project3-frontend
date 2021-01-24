@@ -18,7 +18,6 @@ const HomeSearch = ({ search, setSearch, type }) => {
     // const API = getFactory('product');
 
     const searchProduct = () => {
-        console.log(searchValues)
         if (searchValues.from && searchValues.to) {
             if (parseInt(searchValues.from) > parseInt(searchValues.to)) {
                 errorNotification("Giá trị bắt đầu phải nhỏ hơn hoặc bằng giá trị kết thúc")

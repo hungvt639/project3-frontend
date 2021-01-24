@@ -61,7 +61,6 @@ const ListOrder = ({ order, index, orders, setOrders }) => {
             const res = await API.editlOrder(order.id, value)
             setOrders({ ...orders, data: orders.data.slice(0, index).concat(res).concat(orders.data.slice(index + 1)) })
             Notification("Thay đổi trạng thái thành công")
-            console.log(res)
         } catch (e) {
             Catch(e)
         }

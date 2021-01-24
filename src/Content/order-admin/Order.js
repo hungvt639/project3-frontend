@@ -35,7 +35,6 @@ const Order = () => {
     const onChange = (page, limit) => {
         setPages({ page: page, limit: limit })
     }
-    console.log(orders)
     return (
         <div className="orderss">
             <div className="order1x">Danh sách đơn hàng</div>

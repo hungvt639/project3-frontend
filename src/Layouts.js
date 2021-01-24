@@ -11,7 +11,6 @@ import { Layout } from 'antd';
 import getFactory from './request/index';
 import { Fragment } from 'react';
 const Layouts = (props) => {
-    // console.log("props", props)
     const paths = [
         "/register",
         "/login"
@@ -25,28 +24,9 @@ const Layouts = (props) => {
 
     const [myuser, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-    // useEffect(() => {
-    //     console.log("eeeeeeeeeeeeeeeee")
-    //     const getProfile = async () => {
-    //         const API = getFactory('user');
-    //         try {
-    //             const res = await API.getProfile()
-    //             localStorage.setItem('user', JSON.stringify(res));
-    //             setUser(res)
-    //             console.log("xxxxxxxx")
-    //         }
-
-    //         catch (e) {
-    //             console.log("looi")
-    //             // setUser(0)
-    //         }
-    //     }
-    //     getProfile()
-    // }, [])
 
 
     if (paths.includes(props.location.pathname)) {
-        // console.log("2")
         return (
             <Fragment />
         )
@@ -65,7 +45,6 @@ const Layouts = (props) => {
     else {
         return (
             <Layout>
-                {/* <Siders collapsed={collapsed} search={search} setSearch={setSearch} /> */}
                 <Layout className="site-layout">
                     <Headers myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />
                     <Contents myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} />

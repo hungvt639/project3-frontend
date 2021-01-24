@@ -81,8 +81,6 @@ const FormDescriptions = ({ show, setShow, product, setProduct, values, index })
             errorNotification("Vui lòng nhập chi tiết hoặc thêm ảnh")
         }
     }
-    // console.log("img", image)
-    // console.log("des", index, values)
     function removeImg() {
         setImage({ image: "", img: "" })
     }

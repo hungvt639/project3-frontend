@@ -35,7 +35,6 @@ const WarehouseHistory = () => {
             const API = getFactory('product');
             try {
                 const res = await API.getType("")
-                // console.log(res)
                 setTypes(res.data)
             } catch {
                 setTypes([])
@@ -50,7 +49,6 @@ const WarehouseHistory = () => {
             try {
                 const res = await API.getAmount(`?page=${page.page}&limit=${page.limit}${search}`)
                 setAmount(res)
-                console.log("amount", res)
             } catch {
                 setAmount([])
             }

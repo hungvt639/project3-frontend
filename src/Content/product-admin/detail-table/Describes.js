@@ -51,7 +51,6 @@ export default Describes
 const TableDescribe = React.memo(({ describe, setValues, setIndex, setShow, deletes }) => {
 
     function edit(des, i) {
-        // console.log(des, i)
         setValues(des)
         setIndex(i)
         setShow(true)

@@ -192,3 +192,18 @@ tr
     color: white;
     border-color: #ff6600;
 }
+.promotion_forms .ant-form-item-children-icon {
+    display: none;
+}
+.ant-select-tree-checkbox-checked .ant-select-tree-checkbox-inner {
+    background-color: #ff6600;
+    border-color: #ff6600;
+}
+.ant-select-tree-checkbox-wrapper:hover .ant-select-tree-checkbox-inner,
+.ant-select-tree-checkbox:hover .ant-select-tree-checkbox-inner,
+.ant-select-tree-checkbox-input:focus + .ant-select-tree-checkbox-inner {
+    border-color: #ff6600;
+}
+span.ant-select-tree-checkbox .ant-select-tree-checkbox-checked::after {
+    border-color: #ff6600 !important;
+}

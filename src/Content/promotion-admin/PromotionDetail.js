@@ -1,49 +1,44 @@
 import { Empty } from 'antd';
-import React from 'react'
+import React, { useState } from 'react'
 import { Fragment } from 'react';
 import { CloseOutlined, PlusCircleOutlined } from '@ant-design/icons'
-
+import FormAddProducts from './FormAddProduct'
 const PromotionDetail = ({ promotions, promotionShow, setPromotions }) => {
-    console.log("detail", promotionShow)
+    const [show, setShow] = useState(false)
+    console.log('promotionShow', promotionShow)
     return (
-        <div className="display_inline promotion_right">
-            <div className="promotion_right1">
-                <h1>Sản phẩm áp dụng</h1>
-                <div className="prototions_product_tn_add"><button><PlusCircleOutlined /> Thêm</button></div>
-                {promotions.data && promotionShow !== -1 ?
-                    <Fragment>
-                        {/* <h2>Nhóm sản phẩm:</h2>
-                        <Type types={promotions.data[promotionShow].promotiontype} /> */}
-                        {/* <h2>Sản phẩm:</h2> */}
-                        <Product products={promotions.data[promotionShow].promotions} />
-                    </Fragment> : <Empty />
-                }
+        <Fragment>
+            <div className="display_inline promotion_right">
+                <div className="promotion_right1">
+                    <h1>Sản phẩm áp dụng</h1>
+                    {promotionShow.id !== -1 ? <div
+                        onClick={() => setShow(true)}
+                        className="prototions_product_tn_add">
+                        <button><PlusCircleOutlined /> Thêm</button></div> : <Fragment />}
+                    {promotions.data && promotionShow.id !== -1 ?
+                        <Fragment>
+                            <Product products={promotionShow.promotion.promotions} />
+
+                        </Fragment> : <Empty />
+                    }
+                </div>
             </div>
+            {show ? promotionShow.id !== -1 ?
+                <FormAddProducts
+                    show={show}
+                    setShow={setShow}
+                    promotion={promotionShow.promotion}
+                    promotions={promotions}
+                    index={promotionShow.id}
+                    setPromotions={setPromotions} />
+                : <Fragment /> : <Fragment />}
 
+        </Fragment>
 
-        </div>
     )
 }
 export default PromotionDetail;
-// const Type = ({ types }) => {
-//     return (
-//         <Fragment>
-//             {types.map((p, i) => {
-//                 return (
-//                     <div key={i} className="promotion_right_type">
-//                         <div className="promotion_right_type_name" >
-//                             <span>{p.type.type}</span>
-//                             {p.type.products.map(e => {
-//                                 return (<p key={e.id}>{e.name}</p>)
-//                             })}
-//                         </div>
-//                         <button><CloseOutlined /></button>
-//                     </div>
-//                 )
-//             })}
-//         </Fragment>
-//     )
-// }
+
 const Product = ({ products }) => {
     if (products.length) {
         return (

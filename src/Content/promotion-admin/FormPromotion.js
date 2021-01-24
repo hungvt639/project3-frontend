@@ -35,7 +35,6 @@ const FormPromotion = ({ show, setShow, promotions, setPromotions, values }) => 
         val.time_to = times.time_to
         val.max_value = val.max_value ? val.max_value : 0
         delete val.time
-        console.log(val)
         try {
             if (values.index === -1) {
                 const res = await API.createPromotions(val)
@@ -56,24 +55,20 @@ const FormPromotion = ({ show, setShow, promotions, setPromotions, values }) => 
     }
     function onChange(dates, dateStrings) {
         setTimes({ time_from: dateStrings[0], time_to: dateStrings[1] })
-        console.log(dates)
 
     }
     function changeType(val) {
-        console.log(val)
         val.target.value ? setShowMaxValue(false) : setShowMaxValue(true)
     }
-    console.log(times)
-    // console.log("des", index, values)
     return (
         <Drawer
             title={values.index === -1 ? "Tạo mới khuyến mãi" : "Chỉnh sửa khuyến mãi"}
-            placement="right"
             visible={show}
             onClose={() => setShow(false)}
-            width={500}
+            width={600}
+            footer={null}
         >
-            <Form form={form} {...layout} name="nest-messages" onFinish={onFinish} initialValues={values}>
+            <Form form={form} className="promotion_forms" {...layout} name="nest-messages" onFinish={onFinish} initialValues={values}>
                 <Form.Item name="name" label="Tên:"
                     rules={[
                         {
@@ -110,7 +105,7 @@ const FormPromotion = ({ show, setShow, promotions, setPromotions, values }) => 
                         },
                     ]}
                 >
-                    <Radio.Group
+                    <Radio.Group disabled={values.index === -1 ? false : true}
                         onChange={changeType}
                     >
                         <Radio value={1}>Đồng</Radio>
@@ -131,16 +126,14 @@ const FormPromotion = ({ show, setShow, promotions, setPromotions, values }) => 
 
                             validator(_, value) {
                                 if (!value || (getFieldValue('type') === 0 && value <= 100 && value > 0) || getFieldValue('type')) {
-                                    console.log("t", getFieldValue('type'))
                                     return Promise.resolve();
                                 }
-                                console.log("t", getFieldValue('type'))
                                 return Promise.reject('Giá trị phải nằm trong khoảng từ 0 đến 100%!');
                             },
                         }),
                     ]}
                 >
-                    <InputNumber
+                    <InputNumber disabled={values.index === -1 ? false : true}
                         min="0"
                         formatter={value => showMaxValue ? `${value}%` : `${value} ₫`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} />
                 </Form.Item>
@@ -153,7 +146,7 @@ const FormPromotion = ({ show, setShow, promotions, setPromotions, values }) => 
                             },
                         ]}
                     >
-                        <InputNumber
+                        <InputNumber disabled={values.index === -1 ? false : true}
                             min="0"
                             formatter={value => `${value} ₫`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} />
 

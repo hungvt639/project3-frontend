@@ -26,7 +26,6 @@ const FormWarehouseEdit = ({ showEdit, setShowEdit, setValues, product, setProdu
 
     }, [values, form, sizes])
 
-    console.log('product', product)
     async function onFinish(val) {
         const API = getFactory('product');
 
@@ -35,8 +34,7 @@ const FormWarehouseEdit = ({ showEdit, setShowEdit, setValues, product, setProdu
             if (val.size === "Khác") {
                 val.size = val.othersize.trim()
             }
-            console.log('val', val)
-            console.log('values', values)
+
             const res = await API.editDetail(values.id, val)
             setProduct({ ...product, details: product.details.slice(0, index).concat(res).concat(product.details.slice(index + 1)) })
 

@@ -17,7 +17,6 @@ const FormDescribe = ({ show, setShow, product, setProduct, values, index }) => 
 
     async function onFinish(val) {
         const API = getFactory('product');
-        // console.log(val)
         try {
             if (index === -1) {
                 val.product = product.id
@@ -34,7 +33,6 @@ const FormDescribe = ({ show, setShow, product, setProduct, values, index }) => 
             Catch(e)
         }
     }
-    // console.log("des", index, values)
     return (
         <Modal
             title={index === -1 ? "Tạo mới mô tả" : "Chỉnh sửa mô tả"}

@@ -13,7 +13,6 @@ const DetailTable = ({ match, product, setProduct }) => {
 
     const price = product.from_saleprice === product.to_saleprice ? `${product.from_saleprice.toLocaleString('vi-VN')}₫` : `${product.from_saleprice.toLocaleString('vi-VN')}₫ - ${product.to_saleprice.toLocaleString('vi-VN')}₫`
 
-    // console.log(product)
     return (
         <div className="tabledetails">
             <div className="tabledetails_left">

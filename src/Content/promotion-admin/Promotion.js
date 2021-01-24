@@ -12,7 +12,7 @@ const Promotion = () => {
     const [show, setShow] = useState(false)
     const [promotions, setPromotions] = useState({})
     const [pages, setPages] = useState({ page: 1, limit: 5 })
-    const [promotionShow, setPromotionShow] = useState(-1)
+    const [promotionShow, setPromotionShow] = useState({ id: -1, promotion: {} })
     const [values, setValues] = useState({})
 
     useEffect(() => {
@@ -20,13 +20,12 @@ const Promotion = () => {
             const API = getFactory('promotion')
             try {
                 const res = await API.getPromotions(`?page=${pages.page}&limit=${pages.limit}`)
-                setPromotionShow(-1)
+                setPromotionShow({ id: -1, promotion: {} })
                 setPromotions(res)
             } catch (e) { }
         }
         getPromotion()
     }, [pages])
-    console.log('promotions', promotions)
     async function deletePromotion(t, i) {
         const API = getFactory('promotion')
         try {
@@ -135,7 +134,7 @@ const Promotion = () => {
                         <div style={{ height: "250px" }}></div>
 
                     </div>
-                    <PromotionDetail promotions={promotions} promotionShow={promotionShow} setPromotions={setPromotionShow} />
+                    <PromotionDetail promotions={promotions} promotionShow={promotionShow} setPromotions={setPromotions} />
                 </div>
                 <FormPromotion show={show} setShow={setShow} promotions={promotions} setPromotions={setPromotions} values={values} />
             </div>
@@ -147,10 +146,8 @@ const TablePromotions = React.memo(({ promotions, deletePromotion, setPromotionS
     const [loading, setLoading] = useState(-1)
     async function change(t, i) {
         setLoading(i)
-        console.log(11)
         await deletePromotion(t, i)
         setLoading(-1)
-        console.log(22)
     }
     function setEdit(t, i) {
         setValues({ ...t, index: i })
@@ -160,7 +157,7 @@ const TablePromotions = React.memo(({ promotions, deletePromotion, setPromotionS
         <Fragment>
             {promotions.data ? promotions.data.map((t, i) => {
                 return (
-                    <tr className={promotionShow === i ? "promotion_tr promotion_click" : "promotion_tr"} key={t.id} onClick={() => setPromotionShow(i)}>
+                    <tr className={promotionShow.id === i ? "promotion_tr promotion_click" : "promotion_tr"} key={t.id} onClick={() => setPromotionShow({ id: i, promotion: t })}>
                         <td>{t.name}</td>
                         <td className="textAlignCenter">{t.time_from}</td>
                         <td className="textAlignCenter">{t.time_to}</td>

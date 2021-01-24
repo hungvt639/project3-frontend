@@ -8,7 +8,6 @@ import logo1 from '../image/logo1.png'
 const { Sider } = Layout;
 const SiderAdmin = ({ url, collapsed }) => {
     const history = useHistory()
-    // console.log('props1', url)
     var getDefaultSelectKey = "1"
 
     const keys = {

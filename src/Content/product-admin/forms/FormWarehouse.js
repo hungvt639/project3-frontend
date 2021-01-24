@@ -18,10 +18,8 @@ const FormWarehouse = ({ show, setShow, product, setProduct, values }) => {
     const sizes = [
         'FreeSize', 'XS', 'S', 'X', 'L', 'XL', 'XXL', '28', '29', '30', '31', '32', '33'
     ]
-    console.log('product', product)
     async function onFinish(val) {
         const API = getFactory('product');
-        console.log(val)
         try {
             const data = []
             val.size.forEach(s => {
