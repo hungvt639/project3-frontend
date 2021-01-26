@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Form, Input, Button, DatePicker, Radio, InputNumber, Drawer } from 'antd'
+import { Form, Input, Button, DatePicker, Radio, InputNumber, Drawer } from 'antd'
 import getFactory from '../../request/index'
 import Notification from '../../general/Notification'
 import Catch from '../../general/Catch'

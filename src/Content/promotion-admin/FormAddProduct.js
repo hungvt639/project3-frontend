@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Form, Input, Button, DatePicker, Radio, InputNumber, Drawer, TreeSelect } from 'antd'
+import { Modal, Form, Button, TreeSelect } from 'antd'
 import getFactory from '../../request/index'
 import errorNotification from '../../general/errorNotification'
 
 import Notification from '../../general/Notification'
 import Catch from '../../general/Catch'
-import moment from 'moment';
-import { Fragment } from 'react';
 
 const FormAddProducts = ({ show, setShow, promotion, promotions, setPromotions, index }) => {
 
@@ -62,27 +60,23 @@ const FormAddProducts = ({ show, setShow, promotion, promotions, setPromotions, 
                 }
             }
             const API = getFactory('promotion')
-            const res = await API.addProducts(data)
-            console.log('res', res)
-            console.log('index', index)
-            console.log('promotion', promotion)
-            console.log('promotions', promotions)
-            setPromotions({
-                ...promotions,
-                data: promotions.data.slice(0, index)
-                    .concat({
-                        ...promotion,
-                        promotions: promotion.promotions.concat(res)
-                    })
-                    .concat(promotions.data.slice(index + 1))
-            })
-            Notification("Thêm thành công")
-            setShow(false)
-            // } catch (e) { Catch(e) }
+            try {
+                const res = await API.addProducts(data)
+                setPromotions({
+                    ...promotions,
+                    data: promotions.data.slice(0, index)
+                        .concat({
+                            ...promotion,
+                            promotions: promotion.promotions.concat(res)
+                        })
+                        .concat(promotions.data.slice(index + 1))
+                })
+                Notification("Thêm thành công")
+                setShow(false)
+            } catch (e) { Catch(e) }
         } else {
             errorNotification("Vui lòng chọn trước khi bấm thêm")
         }
-
 
     }
     function onChange(value) {
@@ -99,6 +93,7 @@ const FormAddProducts = ({ show, setShow, promotion, promotions, setPromotions, 
             width: '100%',
         },
     };
+
     return (
         <Modal
             title="Thêm sản phẩm khuyến mãi"

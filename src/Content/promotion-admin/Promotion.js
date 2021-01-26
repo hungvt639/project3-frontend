@@ -14,18 +14,21 @@ const Promotion = () => {
     const [pages, setPages] = useState({ page: 1, limit: 5 })
     const [promotionShow, setPromotionShow] = useState({ id: -1, promotion: {} })
     const [values, setValues] = useState({})
+    const [getValue, setGetValue] = useState("")
+    const [search, setSearch] = useState("")
+    const [searchValue, setSearchValue] = useState({ type: 0, input: "" })
 
     useEffect(() => {
         async function getPromotion() {
             const API = getFactory('promotion')
             try {
-                const res = await API.getPromotions(`?page=${pages.page}&limit=${pages.limit}`)
+                const res = await API.getPromotions(`?page=${pages.page}&limit=${pages.limit}${getValue}${search}`)
                 setPromotionShow({ id: -1, promotion: {} })
                 setPromotions(res)
             } catch (e) { }
         }
         getPromotion()
-    }, [pages])
+    }, [pages, getValue, search])
     async function deletePromotion(t, i) {
         const API = getFactory('promotion')
         try {
@@ -42,13 +45,16 @@ const Promotion = () => {
     }
 
     function onChangeInputSearch(val) {
-
+        setSearchValue({ ...searchValue, input: val })
     }
     function onChangeTypeSearch(val) {
-
+        setSearchValue({ ...searchValue, type: val })
     }
     function searchProduct() {
-
+        let s = ""
+        if (searchValue.type !== 0) s += `&type=${searchValue.type}`
+        if (searchValue.input !== "") s += `&input=${searchValue.input}`
+        setSearch(s)
     }
     const onShowSizeChange = (current, pageSize) => {
         setPages({ ...pages, limit: pageSize })
@@ -72,15 +78,15 @@ const Promotion = () => {
     return (
         <div className="products-admin promotion">
             <div className="products-admin-select">
-                <div onClick={() => { setSelect(1) }} className="products-admin-select-1">
+                <div onClick={() => { setSelect(1); setGetValue("") }} className="products-admin-select-1">
                     <p className={select === 1 ? "products-admin-selected-p" : ""}>Tất cả</p>
                     <div className={select === 1 ? "products-admin-selected" : ""}></div>
                 </div>
-                <div onClick={() => { setSelect(2) }} className="products-admin-select-1">
+                <div onClick={() => { setSelect(2); setGetValue("&value=1") }} className="products-admin-select-1">
                     <p className={select === 2 ? "products-admin-selected-p" : ""}>Đang sử dụng</p>
                     <div className={select === 2 ? "products-admin-selected" : ""}></div>
                 </div>
-                <div onClick={() => { setSelect(3) }} className="products-admin-select-1">
+                <div onClick={() => { setSelect(3); setGetValue("&value=2") }} className="products-admin-select-1">
                     <p className={select === 3 ? "products-admin-selected-p" : ""}>Dừng sử dụng</p>
                     <div className={select === 3 ? "products-admin-selected" : ""}></div>
                 </div>
@@ -93,9 +99,11 @@ const Promotion = () => {
                     }} className="products-admin-actions-add"><PlusCircleOutlined /> Thêm mới</button>
 
                     <button onClick={searchProduct} ><SearchOutlined /></button>
-                    <input onChange={(val) => onChangeInputSearch(val.target.value)} name="search" placeholder="Tìm kiếm sản phẩm" />
+                    <input onChange={(val) => onChangeInputSearch(val.target.value)} name="search" placeholder="Tìm kiếm tên khuyến mãi" />
                     <select onChange={(val) => onChangeTypeSearch(val.target.value)}>
-                        <option value={0}>Tất cả</option>
+                        <option value={0}>Loại khuyến mãi</option>
+                        <option value={1}>Phần trăm</option>
+                        <option value={2}>VND</option>
                         {/* {types.map(t => <option key={t.id} value={t.id}>{t.type}</option>)} */}
                     </select>
                 </div>

@@ -25,11 +25,16 @@ const addProducts = (data) => {
 };
 
 
+const deleteProductPromotion = (id) => {
+    return Client(true).delete(`promotionproducts/${id}/`);
+};
 export default {
     getPromotions,
     createPromotions,
     editPromotions,
     deletePromotions,
     getProduct,
-    addProducts
+    addProducts,
+    deleteProductPromotion
+
 };

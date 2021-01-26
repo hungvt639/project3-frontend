@@ -10,6 +10,7 @@ const Details = ({ match }) => {
 
     const [product, setProduct] = useState({})
     const [view, setView] = useState(1)
+    console.log(product)
 
     useEffect(() => {
         const getDetailProduct = async (id) => {

@@ -16,8 +16,8 @@ const Detail = ({ myuser, cart, setCart }) => {
 
     const [product, setProduct] = useState({})
     const [product_detail, setDetail] = useState({ id: 0 });
-    var [same_product, setSameProduct] = useState([])
-
+    const [same_product, setSameProduct] = useState([])
+    console.log(product)
     useEffect(() => {
         const getDetailProduct = async (id) => {
             const API = getFactory('product');

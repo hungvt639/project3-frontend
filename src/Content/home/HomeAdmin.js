@@ -49,7 +49,7 @@ const HomepageAdmin = () => {
     const onChange = (page, limit) => {
         setPages({ page: page, limit: limit })
     }
-
+    console.log('products', products)
     return (
         <div className="home_list_product home_list_product_admin">
             <HomeSearch search={search} setSearch={setSearch} type={type} />
