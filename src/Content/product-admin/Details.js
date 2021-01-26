@@ -9,7 +9,7 @@ import { Empty } from 'antd';
 const Details = ({ match }) => {
 
     const [product, setProduct] = useState({})
-    const [view, setView] = useState(1)
+    const [view, setView] = useState(2)
     console.log(product)
 
     useEffect(() => {

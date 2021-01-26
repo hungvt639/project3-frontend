@@ -1,9 +1,10 @@
 import React from 'react';
+import calculateCart from '../../general/calculate-cart';
 
 import Product from './Product';
 const DetailPurchase = ({ order }) => {
     const sum_product = (order.product.map((c) => c.amount).reduce((per, next) => per + next));
-    const sum_price = (order.product.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next));
+    const sum_price = (order.product.map((c) => c.amount * calculateCart(c.product_detail.saleprice, c.promotion)).reduce((per, next) => per + next));
     const products = order.product.map(pur => <Product key={pur.id} product={pur} />)
     return (
         <div className="purchase_products order_space">

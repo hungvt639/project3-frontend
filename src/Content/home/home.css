@@ -39,3 +39,22 @@
     -webkit-appearance: none;
     margin: 0;
 }
+.detail_product_promotion {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    background-color: #ff6600;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.price_product_no_promotion {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.price_product_no_promotion .price_product {
+    width: auto;
+    color: #888888;
+    text-decoration: line-through;
+}

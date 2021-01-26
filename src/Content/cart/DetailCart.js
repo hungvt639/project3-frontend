@@ -7,7 +7,7 @@ import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
 import { useHistory } from 'react-router-dom'
-
+import calculateCart from '../../general/calculate-cart'
 const DetailCart = ({ cart_detail, cart, setCart, cartProduct, setCartProduct, cartOrder, setCartOrder }) => {
 
     const history = useHistory()
@@ -126,7 +126,7 @@ const DetailCart = ({ cart_detail, cart, setCart, cartProduct, setCartProduct, c
             </div>
             <div className="cart_even_product">
                 <div className="cart_sum_price cart_price_color">
-                    <p><i style={{ 'textDecorationLine': 'underline' }}>đ</i> {(cart_detail.amount * cart_detail.product_detail.saleprice).toLocaleString('vi-VN')}</p>
+                    <p><i style={{ 'textDecorationLine': 'underline' }}>đ</i> {(cart_detail.amount * calculateCart(cart_detail.product_detail.saleprice, cart_detail.promotion)).toLocaleString('vi-VN')}</p>
                 </div>
                 <div className="cart_amount_product">
                     <Button size="small" className="button_boder cart_button" onClick={minusNumber} >
@@ -139,7 +139,7 @@ const DetailCart = ({ cart_detail, cart, setCart, cartProduct, setCartProduct, c
                 </div>
                 <div className="cart_action">
                     <div onClick={deleteItem} className="cart_delete">Xóa</div>
-                    <p className="cart_price_color"><i style={{ 'textDecorationLine': 'underline' }}>đ</i>{cart_detail.product_detail.saleprice.toLocaleString('vi-VN')}/sản phẩm</p>
+                    <p className="cart_price_color"><i style={{ 'textDecorationLine': 'underline' }}>đ</i>{calculateCart(cart_detail.product_detail.saleprice, cart_detail.promotion).toLocaleString('vi-VN')}/sản phẩm</p>
                 </div>
             </div>
         </div>

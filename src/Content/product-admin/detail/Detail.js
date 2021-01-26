@@ -6,20 +6,37 @@ import Description from './Description';
 import Avatar from './Avatar';
 import ListImg from './ListImg';
 import Describes from './Describes';
-
+import { Fragment } from 'react';
+import calculate from '../../../general/calculate'
 const Detail = ({ match, product, setProduct }) => {
 
     const [product_detail, setDetail] = useState({ id: 0 });
 
-    const prices = (product_detail.id !== 0) ?
+
+
+    const prices = (product.promotion) ? (product_detail.id !== 0) ?
+        <p className="detail_has_promotion" id="price">
+            {product_detail.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+        </p> : (product.from_saleprice !== product.to_saleprice) ?
+            <p className="detail_has_promotion" id="price">
+                {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
+            {product.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+            </p> : <p className="detail_has_promotion" id="price">
+                {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+            </p> : <Fragment />;
+
+
+
+
+    const saleprice = (product_detail.id !== 0) ?
         <p id="price">
-            Giá: {product_detail.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+            Giá: {calculate(product_detail.saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
         </p> : (product.from_saleprice !== product.to_saleprice) ?
             <p id="price">
-                Giá: {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
-                {product.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                Giá: {calculate(product.from_saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
+                {calculate(product.to_saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
             </p> : <p id="price">
-                Giá: {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                Giá: {calculate(product.from_saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
             </p>;
 
     const imgs = []
@@ -53,8 +70,11 @@ const Detail = ({ match, product, setProduct }) => {
                         <div className="type_detali"></div>
                         <span>{sold} đã bán</span>
                     </div>
-
-                    <div className="price_detail">{prices}</div>
+                    {product.promotion ?
+                        <div className="detail_notify_promotion" >Giảm giá: {product.promotion.promotion.value.toLocaleString('vi-VN')}{product.promotion.promotion.type ?
+                            "₫" : "%"} /sản phẩm{(!product.promotion.promotion.type && product.promotion.promotion.max_value.toLocaleString('vi-VN')) ?
+                                `, tối đa ${product.promotion.promotion.max_value}₫ ` : ""}</div> : <Fragment />}
+                    <div className="price_detail">{saleprice}{prices}</div>
                     <div className="describe_detail">
                         <p>Mô tả sản phẩm</p>
                         <ul className="describes_details">

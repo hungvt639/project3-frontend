@@ -5,7 +5,7 @@ import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import Notification from '../../general/Notification';
 import { useHistory } from 'react-router-dom'
-
+import calculateCart from '../../general/calculate-cart'
 const CartOrder = ({ cart, setCart, cartOrder, setCartOrder, cartProduct }) => {
     const API = getFactory('cart');
     const checkeds = (cart.length === cartOrder.length) ? true : false;
@@ -51,8 +51,8 @@ const CartOrder = ({ cart, setCart, cartOrder, setCartOrder, cartProduct }) => {
             } else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
         }
     }
-
-    const sum_price = (cartOrder.length) ? (cartOrder.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next).toLocaleString('vi-VN')) : 0;
+    console.log("cartorder", cartOrder)
+    const sum_price = (cartOrder.length) ? (cartOrder.map((c) => c.amount * calculateCart(c.product_detail.saleprice, c.promotion)).reduce((per, next) => per + next).toLocaleString('vi-VN')) : 0;
 
     const sum_product = (cartOrder.length) ? (cartOrder.map((c) => c.amount).reduce((per, next) => per + next)) : 0;
 

@@ -25,7 +25,7 @@ const FormAddProducts = ({ show, setShow, promotion, promotions, setPromotions, 
             } catch { }
         }
         getType()
-    }, [])
+    }, [promotion.id])
     const treeData = types.map((x, i) => {
         return (
             {

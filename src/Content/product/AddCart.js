@@ -6,7 +6,7 @@ import errorNotification from '../../general/errorNotification';
 import getFactory from '../../request/index';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
-const AddCart = ({ product_detail, setCart, myuser }) => {
+const AddCart = ({ product_detail, setCart, myuser, promotion }) => {
     const [number_product, setNumberProduct] = useState(1);
     const history = useHistory();
     if (myuser) {
@@ -44,6 +44,10 @@ const AddCart = ({ product_detail, setCart, myuser }) => {
         }
 
         const addCart = async (data) => {
+            if (promotion) {
+                data.promotion = promotion.promotion.id
+            }
+            console.log(data)
             const API = getFactory('cart');
             try {
                 res = await API.createCart(data);

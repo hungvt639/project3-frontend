@@ -1,5 +1,7 @@
 import React from 'react';
 import urls from '../../const';
+import calculateCart from '../../general/calculate-cart'
+
 const Products = ({ product }) => {
     return (
         <div className="cart_detail_item checkout_product_list">
@@ -20,13 +22,13 @@ const Products = ({ product }) => {
             </div>
             <div className="cart_even_product">
                 <div className="cart_sum_price cart_price_color">
-                    <p><i style={{ 'textDecorationLine': 'underline' }}>đ</i> {product.product_detail.saleprice.toLocaleString('vi-VN')}/sản phẩm</p>
+                    <p><i style={{ 'textDecorationLine': 'underline' }}>đ</i> {calculateCart(product.product_detail.saleprice, product.promotion).toLocaleString('vi-VN')}/sản phẩm</p>
                 </div>
                 <div className="cart_amount_product">
                     <p>{product.amount}</p>
                 </div>
                 <div className="cart_action">
-                    <p className="cart_price_color"><i style={{ 'textDecorationLine': 'underline' }}>đ</i>{(product.amount * product.product_detail.saleprice).toLocaleString('vi-VN')}</p>
+                    <p className="cart_price_color"><i style={{ 'textDecorationLine': 'underline' }}>đ</i>{(product.amount * calculateCart(product.product_detail.saleprice, product.promotion)).toLocaleString('vi-VN')}</p>
                 </div>
             </div>
         </div>

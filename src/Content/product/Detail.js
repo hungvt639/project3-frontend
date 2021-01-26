@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Image, Empty } from 'antd';
 import urls from '../../const';
 import '../product.css';
@@ -9,7 +9,7 @@ import errorNotification from '../../general/errorNotification';
 import { Redirect } from 'react-router-dom';
 import Description from './Description';
 import IndexProduct from '../home/IndexProduct';
-
+import calculate from '../../general/calculate'
 const Detail = ({ myuser, cart, setCart }) => {
 
     // localStorage.removeItem('ordercart');
@@ -43,17 +43,27 @@ const Detail = ({ myuser, cart, setCart }) => {
     if (Object.keys(product).length) {
         const products_same = same_product.map(p => <IndexProduct key={p.id} product={p} />)
         const products_same_text = (products_same.length) ? <p className="products_same_text">SẢN PHẨM TƯƠNG TỰ</p> : <div></div>;
-        const prices = (product_detail.id !== 0) ?
+        const prices = (product.promotion) ? (product_detail.id !== 0) ?
+            <p className="detail_has_promotion" id="price">
+                {product_detail.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+            </p> : (product.from_saleprice !== product.to_saleprice) ?
+                <p className="detail_has_promotion" id="price">
+                    {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
+            {product.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                </p> : <p className="detail_has_promotion" id="price">
+                    {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                </p> : <Fragment />;
+
+        const saleprice = (product_detail.id !== 0) ?
             <p id="price">
-                Giá: {product_detail.saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                Giá: {calculate(product_detail.saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
             </p> : (product.from_saleprice !== product.to_saleprice) ?
                 <p id="price">
-                    Giá: {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
-                {product.to_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                    Giá: {calculate(product.from_saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i> -
+        {calculate(product.to_saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
                 </p> : <p id="price">
-                    Giá: {product.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
+                    Giá: {calculate(product.from_saleprice, product.promotion).toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
                 </p>;
-
 
         const imgs = []
         for (const i of product.image) {
@@ -75,7 +85,7 @@ const Detail = ({ myuser, cart, setCart }) => {
         }
 
         // const select = (product_detail.id !== 0) ? <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} /> : <br></br>;
-        const select = <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} />;
+        const select = <AddCart product_detail={product_detail} cart={cart} setCart={setCart} myuser={myuser} promotion={product.promotion} />;
         const sold = (product.sold < 1000) ? `${product.sold}` : `${(product.sold / 1000).toFixed(1)}k`
         const mess = (myuser) ?
             ((product.details.length) ?
@@ -104,8 +114,12 @@ const Detail = ({ myuser, cart, setCart }) => {
                             <div className="type_detali"></div>
                             <span>{sold} đã bán</span>
                         </div>
-
-                        <div className="price_detail">{prices}</div>
+                        {product.promotion ?
+                            <div className="detail_notify_promotion" >Giảm giá: {product.promotion.promotion.value.toLocaleString('vi-VN')}{product.promotion.promotion.type ?
+                                "₫" : "%"} /sản phẩm{(!product.promotion.promotion.type && product.promotion.promotion.max_value.toLocaleString('vi-VN')) ?
+                                    `, tối đa ${product.promotion.promotion.max_value}₫ ` : ""}</div> : <Fragment />}
+                        <div className="price_detail">{saleprice}{prices}</div>
+                        <div className="price_detail">{saleprice}{prices}</div>
                         <div className="describe_detail">
                             <p>Mô tả sản phẩm</p>
                             <ul className="describes_details">

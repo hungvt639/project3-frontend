@@ -3,11 +3,15 @@ import Notification from '../../general/Notification';
 import errorNotification from '../../general/errorNotification';
 import getFactory from '../../request/index';
 import { useHistory } from 'react-router-dom';
+import calculateCart from '../../general/calculate-cart';
+import Catch from '../../general/Catch';
+
 const Price = ({ address, productList }) => {
-    const sum_price = (productList.length) ? (productList.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next)) : 0;
+    const sum_price = (productList.length) ? (productList.map((c) => c.amount * calculateCart(c.product_detail.saleprice, c.promotion)).reduce((per, next) => per + next)) : 0;
     const [mess, setMess] = useState("");
     const history = useHistory()
     const createOrder = async (data) => {
+        console.log("data", data)
         const API = getFactory('order')
         try {
             await API.createOrders(data)
@@ -16,21 +20,24 @@ const Price = ({ address, productList }) => {
             localStorage.removeItem('checkout');
             history.push('/purchase')
         } catch (e) {
-            if (e.request.status && e.request.status === 0) {
-                errorNotification("Lỗi mạng!");
-            } else if (e.response.data.message) {
-                e.response.data.message.map(x => errorNotification(x))
-            } else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+            Catch(e)
         }
     }
     const orderProducts = () => {
         if (productList.length) {
             if (address) {
-                const p = productList.map(product => { return { 'product_detail': product.product_detail.id, 'amount': product.amount } })
+                const p = productList.map(product => {
+                    return {
+                        'product_detail': product.product_detail.id,
+                        'amount': product.amount,
+                        "promotion": product.promotion ? product.promotion.id : null
+                    }
+                })
                 const data = {
                     'delivery_address': address.id,
                     'message': mess,
                     'product': p
+
                 }
                 createOrder(data)
             } else {

@@ -2,9 +2,10 @@ import React from 'react';
 import Status from './Status';
 import Details from './Details';
 import Product from './Product';
+import calculateCart from '../../general/calculate-cart';
 const DetailPurchase = ({ purchase, setPurchases, purchases }) => {
     const sum_product = (purchase.product.map((c) => c.amount).reduce((per, next) => per + next));
-    const sum_price = (purchase.product.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next));
+    const sum_price = (purchase.product.map((c) => c.amount * calculateCart(c.product_detail.saleprice, c.promotion)).reduce((per, next) => per + next));
     const products = purchase.product.map(pur => <Product key={pur.id} product={pur} />)
     return (
         <div className="purcharse_detail">

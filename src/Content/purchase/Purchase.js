@@ -26,6 +26,7 @@ const Purchase = () => {
         getPurchases("")
     }, [])
 
+    console.log("pur", purchases)
 
     if (myuser) {
         const purs = purchases.map(purchase => <DetailPurchase key={purchase.id} setPurchases={setPurchases} purchase={purchase} purchases={purchases} />)

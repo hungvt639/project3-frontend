@@ -302,3 +302,15 @@
     padding-left: 40px;
     padding-right: 40px;
 }
+.detail_has_promotion {
+    text-decoration: line-through;
+    color: #383838 !important;
+}
+.detail_notify_promotion {
+    font-size: 24px;
+    color: white;
+    background-color: #ff6600;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+}

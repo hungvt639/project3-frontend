@@ -31,6 +31,7 @@ const Order = () => {
         setPages({ ...pages, limit: pageSize })
     }
 
+    console.log("order", orders)
 
     const onChange = (page, limit) => {
         setPages({ page: page, limit: limit })

@@ -7,13 +7,14 @@ import getFactory from '../../request/index';
 import errorNotification from '../../general/errorNotification';
 import Products from './Products';
 import Price from './Price';
-
+import calculateCart from '../../general/calculate-cart'
 const Checkout = ({ myuser }) => {
     const products = JSON.parse(localStorage.getItem('checkout'))
     const [productList, setProductList] = useState(products ? products : [])
     const [addressList, setAddressList] = useState([])
     const [address, setAddress] = useState({})
     const API = getFactory('address')
+    console.log("productlist", productList)
     useEffect(() => {
         const getAddress = async () => {
             try {
@@ -35,7 +36,7 @@ const Checkout = ({ myuser }) => {
         getAddress()
     }, [])
     const sum_product = (productList.length) ? (productList.map((c) => c.amount).reduce((per, next) => per + next)) : 0;
-    const sum_price = (productList.length) ? (productList.map((c) => c.amount * c.product_detail.saleprice).reduce((per, next) => per + next)) : 0;
+    const sum_price = (productList.length) ? (productList.map((c) => c.amount * calculateCart(c.product_detail.saleprice, c.promotion)).reduce((per, next) => per + next)) : 0;
     if (myuser) {
         const listProduct = productList.map(product => <Products key={product.id} product={product} />)
         return (
