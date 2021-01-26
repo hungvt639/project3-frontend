@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import getFactory from '../../../request/index';
 import { Empty, Popconfirm, Pagination, Drawer, Image } from 'antd';
-import { PlusCircleOutlined, SearchOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, SearchOutlined, DeleteOutlined, EyeOutlined, EditOutlined } from '@ant-design/icons';
 import Notification from '../../../general/Notification';
 import errorNotification from '../../../general/errorNotification';
 import urls from '../../../const';
 import FormCreateProduct from './FormCreateProduct';
 import { useHistory } from 'react-router-dom';
 import { Fragment } from 'react';
-
+import FormEditProduct from "./FormEditProduct"
 
 const Products = () => {
     const API = getFactory('product');
@@ -22,7 +22,8 @@ const Products = () => {
     const [types, setTypes] = useState([])
     const [number, setNumber] = useState(0)
     const history = useHistory()
-
+    const [showEdit, setShowEdit] = useState(false)
+    const [valuesEdit, setValuesEdit] = useState({})
     useEffect(() => {
         const getTypes = async () => {
             const API = getFactory('product');
@@ -127,7 +128,12 @@ const Products = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <TableProducts history={history} products={products} deleteProduct={deleteProduct} />
+                            <TableProducts history={history}
+                                products={products}
+                                deleteProduct={deleteProduct}
+                                setShowEdit={setShowEdit}
+                                setValuesEdit={setValuesEdit}
+                            />
                         </tbody>
                     </table>
                     {products.data ? products.data.length ? "" : <Empty /> : <Empty />}
@@ -147,6 +153,7 @@ const Products = () => {
             >
                 <FormCreateProduct val={{}} types={types} setShowCreate={setShowCreate} number={number} setNumber={setNumber} />
             </Drawer>
+            <FormEditProduct showEdit={showEdit} setShowEdit={setShowEdit} valuesEdit={valuesEdit} number={number} setNumber={setNumber} setValuesEdit={setValuesEdit} />
         </div>
     )
 }
@@ -154,10 +161,15 @@ export default Products;
 
 
 
-const TableProducts = React.memo(({ history, products, deleteProduct }) => {
+const TableProducts = React.memo(({ history, products, deleteProduct, setShowEdit, setValuesEdit }) => {
+    function setEdits(t, i) {
+        console.log("i", i)
+        setValuesEdit(t)
+        setShowEdit(true)
+    }
     return (
         <Fragment>
-            {products.data ? products.data.map((t) => {
+            {products.data ? products.data.map((t, i) => {
                 return (
                     <tr key={t.id}>
                         <td>{t.name}</td>
@@ -172,14 +184,19 @@ const TableProducts = React.memo(({ history, products, deleteProduct }) => {
                                 {t.from_saleprice.toLocaleString('vi-VN')}<i style={{ 'textDecorationLine': 'underline', 'verticalAlign': '5px' }}>đ</i>
                             </p>}</td>
                         <td className="products-admin-table-td">
-                            <p onClick={() => history.push(`/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
-                            <Popconfirm
-                                placement="topRight"
-                                title="Xóa sản phẩm?"
-                                onConfirm={() => deleteProduct(t.id)}
-                                okText="Có"
-                                cancelText="Không"
-                            ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
+                            <p onClick={() => setEdits(t, i)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EditOutlined /></p>
+
+                            <div className="products-admin-table-td_edit">
+                                <p onClick={() => history.push(`/detail/${t.id}`)} style={{ color: "#ff6600", borderColor: "#ff6600" }}><EyeOutlined /></p>
+                                <Popconfirm
+                                    placement="topRight"
+                                    title="Xóa sản phẩm?"
+                                    onConfirm={() => deleteProduct(t.id)}
+                                    okText="Có"
+                                    cancelText="Không"
+                                ><p style={{ color: "#808080", borderColor: "#808080" }}><DeleteOutlined /></p></Popconfirm>
+                            </div>
+
                         </td>
                     </tr>
                 )

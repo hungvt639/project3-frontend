@@ -111,7 +111,7 @@
     text-decoration-line: underline;
     display: inline;
     margin: 0px 5px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border: 2px solid #ff6600;
     font-size: 24px;
     padding: 2px 7px;
@@ -355,4 +355,7 @@
     margin: auto;
     padding: 3px 0;
     font-size: 14px;
+}
+.products-admin-table-td_edit {
+    margin-top: 5px !important;
 }

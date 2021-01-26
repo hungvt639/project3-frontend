@@ -176,7 +176,7 @@ const Warehouse = () => {
                 < FormAmount details={details} setShowAsAmount={setShowAsAmount} setDetails={setDetails} valueAsAmount={valueAsAmount} />
             </Modal>
             <Modal
-                title="Chỉnh sửa nhóm sản phẩm"
+                title="Chỉnh sửa sản phẩm"
                 visible={showEdit}
                 onCancel={() => setShowEdit(false)}
                 footer={null}
@@ -185,7 +185,7 @@ const Warehouse = () => {
                 <WarehouseFormEdit details={details} setShowEdit={setShowEdit} setDetails={setDetails} values={values} />
             </Modal>
             <Drawer
-                title="Tạo nhóm sản phẩm mới"
+                title="Tạo sản phẩm mới"
                 placement="right"
                 width={600}
                 closable={true}
