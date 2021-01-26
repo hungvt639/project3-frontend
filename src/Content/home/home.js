@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 import getFactory from '../../request/index';
 import IndexProduct from './IndexProduct';
 import HomeSearch from './HomeSearch';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination, Carousel } from 'antd';
 import './home.css'
 import { Fragment } from 'react';
 const Homepage = () => {
@@ -16,6 +16,20 @@ const Homepage = () => {
     const [type, setType] = useState([])
     const [search, setSearch] = useState("")
     const [pages, setPages] = useState({ limit: 10, page: 1 })
+    const [promotions, setPromotion] = useState([])
+
+    useEffect(() => {
+        async function getPromotion() {
+            const APIs = getFactory('promotion')
+            try {
+                const res = await APIs.getPromotions(`?&limit=10&value=1`)
+                setPromotion(res.data)
+            } catch (e) { }
+        }
+        getPromotion()
+    }, [])
+
+    console.log("promo", promotions)
     useEffect(() => {
         const getproduct = async () => {
             try {
@@ -51,6 +65,7 @@ const Homepage = () => {
 
     return (
         <div className="home_list_product">
+            <Promotion promotions={promotions} />
             <HomeSearch search={search} setSearch={setSearch} type={type} />
             <span className="items">
                 <Items products={products} />
@@ -88,5 +103,27 @@ const Items = ({ products }) => {
         return (
             <Empty />
         )
+    }
+}
+const Promotion = ({ promotions }) => {
+    const classshow = ["carousel1", "carousel2", "carousel3"]
+    if (promotions && promotions.length) {
+        return (
+            <Carousel autoplay >
+                {promotions.map((p, i) => {
+                    return (
+                        <div className={`promotion_show_index ${classshow[i % 3]}`}>
+                            <p>{p.name}</p>
+                            <div className="promotion_show_index_div" >Giảm giá: {p.value.toLocaleString('vi-VN')}{p.type ?
+                                "₫" : "%"} /sản phẩm{(!p.type && p.max_value) ?
+                                    `, tối đa ${p.max_value.toLocaleString('vi-VN')}₫ ` : ""}
+                            </div>
+                        </div>
+                    )
+                })}
+            </Carousel >
+        )
+    } else {
+        return (<Fragment />)
     }
 }

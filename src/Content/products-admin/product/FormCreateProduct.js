@@ -1,11 +1,9 @@
 import React from 'react';
 import { Form, Input, Button, Select, InputNumber } from 'antd';
 import getFactory from '../../../request/index';
-import errorNotification from '../../../general/errorNotification';
 import Notification from '../../../general/Notification';
-import { useHistory } from 'react-router-dom';
-const FormProduct = ({ val, types, setShowCreate }) => {
-    const history = useHistory()
+import Catch from '../../../general/Catch';
+const FormProduct = ({ val, types, setShowCreate, number, setNumber }) => {
     const layout = {
         labelCol: { span: 6 },
         wrapperCol: { span: 16 },
@@ -14,19 +12,13 @@ const FormProduct = ({ val, types, setShowCreate }) => {
         const API = getFactory('product')
         try {
 
-            const res = await API.createProduct(values)
+            await API.createProduct(values)
             Notification("Thêm mới sản phẩm thành công.")
             setShowCreate(false)
-            history.push(`/detail/${res.data.id}`)
-
-
+            setNumber(number + 1)
         }
         catch (e) {
-            if (e.request.status && e.request.status === 0) {
-                errorNotification("Lỗi mạng!");
-            } else if (e.response.data.message) {
-                e.response.data.message.map(x => errorNotification(x))
-            } else errorNotification("Đã có lỗi sảy ra, bạn vui lòng đăng nhập lại");
+            Catch(e)
         }
     }
 

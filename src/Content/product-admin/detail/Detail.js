@@ -72,8 +72,8 @@ const Detail = ({ match, product, setProduct }) => {
                     </div>
                     {product.promotion ?
                         <div className="detail_notify_promotion" >Giảm giá: {product.promotion.promotion.value.toLocaleString('vi-VN')}{product.promotion.promotion.type ?
-                            "₫" : "%"} /sản phẩm{(!product.promotion.promotion.type && product.promotion.promotion.max_value.toLocaleString('vi-VN')) ?
-                                `, tối đa ${product.promotion.promotion.max_value}₫ ` : ""}</div> : <Fragment />}
+                            "₫" : "%"} /sản phẩm{(!product.promotion.promotion.type && product.promotion.promotion.max_value) ?
+                                `, tối đa ${product.promotion.promotion.max_value.toLocaleString('vi-VN')}₫ ` : ""}</div> : <Fragment />}
                     <div className="price_detail">{saleprice}{prices}</div>
                     <div className="describe_detail">
                         <p>Mô tả sản phẩm</p>

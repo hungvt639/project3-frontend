@@ -58,3 +58,29 @@
     color: #888888;
     text-decoration: line-through;
 }
+.promotion_show_index {
+    /* background-color: #ff6600; */
+    /* height: 50px; */
+    text-align: center;
+    padding: 20px 0 50px 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.promotion_show_index p {
+    font-size: 28px;
+}
+.promotion_show_index_div {
+    font-size: 20px;
+}
+.carousel1 {
+    background-color: #ff6600;
+    color: white;
+}
+.carousel2 {
+    background-color: rgb(54 77 121);
+    color: white;
+}
+.carousel3 {
+    background-color: #ffee00;
+    color: rgb(0, 0, 0);
+}

@@ -145,7 +145,7 @@ const Products = () => {
                 onClose={() => setShowCreate(false)}
                 visible={showCreate}
             >
-                <FormCreateProduct val={{}} types={types} setShowCreate={setShowCreate} />
+                <FormCreateProduct val={{}} types={types} setShowCreate={setShowCreate} number={number} setNumber={setNumber} />
             </Drawer>
         </div>
     )
