@@ -8,6 +8,7 @@ const errorNotification = (des) => {
     notification.open({
         className: 'notify',
         message: 'Thông báo',
+        top: 70,
         description: des,
         icon: <CloseCircleOutlined style={{ color: '#FF0000' }} />,
 

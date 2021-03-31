@@ -1,0 +1,316 @@
+.ant-upload.ant-upload-select-picture-card:hover {
+    border: none;
+}
+.ant-upload.ant-upload-select-picture-card {
+    border: none;
+    background-color: #ff6600;
+    border-radius: 2px;
+    width: auto;
+    height: auto;
+    float: right;
+    /* top: -38px; */
+    margin: 0px;
+    position: relative;
+}
+.detail_left .ant-upload.ant-upload-select-picture-card {
+    top: -38px;
+}
+.avatar-uploader-button {
+    font-size: 18px;
+    color: white;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+.avatar-uploader-button_loading {
+    font-size: 18px;
+    color: white;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+.avatar-uploader-loading .ant-upload.ant-upload-select-picture-card {
+    background-color: #00000040;
+    width: 95px;
+    cursor: no-drop;
+}
+.ant-btn-dashed:focus,
+.ant-btn-dashed:active {
+    color: #ff6600;
+    border-color: #ff6600;
+}
+.antd_space_item {
+    width: 100%;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    margin: 0px 20px 10px 0px;
+}
+/* .antd_space_item .ant-space-item {
+    width: 100%;
+} */
+.antd_space_item2 {
+    margin-left: 10px;
+}
+.antd_space_item_form {
+    width: 100%;
+}
+.antd_space_item .ant-row {
+    margin: 0px;
+    width: 100%;
+}
+.antd_button_from_list {
+    padding: 10px 45px 10px 0px;
+}
+.antd_button_from_submit {
+    float: right;
+    margin-right: 45px;
+    margin-bottom: 10px;
+}
+.li_describe:hover {
+    background-color: #fff4ec;
+}
+.button_delete_describe {
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ff6600;
+    border-radius: 2px;
+    color: #ff6600;
+}
+.button_delete_describe:hover {
+    background-color: #ffccaa;
+}
+.button_delete_describe:focus {
+    background-color: #ff6600;
+    color: white;
+}
+.li_describe {
+    padding-right: 20px;
+}
+.imgs_detail .ant-upload.ant-upload-select-picture-card {
+    top: 0;
+    float: inherit;
+    background-color: #f0f2f5;
+}
+.images_upload_table .ant-upload.ant-upload-select-picture-card {
+    background-color: white;
+    width: 161px;
+    height: 161px;
+}
+.images_upload_table .ant-upload-list-picture-card-container {
+    width: 161px;
+    height: 161px;
+}
+.images_upload_table .product_admin_upload_btn {
+    width: 161px;
+    height: 161px;
+    margin: 0;
+}
+.product_admin_upload_btn {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: auto;
+    display: inline-block;
+    width: 104px;
+    height: 104px;
+    margin: 0 8px 8px 0;
+    vertical-align: top;
+    border: 1px dashed #d9d9d9;
+    position: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #313131;
+}
+.product_admin_upload_btn:hover {
+    border-color: #ff6600;
+    color: #ff6600;
+}
+.images_upload {
+    height: auto;
+    white-space: break-spaces;
+    /* background-color: #f0f2f5; */
+}
+.product_admin_upload_btn div {
+    display: flex;
+    flex-direction: column;
+}
+/* #rcDialogTitle0 {
+    display: none;
+} */
+.detail1 {
+    max-width: 1280px;
+    margin: auto;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.tabledetails {
+    display: flex;
+    flex-direction: row;
+    /* height: 100%; */
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.tabledetails_left {
+    width: 40%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0px 10px 0px 50px;
+    padding: 20px 60px;
+}
+.tabledetails_right {
+    width: 60%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0px 50px 0px 20px;
+    padding: 20px 51px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.tabledetails_avatar {
+    text-align: center;
+    margin: 30px 0 20px 0;
+}
+.tabledetails_p {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.tabledetails_p p {
+    margin: 0 50px;
+    padding: 20px 0;
+    border-bottom: 1px solid #b8bec9;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    color: #60636a;
+}
+.tabledetails_p span {
+    color: #ff6600;
+}
+.tabledetails_button_edit {
+    margin: 0 50px;
+    padding: 20px 0;
+    float: right;
+}
+.tabledetails_button_edit button {
+    background-color: #ff6600;
+    cursor: pointer;
+    border: 1px solid #ff6600;
+    border-radius: 3px;
+    color: white;
+    padding: 7px 50px;
+}
+.tabledetails_name {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: #313131;
+    margin-top: 20px;
+}
+.tabledetails_rights {
+    margin: 20px 0;
+    height: 100%;
+}
+.tabledetails_des {
+    height: 100%;
+}
+.tabledetails_add {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.tabledetails_add button {
+    margin-left: 1px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 15px;
+    color: white;
+    font-size: 18px;
+    background-color: #ff6600;
+    cursor: pointer;
+}
+.images_upload_table {
+    margin: 30px 0px;
+}
+.tabledetail_act_btn {
+    font-size: 26px;
+    margin: 0 7px;
+    padding: 0 5px;
+    border: 1px solid;
+}
+.tabledetail_act {
+    text-align: center;
+}
+.tabledetail_center {
+    text-align: center;
+}
+.tabledetail_upload_avt {
+    width: 100%;
+    height: 100%;
+}
+.tabledetail_upload {
+    width: 100%;
+    text-align: center;
+}
+.tabledetail_upload .ant-upload.ant-upload-select-picture-card {
+    width: 180px;
+    height: 210px;
+    float: inherit;
+    position: relative;
+    margin: 10px 0 20px 0;
+}
+.tabledetail_upload .ant-upload.ant-upload-select-picture-card:hover {
+    border: 1px dashed #ff6600;
+}
+.tabledetail_upload_loading {
+    font-size: 18px;
+    color: white;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+.ant-input:focus,
+.ant-input-focused {
+    border-color: #ff6600;
+    box-shadow: 0 0 0 2px rgb(255 98 24 / 14%);
+}
+.des_close {
+    position: absolute;
+    top: 0px;
+    left: 103px;
+    font-size: 18px;
+}
+.tabledetail_images img {
+    object-fit: cover;
+}
+.tabletable_h1 {
+    color: #313131;
+    margin: 0 0 20px 0;
+    text-align: center;
+    width: 100%;
+}
+.tabletable_img {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.submit_form {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.detail_has_promotion {
+    text-decoration: line-through;
+    color: #383838 !important;
+}
+.detail_notify_promotion {
+    font-size: 24px;
+    color: white;
+    background-color: #ff6600;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+}

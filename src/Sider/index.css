@@ -1,6 +1,78 @@
-.margin{
-    margin: 300;
+.margin {
+    background-color: #ff0000;
 }
-.menu{
-    background: #ffffff;
+
+.sider {
+    background-color: rgb(57, 59, 63);
+}
+.menu {
+    /* background-color: #ff6000; */
+    background-color: rgb(57, 59, 63);
+    margin: 0px 0px;
+    font-size: 20px;
+    border-right: 0;
+    padding: 0px 15px;
+    /* text-align: center; */
+}
+.menu_item:hover {
+    color: #ffffff;
+    background-color: #636363;
+    /* border: 1px solid #ffffff; */
+    border-radius: 5px;
+}
+
+.ant-menu-item-selected {
+    background-color: #ff0000 !important;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    font-size: 20px;
+}
+.menu_item {
+    padding: 0px 0px !important;
+    color: white;
+    margin-bottom: 10px !important;
+}
+
+.menu_item::after {
+    border-right-color: #ff0000 !important;
+}
+.icon_sider {
+    font-size: 25px !important;
+}
+.ant-menu-inline-collapsed {
+    text-align: center;
+}
+.ant-menu-inline .menu_item {
+    padding: 0px 32px !important;
+}
+.ant-menu-inline .ant-menu-item,
+.ant-menu-inline .ant-menu-submenu-title {
+    width: 100%;
+}
+.ant-menu-root.ant-menu-inline-collapsed
+    .ant-menu-item
+    > .ant-menu-inline-collapsed-noicon,
+.ant-menu-root.ant-menu-inline-collapsed
+    .ant-menu-submenu
+    .ant-menu-submenu-title
+    > .ant-menu-inline-collapsed-noicon {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.logo {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    width: 80px;
+}
+.logo span {
+    font-size: 22px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+.ant-layout-sider-collapsed .logo span {
+    display: none;
 }

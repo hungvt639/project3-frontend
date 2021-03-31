@@ -1,30 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './index.css';
 import 'antd/dist/antd.css';
 import AvatarHeader from './AvatarHeader';
-import { Layout, Row, Col } from 'antd';
+import { Layout } from 'antd';
+import { useHistory } from 'react-router-dom';
+import getFactory from '../request/index'
 import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
+    HomeFilled,
 } from '@ant-design/icons';
 
 const { Header } = Layout;
 
-const Headers = ({toggle, collapsed, myuser, setUser}) => {
+const Headers = ({ myuser, setUser, cart, setCart }) => {
+    const history = useHistory()
+    const goHome = () => {
+        history.push('/')
+    }
+    useEffect(() => {
+        const getProfile = async () => {
+            const API = getFactory('user');
+            try {
+                const res = await API.getProfile()
+                localStorage.setItem('user', JSON.stringify(res));
+                setUser(res)
+            }
 
+            catch (e) {
+                // setUser(0)
+            }
+        }
+        getProfile()
+    }, [setUser])
+    return (
+        <div className="header_user">
+            <div className="head_space">
+                <Header className="header" >
+                    <div className="goHome" onClick={goHome}>{React.createElement(HomeFilled, {
+                        className: 'trigger',
+                    })} Trang chủ
+                    </div>
+                    <div className="head_user"><AvatarHeader myuser={myuser} setUser={setUser} cart={cart} setCart={setCart} /></div>
+                </Header>
+            </div>
+        </div>
 
-    return(
-        <Header className="site-layout-background" style={{ padding: 0, background:'#FF6000' }}>
-            <Row>
-                <Col span={2}>{React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                    className: 'trigger',
-                    style: {marginTop:'10px' ,marginLeft: '24px', fontSize : '40px', lineHeight:1},
-                    onClick: toggle,
-                })}</Col>
-                {/* <Col span={3}></Col> */}
-                <Col span={10} className='margin_right'><AvatarHeader myuser={myuser} setUser={setUser} /></Col>
-            </Row>
-          </Header>
     );
 };
 export default Headers

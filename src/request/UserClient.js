@@ -6,7 +6,7 @@ const baseURL = `${baseDomain}/`
 
 
 
- 
-export default function instanceAxios(isToken){
-    return getInstanceAxios(baseURL, isToken )
+
+export default function instanceAxios(isToken) {
+    return getInstanceAxios(baseURL, isToken)
 }

@@ -1,32 +1,91 @@
-.margin_right{
-    margin-left: auto;
-}
-.text-avata{
+.avatar_user {
+    margin-right: 15px;
     color: white;
     font-size: 150%;
+    /* margin-bottom: 30px; */
+    padding-bottom: 25px;
 }
-.avatar{
-    margin-left: auto;
-    /* height: 300; */
-    padding: 4px 15px;
-    float: right;
-    position: absolute;
-    /* top:12px; */
-    /* bottom:100px; */
-    /* left:70px; */
-    right:10px;
+.avatar_notify {
+    padding-right: 30px;
 }
-.button-login{
+.avatar_cart {
+    padding-right: 30px;
+}
+.head_user {
+    width: 200px;
+    flex: 1;
+    flex-direction: row-reverse;
+    display: flex;
+}
+.header {
+    padding: 0px;
+    background-color: #585858;
+    display: flex;
+}
+
+.button-login {
     background-color: brown;
     color: white;
-    font-size: 150%;
-    padding: 4px 15px;
+    font-size: 20px;
     line-height: 1;
     border-style: none;
     border-radius: 15px;
-    position: absolute;
-    top:12px;
-    /* bottom:100px; */
-    /* left:70px; */
-    right:10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    height: 40px;
+}
+.menu_avatar {
+    font-size: 18px;
+}
+.cart_header {
+    border: 1px solid white;
+    background-color: #909090;
+    color: white;
+    font-weight: 5;
+    font-size: 20px !important;
+}
+.cart_header:hover {
+    background-color: #b1b1b1;
+}
+.badge_header {
+    background-color: #585858;
+}
+.badge_header sup {
+    background-color: #ffffff;
+    color: #ff0000;
+    font-weight: 600;
+}
+.badge_header sup:hover {
+    background-color: #e2e2e2;
+}
+.header_user {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #585858;
+}
+.head_space {
+    max-width: 1250px;
+    width: 100%;
+}
+.goHome {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+.trigger {
+    color: white;
+    font-size: 30px;
+}
+.triggers {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.descriptions1 {
+    width: 100%;
+}
+.descriptions button {
+    height: fit-content;
 }

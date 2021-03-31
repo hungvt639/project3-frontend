@@ -9,7 +9,7 @@ const signIn = (data) => {
 };
 
 const changePassword = (data) => {
-    return Client().post(`${resource}/change-password/`, data);
+    return Client(true).post(`${resource}/change-password/`, data);
 };
 
 const getProfile = () => {
@@ -18,10 +18,19 @@ const getProfile = () => {
 const Logout = () => {
     return Client(true).get(`${resource}/logout/`);
 }
+const EditProfile = (data) => {
+    return Client(true).put(`${resource}/profile/`, data);
+}
+
+const ChangeAvatar = (data) => {
+    return Client(true).put(`${resource}/change-avatar/`, data)
+}
 export default {
     signIn,
     signUp,
     changePassword,
     getProfile,
     Logout,
+    EditProfile,
+    ChangeAvatar,
 };

@@ -1,8 +1,366 @@
-.content{
-    /* position: absolute; */
-    /* top:12px; */
-    /* bottom:100px; */
-    /* left:70px; */
-    /* right:10px; */
-    /* maxHeight: '85vh', */
+.home_list_product {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.home_list_product_admin {
+    max-width: 1620px;
+    margin: auto;
+}
+.items {
+    padding-top: 10px;
+    /* overflow: auto; */
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: red; */
+}
+.list_type {
+    /* margin-bottom: 5px; */
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: 16px;
+    min-height: 50px;
+    background-color: white;
+    margin: 20px 0px 10px 0px;
+    box-shadow: 0 0 4px -1px #ff6600;
+}
+
+.list_type p {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline;
+}
+.list_type p:hover,
+.list_type p:focus,
+.type_select {
+    background-color: #ff6600;
+    color: white;
+    margin: 0px 5px;
+    padding: 5px 10px;
+}
+
+.list_type::-webkit-scrollbar {
+    height: 5px;
+    border-radius: 1px;
+    /* color: #888;  */
+}
+.list_type::-webkit-scrollbar-thumb {
+    background: rgb(209, 209, 209);
+    margin: 20px;
+    padding: 20px;
+}
+.list_type::-webkit-scrollbar-thumb:hover {
+    background: rgb(136, 136, 136);
+    /* margin: 20px;
+    padding: 20px; */
+}
+
+.index_product {
+    position: relative;
+    width: 250px;
+    height: 420px;
+    margin: 10px 30px;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    /* display: inline-block; */
+}
+.index_product:hover {
+    border: 1px solid #ff6600;
+}
+.index_product_admin {
+    margin: 10px;
+}
+.img_product {
+    width: 240px;
+    height: 280px;
+    margin: 5px;
+    border-radius: 3px;
+}
+.name_product {
+    height: 50px;
+    margin: 10px;
+    margin-top: 3px;
+    margin-bottom: 2px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.price_product {
+    margin: 0px 10px;
+    font-size: 18px;
+    color: #ff6600;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sold_product {
+    font-size: 12px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.profile {
+    display: flex;
+    height: 100%;
+}
+.avatar {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    height: 100%;
+    width: 40%;
+    /* background-color: blue; */
+    border-right: 1px solid #d9d9d9;
+}
+.profile_user {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 3;
+    overflow: auto;
+    /* background-color: #00CC33; */
+}
+.avatar_users {
+    position: relative;
+    width: 10%;
+    padding-top: 10%;
+}
+.user {
+    margin: 100px 50px;
+    background-color: #ff6600;
+    /* width: 50px;
+    height: 50px; */
+}
+
+.item_input {
+    margin: 20px 0px;
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+@media only screen and (max-width: 900px) {
+    .item_input {
+        margin: 30px 0px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+.item_input label {
+    width: 200px;
+    padding: 5px;
+}
+.item_input input {
+    padding: 5px 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum", "tnum";
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.form_input input[type="button"] {
+    color: #fff;
+    background: #ff6600;
+    border-color: #ff6600;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 32px;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+#rcDialogTitle0 {
+    text-align: center;
+}
+
+.form_input {
+    margin: 50px;
+    /* margin-top: 100px; */
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+.form_input div div label {
+    font-size: 16px;
+}
+.button_edit_profile {
+    justify-content: flex-end;
+    display: flex;
+}
+.change_profile_submit {
+    color: #fff;
+    background: #ff6600;
+    border-color: #ff6600;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 32px;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+.change_profile_submit:hover,
+.change_profile_submit:focus {
+    background: #ff6600;
+    border-color: #ff6600;
+}
+.button_edit_profile input[type="submit"] {
+    color: #fff;
+    background: #ff6600;
+    border-color: #ff6600;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 32px;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.hr {
+    background-color: #d9d9d9;
+    width: 100%;
+    height: 1px;
+}
+.img_avatar {
+    width: 80%;
+    border: 5px solid #d9d9d9;
+    border-radius: 50%;
+    clip-path: circle(50.3% at 50% 50%);
+}
+
+.input_change_pass {
+    width: 50%;
+}
+.input_inline {
+    display: flex;
+}
+.input_inline_left {
+    margin-right: 10px;
+}
+.input_inline_right {
+    margin-left: 10px;
+}
+@media only screen and (max-width: 900px) {
+    .input_change_pass {
+        width: 100%;
+    }
+    .input_inline {
+        display: flex;
+        flex-direction: column;
+    }
+    .input_inline_left {
+        margin-right: 0px;
+    }
+    .input_inline_right {
+        margin-left: 0px;
+    }
+}
+.avatar div {
+    margin-top: 100px;
+    text-align: center;
+}
+.avatar div p {
+    margin: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+.avatar_menu {
+    width: 200px;
+}
+.div_flex {
+    display: flex;
+}
+.img_avt {
+    text-align: center;
+}
+.sex_list {
+    display: flex;
+    flex-direction: row;
+    margin-right: 50px;
+}
+.sex_input {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.sex_input input {
+    margin: 5px;
+    width: auto;
 }

@@ -8,8 +8,8 @@ const Notification = (des) => {
         className: 'notify',
         message: 'Thông báo',
         description: des,
-        duration:1,
-        top:70,
+        duration: 1,
+        top: 70,
         icon: <CheckCircleOutlined style={{ color: '#00FF00' }} />,
 
     });
